@@ -1,0 +1,105 @@
+@import "./_variables.scss";
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@font-face {
+    font-family: 'Noto Sans JP';
+    src: url('/assets/fonts/NotoSansJP-ExtraLight.ttf') format('truetype');
+    font-weight: 200; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans JP';
+    src: url('/assets/fonts/NotoSansJP-Regular.ttf') format('truetype');
+    font-weight: 400; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans JP';
+    src: url('/assets/fonts/NotoSansJP-Medium.ttf') format('truetype');
+    font-weight: 500; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans JP';
+    src: url('/assets/fonts/NotoSansJP-SemiBold.ttf') format('truetype');
+    font-weight: 600; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans JP';
+    src: url('/assets/fonts/NotoSansJP-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: map-get($theme-colors, "green");
+    background-color: map-get($theme-colors, "light-grey");
+    overflow-x: hidden;
+}
+  
+h1, h2, h3, p, ul, li {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+  
+h1 {
+    font-weight: 700;
+    font-size: map-get($font-size, "70");
+}
+  
+h2 {
+    font-weight: 600;
+    font-size: map-get($font-size, "60");
+}
+  
+h3 {
+    font-weight: 500;
+    font-size: map-get($font-size, "50");
+}
+  
+h4 {
+    font-weight: 400;
+    font-size: map-get($font-size, "40");
+}
+  
+h5 {
+    font-weight: 300;
+    font-size: map-get($font-size, "30");
+}
+  
+a, p {
+    font-size: map-get($font-size, "20");
+    font-weight: 400;
+}
+  
+.container {
+    padding-left: 10rem;
+    padding-right: 10rem;
+    padding-top: 5rem;
+}
+  
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+} 
+  
+@each $color-name, $color-value in $theme-colors {
+    .text-#{$color-name} {
+      color: $color-value;
+    }
+    .bg-#{$color-name} {
+      background-color: $color-value;
+    }
+}
+  
+@each $name, $value in $font-size {
+    .text-fs-#{$name} {
+      font-size: $value;
+    }
+}
