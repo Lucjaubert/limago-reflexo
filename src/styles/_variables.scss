@@ -6,7 +6,7 @@ $theme-colors: (
   "light-blue": #a9d3ff,
   "red": #FE6D73,
   "yellow": #FFCB77,
-  "white": #ffffff,
+  "white": #f3f3f3,
 );
 
 $border-size: (
@@ -465,10 +465,12 @@ $spacers: (
   // 3104px
   "199": 195rem,
   // 3120px
-  "200": 196rem
+  "200": 196rem,
   // 3136px
-  
-
+  "210": 206rem,
+  // 3296px
+  "220": 216rem,    
+  // 3456px
 );
 @each $name, $value in $spacers {
   .p-#{$name} {
