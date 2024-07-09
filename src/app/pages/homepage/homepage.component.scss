@@ -1,0 +1,164 @@
+@import "../../../styles/_variables.scss";
+
+.container {
+  position: relative;
+  color: white;
+
+  .reflexologist-info {
+    font-weight: 200 !important;
+  }
+
+  .info-title {
+    color: map-get($theme-colors, "green") !important;
+  }
+
+  .img-background {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .intro-section {
+    position: absolute;
+    text-align: center;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+
+  .btn-reserve {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 180px;
+    background-color: map-get($theme-colors, "green");
+    color: white;
+    border: 0.5px solid white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .info-section {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 18%;
+
+    .content-wrapper {
+      max-width: 50%;
+    }
+
+    .info-image {
+      width: 25%;
+      height: auto;
+    }
+  }
+
+  .triptych-container {
+    justify-content: center !important;
+
+    .triptych-content {
+        position: relative;
+        background-color: map-get($theme-colors, "grey-light");
+        margin-top: 2rem;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        display: flex;
+        justify-content: center; 
+        width: 100%;
+        z-index: 1;
+
+        .background-triptych {
+            background-color: map-get($theme-colors, "white");
+            margin-left: 25px;
+            margin-right: 25px;
+            z-index: 2;
+                .card {
+                    position: relative;
+                    margin-top: 20px;
+
+                .btn-see-more {
+                    background-color: map-get($theme-colors, "green");
+                    color: map-get($theme-colors, "white");
+                }
+            
+                img {
+                    width: 100%;
+                    height: 450px;
+                    object-fit: cover;
+                }
+            
+                .card-body {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: rgba(83, 83, 83, 0.5);
+                    color: white;
+                    padding: 15px;
+                    box-sizing: border-box;
+                }
+            
+                .card-title {
+                    margin: 0;
+                    font-size: 24px;
+                    font-weight: bold;
+                    color: white !important;
+                }
+            
+                .card-text {
+                    text-align: center !important;
+                    color: white !important;
+                }
+            
+                .btn {
+                    margin-top: 20px;
+                }
+            }
+        }
+        
+    }
+  }
+
+  .informations-section {
+    width: 100%;
+  }
+  
+  
+  .card-title {
+    color: map-get($theme-colors, "green");
+  }
+  
+
+  @media (min-width: 1921px) {
+    .btn-reserve {
+        top: 39%;
+    }
+  }
+
+  @media (max-width: 1920px) {
+    .btn-reserve {
+        top: 32.5%;
+    }
+  }
+  
+  //@media (max-width: 767px) {
+
+  //  .homepage-container {
+  //  }
+  //}
+}
