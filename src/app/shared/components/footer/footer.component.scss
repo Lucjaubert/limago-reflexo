@@ -1,0 +1,159 @@
+@import "../../../../styles/_variables.scss";
+
+.footer-item {
+    background-color: #719673; 
+    color: white;
+
+    .footer-content-container {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        padding-left: 8rem;
+        padding-right: 8rem;
+
+        .logo-container {
+            margin-right: 8rem; 
+
+            .logo-footer {
+                width: 300px;
+                height: auto;
+                max-height: 300px;
+                max-width: 300px;
+            }
+        }
+
+        .footer-sections {
+            display: flex;
+            justify-content: between;
+
+            .footer-section {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              margin-right: 15rem; 
+          
+              &:last-child {
+                  margin-right: 0; 
+              }
+          
+              .footer-title {
+                  font-weight: bold;
+                  margin-bottom: 0.5rem;
+              }
+          
+              .footer-content {
+                  text-align: center;
+                  color: map-get($theme-colors, "white");
+              }
+          
+              .social-icons {
+                  display: flex;
+          
+                  .social-icon {
+                      width: 30px;
+                      height: 30px;
+                      margin-right: 1rem;
+          
+                      &:last-child {
+                          margin-right: 0;
+                      }
+                  }
+              }
+          }          
+        }
+    }
+
+    .footer-link {
+        color: white;
+        text-decoration: none;
+        margin-right: 9rem; 
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .border-top {
+        border-color: white;
+        margin-top: 2rem;
+    }
+
+    .legal-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px; 
+
+      
+    }
+}
+
+
+@media (max-width: 767px) {
+    .footer-item {
+        background-color: #719673; 
+        color: white;
+        padding: 20px; 
+
+        .footer-content-container {
+            flex-direction: column;
+            align-items: center !important;
+            padding-left: 20px;
+            padding-right: 20px;
+
+            .logo-container {
+                margin-right: 0;
+                margin-bottom: 10px; 
+
+                .logo-footer {
+                    width: 180px; 
+                    height: auto;
+                }
+            }
+
+            .footer-sections {
+                flex-direction: column;
+                justify-content: center;
+                margin-top: 20px; 
+
+                .footer-section {
+                    margin-right: 0;
+                    margin-bottom: 30px; 
+
+                    .footer-title {
+                        text-align: center; 
+                    }
+
+                    .footer-content {
+                        text-align: center;
+                    }
+
+                    .social-icons {
+                        justify-content: center; 
+                        margin-top: 10px; 
+                    }
+                }          
+            }
+        }
+
+        .legal-section {
+            display: flex;
+            flex-direction: column !important;
+            align-items: center;
+            margin-top: 20px; 
+
+            .legal-box {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-link {
+                margin-right: 0;
+                margin-bottom: 25px; 
+                margin-top: 25px;   
+            }
+        }
+    }
+}
