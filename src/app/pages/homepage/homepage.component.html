@@ -9,9 +9,9 @@
     </h1>
   </div>
   <button class="btn btn-reserve">RÉSERVER UN SOIN</button>
-  <div *ngIf="homepageData$ | async as homepageData" class="pt-md-13">
+  <ng-container *ngIf="homepageData$ | async as homepageData">
     <div *ngFor="let homepageData of homepageData">
-      <div class="info-section d-flex justify-content-between align-items-center">
+      <div class="info-section d-flex justify-content-between align-items-center pt-md-14">
         <div class="content-wrapper">
           <h1 class="info-title">{{ homepageData.acf_fields.title1 }}</h1>
           <h1 class="info-title">{{ homepageData.acf_fields.title2 }}</h1>
@@ -20,8 +20,8 @@
         <img [src]="homepageData.acf_fields.image" class="info-image">
       </div>
     </div>
-  </div>
-  <div class="triptych-container d-flex justify-content-between align-items-center pt-md-42">
+  </ng-container>
+  <div class="triptych-container d-flex justify-content-between align-items-center pt-md-47">
     <div class="row triptych-content">
       <div class="row background-triptych">
         <!-- Card 1 -->
@@ -60,9 +60,9 @@
       </div>
     </div>
   </div>
-  <div *ngIf="homepageData$ | async as homepageData" class="pt-md-11">
+  <ng-container *ngIf="homepageData$ | async as homepageData">
     <div *ngFor="let homepageData of homepageData">
-      <div class="informations-section px-30">
+      <div class="informations-section px-30 pt-md-5">
         <div class="content-wrapper d-flex justify-content-between">
           <div class="d-flex flex-column">
             <h1 class="info-title">{{ homepageData.acf_fields.schedulesTitle }}</h1>
@@ -75,5 +75,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </ng-container>
 </div>

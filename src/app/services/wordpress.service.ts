@@ -15,19 +15,19 @@ export class WordpressService {
   }
 
   getWhoAmI(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/qui-suis-je`);
+    return this.http.get<any>(`${this.apiUrl}/whoami`);
   }
 
   getReflexology(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/reflexologie`);
+    return this.http.get<any>(`${this.apiUrl}/reflexology`);
   }
 
   getServices(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/prestations`);
+    return this.http.get<any>(`${this.apiUrl}/services`);
   }
 
   getReservationInfo(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/reserver-un-soin`);
+    return this.http.get<any>(`${this.apiUrl}/reserve`);
   }
 
   postReservationDetails(details: any): Observable<any> {
@@ -39,14 +39,14 @@ export class WordpressService {
   }
 
   getLegalNotices(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/mentions-legales`);
+    return this.http.get(`${this.apiUrl}/legal`);
   }
 
   getPrivacyPolicy(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/confidentialite`);
+    return this.http.get(`${this.apiUrl}/privacy`);
   }
 
   getTermsConditions(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/cgv`);
+    return this.http.get(`${this.apiUrl}/terms`);
   }
 }
