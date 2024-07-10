@@ -1,0 +1,52 @@
+@import "../../../../styles/_variables.scss";
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(248, 249, 250, 0.34);
+    border-bottom: 1px solid map-get($theme-colors, "white");
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transition: transform 0.3s ease-out;
+    transform: translateY(0);
+
+    &.hidden {
+        transform: translateY(-100%);
+    }
+
+    .logo-container {
+        .logo-homepage {
+            height: 125px;
+            margin-right: auto; 
+        }
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        gap: 110px; 
+
+        a {
+            color: #333;
+            text-decoration: none;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        gap: 10px; // Smaller gap on smaller screens
+    }
+}
+
+.header.hidden {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+}

@@ -37,4 +37,16 @@ export class WordpressService {
   getPageById(pageId: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/pages/${pageId}`);
   }
+
+  getLegalNotices(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/mentions-legales`);
+  }
+
+  getPrivacyPolicy(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/confidentialite`);
+  }
+
+  getTermsConditions(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/cgv`);
+  }
 }
