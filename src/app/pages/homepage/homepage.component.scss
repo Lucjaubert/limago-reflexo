@@ -6,10 +6,11 @@
 
   .reflexologist-info {
     font-weight: 200 !important;
+    color: map-get($theme-colors, "white") !important;
   }
 
-  .info-title {
-    color: map-get($theme-colors, "green") !important;
+  .slogan {
+    color: map-get($theme-colors, "white") !important;
   }
 
   .img-background {
@@ -146,13 +147,13 @@
 
   @media (min-width: 1921px) {
     .btn-reserve {
-        top: 39%;
+        top: 37%;
     }
   }
 
   @media (max-width: 1920px) {
     .btn-reserve {
-        top: 32.5%;
+        top: 31.5%;
     }
   }
   

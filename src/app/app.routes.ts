@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { IntroComponent } from './pages/intro/intro.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
-import { WhoAmIComponent } from './pages/whoAmI/whoAmI.component';
+import { WhoAmIComponent } from './pages/who-am-i/who-am-i.component';
 import { ReflexologyComponent } from './pages/reflexology/reflexology.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { LegalNoticesComponent } from './pages/legal-documents/LegalNotices/legal-notices.component';
@@ -11,7 +11,7 @@ import { TermsConditionsComponent } from './pages/legal-documents/TermsCondition
 export const routes: Routes = [
     { path: "", component: IntroComponent, title: "Introduction" },
     { path: 'accueil', component: HomepageComponent, title: 'Accueil' },
-    { path: "qui-suis-je", component: WhoAmIComponent, title: 'Qui suis-je?' },
+    { path: "qui-suis-je", component: WhoAmIComponent, title: 'Qui suis-je' },
     { path: "reflexologie", component: ReflexologyComponent, title: 'La réflexologie' },
     { path: "prestations", component: ServicesComponent, title: 'Prestations' },
     { path: 'mentions-legales', component: LegalNoticesComponent, title: 'Mentions Légales' },

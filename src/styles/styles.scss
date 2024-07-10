@@ -36,6 +36,11 @@
     font-style: normal;
 }
 
+.container {
+    padding-left: 15rem !important;
+    padding-right: 15rem !important;
+}
+
 html, body {
     font-family: 'Noto Sans JP', sans-serif;
     color: map-get($theme-colors, "green");
@@ -50,9 +55,11 @@ html, body {
 h1 {
     font-weight: 700;
     font-size: map-get($font-size, "80");
+    color: map-get($theme-colors, "green") !important;
 }
   
 h2 {
+    color: map-get($theme-colors, "green") !important;
     font-size: map-get($font-size, "70");
     src: url('/assets/fonts/NotoSansJP-Bold.ttf') format('truetype');
     font-weight: 700;
@@ -60,16 +67,19 @@ h2 {
 }
   
 h3 {
+    color: map-get($theme-colors, "green") !important;
     font-weight: 600;
     font-size: map-get($font-size, "60");
 }
   
 h4 {
+    color: map-get($theme-colors, "green") !important;
     font-weight: 500;
     font-size: map-get($font-size, "50");
 }
   
 h5 {
+    color: map-get($theme-colors, "green") !important;
     font-weight: 400;
     font-size: map-get($font-size, "40");
 }
