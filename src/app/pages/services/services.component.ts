@@ -4,8 +4,7 @@ import { catchError } from 'rxjs/operators';
 import { ServicesData } from '../../models/services-data.model';
 import { WordpressService } from '../../services/wordpress.service';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-services',
@@ -17,7 +16,10 @@ import { RouterModule } from '@angular/router';
 export class ServicesComponent implements OnInit {
   servicesData$: Observable<ServicesData[] | null>;
 
-  constructor(private wpService: WordpressService) {
+  constructor(
+    private wpService: WordpressService,
+    private router: Router  
+  ) {
     this.servicesData$ = this.wpService.getServices().pipe(
       catchError(error => {
         console.error('Error retrieving services data:', error);
@@ -27,4 +29,8 @@ export class ServicesComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  navigateToReserve(): void {
+    this.router.navigate(['/reserve']); 
+  }
 }

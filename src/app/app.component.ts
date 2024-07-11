@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 
@@ -17,5 +17,13 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   ],
 })
 export class AppComponent {
-  title = 'limago-reflexo';
+  showHeader = true;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.showHeader = this.router.url !== '/';
+      }
+    });
+  }
 }

@@ -1,0 +1,60 @@
+<div class="container reserve-container mt-15 mb-5">
+  <div *ngIf="reserveData$ | async as reserveDataArray" class="row">
+    <ng-container *ngFor="let data of reserveDataArray">
+        <div class="row">
+          <div class="col-lg-6">
+          </div>
+          <div class="col-lg-6 mb-10 pl-14">
+            <h1 class="display-4">{{ data.acf_fields.title }}</h1>
+          </div>
+        </div>
+        <div class="col-lg-12 mb-5">
+          <div class="options d-flex justify-content-center mb-4">
+            <button class="btn btn-reserve-options mx-3"
+                    [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar', 'btn-outline-primary': activeSection !== 'reflexology_plantar'}"
+                    (click)="setActiveSection('reflexology_plantar')">
+              Réflexologie plantaire
+            </button>
+            <button class="btn btn-reserve-options mx-3"
+                    [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar_package', 'btn-outline-primary': activeSection !== 'reflexology_plantar_package'}"
+                    (click)="setActiveSection('reflexology_plantar_package')">
+              Réflexologie plantaire 4 séances Forfait
+            </button>
+            <button class="btn btn-reserve-options mx-3"
+                    [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar_palmar', 'btn-outline-primary': activeSection !== 'reflexology_plantar_palmar'}"
+                    (click)="setActiveSection('reflexology_plantar_palmar')">
+              Réflexologie plantaire et palmaire
+            </button>
+          </div>
+        </div>
+        
+        <div class="col-lg-12 d-flex justify-content-center">
+          <div class="text-center d-flex align-items-center">
+            <div class="d-flex justify-content-center">
+              <img [src]="data.acf_fields.image" alt="Image Description" class="img-fluid my-3">
+            </div>
+            <div class="reserve-content px-7">
+              <div *ngIf="activeSection === 'reflexology_plantar'" class="service-description pl-15">
+                <h3>{{ data.acf_fields.reflexology_plantar_title }}</h3>
+                <div class="line-reserve my-5"></div>
+                <p [innerHTML]="data.acf_fields.reflexology_plantar_content"></p>
+                <button class="btn btn-reserve mt-5">Réserver</button>
+              </div>
+              <div *ngIf="activeSection === 'reflexology_plantar_package'" class="service-description pl-15">
+                <h3>{{ data.acf_fields.reflexology_plantar_title }}</h3>
+                <div class="line-reserve my-5"></div>
+                <p [innerHTML]="data.acf_fields.reflexology_plantar_package"></p>
+                <button class="btn btn-reserve mt-5">Réserver</button>
+              </div>
+              <div *ngIf="activeSection === 'reflexology_plantar_palmar'" class="service-description pl-15">
+                <h3>{{ data.acf_fields.reflexology_plantar_palmar }}</h3>
+                <div class="line-reserve my-5"></div>
+                <p [innerHTML]="data.acf_fields.reflexology_plantar_palmar_content"></p>
+                <button class="btn btn-reserve mt-5">Réserver</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </ng-container>
+  </div>
+</div>

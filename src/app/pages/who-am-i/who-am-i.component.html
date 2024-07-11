@@ -1,11 +1,11 @@
-<div class="container mt-15" *ngIf="whoAmIData$ | async as whoAmIDataArray">
+<div class="container mt-15 mb-5" *ngIf="whoAmIData$ | async as whoAmIDataArray">
   <ng-container *ngFor="let whoAmIData of whoAmIDataArray">
     <div class="row">
       <div class="col-md-5 mt-md-14">
         <img [src]="whoAmIData.acf_fields.image" alt="Photo de Magali" class="img-fluid">
       </div>
       <div class="col-md-7 who-content pl-12">
-        <h1 class="who-title pb-9">{{ whoAmIData.acf_fields.title }}</h1>
+        <h1 class="who-title display-4 mb-5">{{ whoAmIData.acf_fields.title }}</h1>
         <p [innerHTML]="whoAmIData.acf_fields.content" class="lead"></p>
       </div>
     </div>
