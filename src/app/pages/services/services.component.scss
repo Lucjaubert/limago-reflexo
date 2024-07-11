@@ -18,5 +18,20 @@
         text-align: center;
         margin-top: auto; 
         margin-bottom: auto;
+
+        &:hover {
+            background-color: map-get($theme-colors, "green"); 
+            color: white; 
+        }
     }
+
+    .img-fluid {
+        max-width: 100%; 
+        height: auto; 
+      }
+      
+      .col-md-5 {
+        display: flex;
+        justify-content: center; 
+      }
 } 

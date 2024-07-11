@@ -4,28 +4,28 @@
 @font-face {
     font-family: 'Noto Sans JP';
     src: url('/assets/fonts/NotoSansJP-Light.ttf') format('truetype');
-    font-weight: 200; 
+    font-weight: 200;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Noto Sans JP';
     src: url('/assets/fonts/NotoSansJP-Regular.ttf') format('truetype');
-    font-weight: 400; 
+    font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Noto Sans JP';
     src: url('/assets/fonts/NotoSansJP-Medium.ttf') format('truetype');
-    font-weight: 500; 
+    font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Noto Sans JP';
     src: url('/assets/fonts/NotoSansJP-SemiBold.ttf') format('truetype');
-    font-weight: 600; 
+    font-weight: 600;
     font-style: normal;
 }
 
@@ -39,6 +39,23 @@
 .container {
     padding-left: 15rem !important;
     padding-right: 15rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh
+}
+
+.app-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh !important;
+    transition: opacity 0.3s ease-in-out;
+
+    &.loading {
+        opacity: 0.5; 
+    }
 }
 
 html, body {
@@ -47,7 +64,7 @@ html, body {
     background-color: map-get($theme-colors, "light-grey");
     margin: 0;
     padding: 0;
-    width: 100%; 
+    width: 100%;
     height: 100%;
     overflow-x: hidden;
 }
@@ -68,7 +85,7 @@ h2 {
   
 h3 {
     color: map-get($theme-colors, "green") !important;
-    font-weight: 600;
+    font-weight: 400 !important;
     font-size: map-get($font-size, "60");
 }
   
@@ -90,28 +107,77 @@ a, p {
     color: map-get($theme-colors, "green");
 }
 
-.container {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-  
-.app-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; 
-} 
-  
-@each $color-name, $color-value in $theme-colors {
-    .text-#{$color-name} {
-      color: $color-value;
-    }
-    .bg-#{$color-name} {
-      background-color: $color-value;
-    }
+.router-link-active .main-content {
+    opacity: 0;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transition: opacity 0.5s ease-in-out;
+}
+
+footer {
+    transition: visibility 0.5s, opacity 0.5s ease-in-out;
 }
   
+.router-link-active footer {
+    visibility: hidden;
+    opacity: 0;
+}
+  
+
+.loading footer {
+    opacity: 0;
+}
+
+.router-link-active footer {
+    transform: translateY(100%);
+}
+
+.btn-reserve {
+    background-color: white; 
+    color: map-get($theme-colors, "green"); 
+    border: 2px solid map-get($theme-colors, "green"); 
+    border-radius: 20px; 
+    padding: 10px 30px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, color 0.3s; 
+  
+    &:hover {
+      background-color: map-get($theme-colors, "green"); 
+      color: white; 
+    }
+}
+
+.btn-reserve-options {
+    background-color: white; 
+    color: map-get($theme-colors, "green"); 
+    border: 2px solid map-get($theme-colors, "green-light"); 
+    border-radius: 20px; 
+    padding: 10px 30px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, color 0.3s; 
+  
+    &:hover {
+      background-color: map-get($theme-colors, "green"); 
+      color: white; 
+    }
+}
+
+
+@each $color-name, $color-value in $theme-colors {
+    .text-#{$color-name} {
+        color: $color-value;
+    }
+    .bg-#{$color-name} {
+        background-color: $color-value;
+    }
+}
+
 @each $name, $value in $font-size {
     .text-fs-#{$name} {
-      font-size: $value;
+        font-size: $value;
     }
 }

@@ -4,7 +4,7 @@ import { catchError } from 'rxjs/operators';
 import { ReflexologyData } from '../../models/reflexology-data.model';
 import { WordpressService } from '../../services/wordpress.service';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-reflexology',
@@ -16,7 +16,10 @@ import { RouterModule } from '@angular/router';
 export class ReflexologyComponent implements OnInit {
   reflexologyData$: Observable<ReflexologyData[] | null>;
 
-  constructor(private wpService: WordpressService) {
+  constructor(
+    private wpService: WordpressService, 
+    private router: Router 
+  ) {
     this.reflexologyData$ = this.wpService.getReflexology().pipe(
       catchError(error => {
         console.error('Error retrieving reflexology data:', error);
@@ -26,4 +29,8 @@ export class ReflexologyComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  navigateToReserve(): void {
+    this.router.navigate(['/reserve']); 
+  }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { WordpressService } from '../../services/wordpress.service';
 import { HomepageData } from '../../models/homepage-data.model';
 
@@ -14,9 +14,12 @@ import { HomepageData } from '../../models/homepage-data.model';
   imports: [CommonModule, RouterModule]
 })
 export class HomepageComponent implements OnInit {
-  homepageData$: Observable<HomepageData[] | null>;  
+  homepageData$: Observable<HomepageData[] | null>;
 
-  constructor(private wpService: WordpressService) {
+  constructor(
+    private wpService: WordpressService,
+    private router: Router  
+  ) {
     this.homepageData$ = this.wpService.getHomepage().pipe(
       catchError(error => {
         console.error('Error retrieving homepage data:', error);
@@ -26,4 +29,8 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  navigateToReserve(): void {
+    this.router.navigate(['/reserve']); 
+  }
 }

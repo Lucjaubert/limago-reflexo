@@ -26,7 +26,7 @@ export class WordpressService {
     return this.http.get<any>(`${this.apiUrl}/services`);
   }
 
-  getReservationInfo(): Observable<any> {
+  getReservation(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/reserve`);
   }
 
