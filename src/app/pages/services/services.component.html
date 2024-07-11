@@ -1,3 +1,17 @@
-<p>
-  services works!
-</p>
+<div class="container services-container mt-15" *ngIf="servicesData$ | async as servicesDataArray">
+  <ng-container *ngFor="let servicesData of servicesDataArray">
+    <div class="row">
+      <div class="col-md-5 mt-md-14 px-0">
+        <img [src]="servicesData.acf_fields.image" alt="Services" class="img-fluid">
+      </div>
+      <div class="col-md-7 d-flex flex-column pl-12 align-items-start">
+        <h1 class="display-4 mb-5 mr-13">{{ servicesData.acf_fields.title }}</h1>
+        <p class="lead mb-4" [innerHTML]="servicesData.acf_fields.content1"></p>
+        <div class="d-flex justify-content-center w-100">
+            <button class="btn btn-reserve">Réserver un soin</button>
+        </div>
+        <p class="lead my-10" [innerHTML]="servicesData.acf_fields.content2"></p>
+      </div>
+    </div>      
+  </ng-container>
+</div>

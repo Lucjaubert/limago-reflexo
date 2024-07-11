@@ -1,6 +1,4 @@
 export interface WhoAmIData {
-    title: string;
-    content: string;
     acf_fields: {
         title: string;
         content: string;
