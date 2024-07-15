@@ -5,9 +5,9 @@
         <img [src]="servicesData.acf_fields.image" alt="Services" class="img-fluid">
       </div>
       <div class="col-md-7 d-flex flex-column pl-12 align-items-start">
-        <h1 class="display-4 mb-5 mr-13">{{ servicesData.acf_fields.title }}</h1>
-        <p class="lead mb-4" [innerHTML]="servicesData.acf_fields.content1"></p>
-        <div class="d-flex px-20 w-100">
+        <h2 class="display-5 mb-10 mr-13">{{ servicesData.acf_fields.title }}</h2>
+        <p class="lead mb-7" [innerHTML]="servicesData.acf_fields.content1"></p>
+        <div class="d-flex px-15 py-9 w-100">
             <button class="btn btn-reserve" (click)="navigateToReserve()">Réserver un soin</button>
         </div>
         <p class="lead my-10" [innerHTML]="servicesData.acf_fields.content2"></p>

@@ -8,8 +8,8 @@
         border-radius: 20px; 
         padding: 10px 30px; 
         cursor: pointer; 
-        transition: background-color 0.3s, color 0.3s; 
-      
+        transition: background-color 0.3s, color 0.3s;
+        
         &:hover {
           background-color: map-get($theme-colors, "green"); 
           color: white; 
@@ -24,7 +24,7 @@
         padding: 10px 30px; 
         cursor: pointer; 
         transition: background-color 0.3s, color 0.3s; 
-      
+        
         &:hover {
           background-color: map-get($theme-colors, "green"); 
           color: white; 
@@ -41,7 +41,6 @@
         color: #fff;
     }
       
-
     .img-fluid {
         max-width: 100%;
         height: auto;
@@ -57,14 +56,5 @@
             width: 100%;
         }
     }
-
-    .modal-content {
-        .btn {
-          width: 100%; 
-          margin-top: 10px;
-        }
-      }
-      
 }
-
 

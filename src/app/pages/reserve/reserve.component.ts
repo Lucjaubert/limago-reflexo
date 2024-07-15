@@ -5,13 +5,14 @@ import { ReserveData } from '../../models/reserve-data.model';
 import { WordpressService } from '../../services/wordpress.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-reserve',
   templateUrl: './reserve.component.html',
   styleUrls: ['./reserve.component.scss'],
   standalone: true,
-  imports: [CommonModule, RouterModule, NgbModule],
+  imports: [CommonModule, RouterModule],
 })
 export class ReserveComponent implements OnInit {
   reserveData$: Observable<ReserveData[] | null>;
@@ -19,7 +20,7 @@ export class ReserveComponent implements OnInit {
   selectedSessionTitle: string;
   selectedSessionContent: string;
 
-  constructor(private wpService: WordpressService) {
+  constructor(private wpService: WordpressService, private modalService: NgbModal) {
     this.reserveData$ = this.wpService.getReservation().pipe(
       catchError(error => {
         console.error('Error retrieving reserve data:', error);
@@ -33,15 +34,24 @@ export class ReserveComponent implements OnInit {
   ngOnInit(): void {}
 
   setActiveSection(section: string): void {
+    console.log('Section active:', section);
     this.activeSection = section;
   }
 
+  openModal(content: any) {
+    this.modalService.open(content);
+  }  
+
   setSelectedSession(title: string, content: string) {
+    console.log('Session sélectionnée:', title);
     this.selectedSessionTitle = title;
     this.selectedSessionContent = content;
   }  
 
   prepareMailToLink() {
+    console.log('Selected Title:', this.selectedSessionTitle); 
+    console.log('Selected Content:', this.selectedSessionContent); 
+  
     const subject = encodeURIComponent(`Réservation pour ${this.selectedSessionTitle}`);
     const body = encodeURIComponent(
       `Bonjour Magali,\n\n` +
@@ -53,7 +63,7 @@ export class ReserveComponent implements OnInit {
       `Votre Nom et Prénom`
     );
     return `mailto:limago.reflexo@gmail.com?subject=${subject}&body=${body}`;
-  }
+  }  
 
   get mailToLink(): string {
     return this.prepareMailToLink();
