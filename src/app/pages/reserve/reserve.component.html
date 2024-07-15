@@ -1,56 +1,57 @@
-<!--<div class="container reserve-container mt-15 mb-5">
+<div class="container reserve-container mt-15 mb-5">
   <div *ngIf="reserveData$ | async as reserveDataArray" class="row">
     <ng-container *ngFor="let data of reserveDataArray">
         <div class="row">
           <div class="col-lg-6">
           </div>
           <div class="col-lg-6 mb-10 pl-14">
-            <h1 class="display-5">{{ data.acf_fields.title }}</h1>
+            <h2 class="display-5">{{ data.acf_fields.title }}</h2>
           </div>
         </div>
         <div class="col-lg-12 mb-5">
           <div class="options d-flex justify-content-center mb-4">
-            <button class="btn btn-reserve-options mx-3"
+            <button class="btn btn-reserve-options mx-7"
                     [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar', 'btn-outline-primary': activeSection !== 'reflexology_plantar'}"
                     (click)="setActiveSection('reflexology_plantar')">
               Réflexologie plantaire
             </button>
-            <button class="btn btn-reserve-options mx-3"
+            <button class="btn btn-reserve-options mx-7 position-relative"
                     [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar_package', 'btn-outline-primary': activeSection !== 'reflexology_plantar_package'}"
                     (click)="setActiveSection('reflexology_plantar_package')">
-              Réflexologie plantaire 4 séances Forfait
+              Réflexologie plantaire 4 séances
+              <span class="badge badge-forfait">Forfait</span>
             </button>
-            <button class="btn btn-reserve-options mx-3"
+            <button class="btn btn-reserve-options mx-7"
                     [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar_palmar', 'btn-outline-primary': activeSection !== 'reflexology_plantar_palmar'}"
                     (click)="setActiveSection('reflexology_plantar_palmar')">
               Réflexologie plantaire et palmaire
             </button>
-          </div>
+          </div>          
         </div>
         
         <div class="col-lg-12 d-flex justify-content-center">
           <div class="text-center d-flex align-items-center">
             <div class="d-flex justify-content-center">
-              <img [src]="data.acf_fields.image" alt="Image Description" class="img-fluid my-3">
+              <img [src]="data.acf_fields.image" alt="Image Description" class="img-fluid my-9">
             </div>
             <div class="reserve-content px-7">
               <div *ngIf="activeSection === 'reflexology_plantar'" class="service-description pl-15">
-                <h3>{{ data.acf_fields.reflexology_plantar_title }}</h3>
-                <div class="line-reserve my-5"></div>
+                <h4>{{ data.acf_fields.reflexology_plantar_title }}</h4>
+                <div class="line-reserve my-7"></div>
                 <p [innerHTML]="data.acf_fields.reflexology_plantar_content"></p>
-                <button class="btn btn-reserve mt-5" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_title, data.acf_fields.reflexology_plantar_content)">Réserver</button>
+                <button class="btn btn-reserve mt-5" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_title, data.acf_fields.reflexology_plantar_content, reservationModal)">Réserver</button>
               </div>
               <div *ngIf="activeSection === 'reflexology_plantar_package'" class="service-description pl-15">
-                <h3>{{ data.acf_fields.reflexology_plantar_title }}</h3>
-                <div class="line-reserve my-5"></div>
+                <h4>{{ data.acf_fields.reflexology_plantar_title }}</h4>
+                <div class="line-reserve my-7"></div>
                 <p [innerHTML]="data.acf_fields.reflexology_plantar_package"></p>
-                <button class="btn btn-reserve mt-5" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_title, data.acf_fields.reflexology_plantar_package)">Réserver</button>
+                <button class="btn btn-reserve mt-5" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_title, data.acf_fields.reflexology_plantar_package, reservationModal)">Réserver</button>
               </div>
               <div *ngIf="activeSection === 'reflexology_plantar_palmar'" class="service-description pl-15">
-                <h3>{{ data.acf_fields.reflexology_plantar_palmar }}</h3>
-                <div class="line-reserve my-5"></div>
+                <h4>{{ data.acf_fields.reflexology_plantar_palmar }}</h4>
+                <div class="line-reserve my-7"></div>
                 <p [innerHTML]="data.acf_fields.reflexology_plantar_palmar_content"></p>
-                <button class="btn btn-reserve mt-5" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_palmar, data.acf_fields.reflexology_plantar_palmar_content)">Réserver</button>
+                <button class="btn btn-reserve mt-5" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_palmar, data.acf_fields.reflexology_plantar_palmar_content, reservationModal)">Réserver</button>
               </div>
             </div>            
           </div>
@@ -64,14 +65,35 @@
     <div class="modal-content">
       <div class="modal-body text-center"> 
         <div class="d-flex justify-content-around align-items-center">
-          <a href="tel:+33681002005" class="btn btn-success btn-icon my-0">
+          <a href="tel:+33681002005" class="btn btn-icon my-0">
             <img src="assets/img/appel.png" alt="Appeler">
           </a>
-          <a [href]="mailToLink" class="btn btn-primary btn-icon my-0">
+          <a class="btn btn-icon my-0" (click)="openModal(chooseEmailClientModalTemplate)">
             <img src="assets/img/mail.png" alt="Email">
-          </a>          
+          </a>                   
         </div>
       </div>      
     </div>
   </div>
-</ng-template>-->
+</ng-template>
+
+<ng-template #chooseEmailClientModal>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content d-flex">
+      <div class="modal-body d-flex">
+        <button class="btn mx-3" (click)="openEmailClient('gmail')">
+          <img src="assets/img/icons8-gmail-48.png" alt="Gmail">
+        </button>
+        <button class="btn mx-3" (click)="openEmailClient('outlook')">
+          <img src="assets/img/icons8-outlook-48.png" alt="Outlook">
+        </button>
+        <button class="btn mx-3" (click)="openEmailClient('default')">
+          <img src="assets/img/icons8-mail-48.png" alt="Client par défaut">
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+
