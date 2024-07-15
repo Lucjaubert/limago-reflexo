@@ -101,9 +101,15 @@ h5 {
     font-size: map-get($font-size, "40");
 }
   
-a, p {
+p {
     font-size: map-get($font-size, "40");
     font-weight: 400;
+    color: map-get($theme-colors, "green");
+}
+
+a {
+    font-size: map-get($font-size, "40");
+    font-weight: 500;
     color: map-get($theme-colors, "green");
 }
 
