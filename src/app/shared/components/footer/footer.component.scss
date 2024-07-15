@@ -9,8 +9,6 @@
         display: flex;
         justify-content: center;
         align-items: start;
-        padding-left: 8rem;
-        padding-right: 8rem;
 
         .logo-container {
             margin-right: 8rem; 
@@ -40,6 +38,7 @@
               .footer-title {
                   font-weight: bold;
                   margin-bottom: 0.5rem;
+                  color: map-get($theme-colors, "white") !important;
               }
           
               .footer-content {

@@ -1,6 +1,9 @@
 @import "../../../styles/_variables.scss";
 
 .reflexology-container {
+    padding-left: 10rem;
+    padding-right: 10rem;
+   
     .operation-content {
         .custom-border  {
                 border: map-get($border-size, "1") solid map-get($theme-colors, "green");
@@ -11,8 +14,8 @@
     .btn-reserve {
         left: 50%;
         transform: translateX(-50%);
-        width: 180px;
-        height: 180px;
+        width: 160px;
+        height: 160px;
         border: map-get($border-size, "1") solid map-get($theme-colors, "green");
         color: map-get($theme-colors, "green");
         cursor: pointer;

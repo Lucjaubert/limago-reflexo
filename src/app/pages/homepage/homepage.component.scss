@@ -32,8 +32,8 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     background-color: map-get($theme-colors, "green");
     color: white;
     border: 0.5px solid white;
@@ -43,7 +43,7 @@
     justify-content: center;
     border-radius: 50%;
     padding: 0;
-    font-size: 1rem;
+    font-size: 0.75rem;
     text-align: center;
   }
 
@@ -90,6 +90,7 @@
                 .btn-see-more {
                     background-color: map-get($theme-colors, "green");
                     color: map-get($theme-colors, "white");
+                    font-size: map-get($font-size, "20") !important;
                 }
             
                 img {
@@ -153,7 +154,7 @@
 
   @media (max-width: 1920px) {
     .btn-reserve {
-        top: 31.5%;
+        top: 29.5%;
     }
   }
   

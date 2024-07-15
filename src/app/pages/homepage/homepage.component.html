@@ -1,35 +1,35 @@
 <div class="container d-flex flex-column justify-content-center px-0">
   <img src="assets/img/img-background-homepage.png" class="img-background">
   <div class="intro-section">
-    <h1 class="reflexologist-info pb-md-13">
+    <h2 class="reflexologist-info pb-md-13">
       MAGALI, RÉFLEXOLOGUE PLANTAIRE ET PALMAIRE - CASTILLONNES -
-    </h1>
-    <h1 class="slogan pb-md-19">
+    </h2>
+    <h2 class="slogan pb-md-19">
       NOS PIEDS NOUS ANCRENT À L’ÉNERGIE DE LA TERRE
-    </h1>
+    </h2>
   </div>
   <button class="btn btn-reserve" (click)="navigateToReserve()">RÉSERVER UN SOIN</button>
   <ng-container *ngIf="homepageData$ | async as homepageData">
     <div *ngFor="let homepageData of homepageData">
       <div class="info-section d-flex justify-content-between align-items-center pt-md-14">
         <div class="content-wrapper">
-          <h1 class="info-title">{{ homepageData.acf_fields.title1 }}</h1>
-          <h1 class="info-title">{{ homepageData.acf_fields.title2 }}</h1>
+          <h2 class="info-title">{{ homepageData.acf_fields.title1 }}</h2>
+          <h2 class="info-title">{{ homepageData.acf_fields.title2 }}</h2>
           <p class="info-content text-left pt-md-4" [innerHTML]="homepageData.acf_fields.content"></p>
         </div>
         <img [src]="homepageData.acf_fields.image" class="info-image">
       </div>
     </div>
   </ng-container>
-  <div class="triptych-container d-flex justify-content-between align-items-center pt-md-47">
+  <div class="triptych-container d-flex justify-content-between align-items-center pt-md-41">
     <div class="row triptych-content">
       <div class="row background-triptych">
         <!-- Card 1 -->
-        <div class="col-md-4 py-md-9 pl-22 d-flex justify-content-center">
+        <div class="col-md-4 py-md-9 pl-15 d-flex justify-content-center">
           <div class="card">
             <img src="assets/img/mag.png" class="card-img-top" alt="Magali">
             <div class="card-body">
-              <h5 class="card-title pt-md-15 pb-md-1">Qui suis-je?</h5>
+              <h5 class="card-title pt-md-14 pb-md-7">Qui suis-je?</h5>
               <p class="card-text px-md-1 pt-md-2">Découvrez plus sur Magali, réflexologue plantaire et palmaire.</p>
               <a href="/qui-suis-je" class="btn btn-see-more">En savoir plus</a>
             </div>
@@ -40,18 +40,18 @@
           <div class="card">
             <img src="assets/img/office.png" class="card-img-top" alt="Reflexologie">
             <div class="card-body pt-md-5">
-              <h5 class="card-title pt-md-14 pb-md-2 text-center">Qu'est-ce que la réflexologie ?</h5>
+              <h5 class="card-title pt-md-14 pb-md-4 text-center">Qu'est-ce que la réflexologie ?</h5>
               <p class="card-text pb-md-2">Informations sur la réflexologie et ses bienfaits.</p>
               <a href="/reflexologie" class="btn btn-see-more">En savoir plus</a>
             </div>
           </div>
         </div>
         <!-- Card 3 -->
-        <div class="col-md-4 py-md-9 pr-22 d-flex justify-content-center">
+        <div class="col-md-4 py-md-9 pr-15 d-flex justify-content-center">
           <div class="card">
             <img src="assets/img/hands.png" class="card-img-top" alt="Prestations">
             <div class="card-body pt-md-8">
-              <h5 class="card-title pt-md-14">Prestations</h5>
+              <h5 class="card-title pt-md-13 pb-md-5">Prestations</h5>
               <p class="card-text py-md-4">Explorez les divers soins et prestations offerts.</p>
               <a href="/prestations" class="btn btn-see-more">En savoir plus</a>
             </div>
@@ -62,14 +62,14 @@
   </div>
   <ng-container *ngIf="homepageData$ | async as homepageData">
     <div *ngFor="let homepageData of homepageData">
-      <div class="informations-section px-30 pt-md-5">
-        <div class="content-wrapper d-flex justify-content-between">
+      <div class="informations-section px-md-25 py-md-10">
+        <div class="d-flex justify-content-between">
           <div class="d-flex flex-column">
-            <h1 class="info-title">{{ homepageData.acf_fields.schedulesTitle }}</h1>
+            <h2 class="info-title pb-5">{{ homepageData.acf_fields.schedulesTitle }}</h2>
             <p class="info-content" [innerHTML]="homepageData.acf_fields.schedulesContent"></p>
           </div>
           <div class="d-flex flex-column">
-            <h1 class="info-title">{{ homepageData.acf_fields.officeTitle }}</h1>
+            <h2 class="info-title pb-5">{{ homepageData.acf_fields.officeTitle }}</h2>
             <p class="info-content" [innerHTML]="homepageData.acf_fields.officeContent"></p>
           </div>
         </div>

@@ -37,8 +37,6 @@
 }
 
 .container {
-    padding-left: 15rem !important;
-    padding-right: 15rem !important;
     width: 100% !important;
     max-width: 100% !important;
     display: flex;
@@ -98,12 +96,18 @@ h4 {
 h5 {
     color: map-get($theme-colors, "green") !important;
     font-weight: 400;
-    font-size: map-get($font-size, "40");
+    font-size: map-get($font-size, "30");
 }
   
-a, p {
-    font-size: map-get($font-size, "40");
+p {
+    font-size: map-get($font-size, "20");
     font-weight: 400;
+    color: map-get($theme-colors, "green");
+}
+
+a {
+    font-size: map-get($font-size, "20") !important;
+    font-weight: 500 !important;
     color: map-get($theme-colors, "green");
 }
 
@@ -165,6 +169,42 @@ footer {
       color: white; 
     }
 }
+
+.modal.show .modal-dialog {
+    top: 30% !important;
+    width: 270px;
+}
+
+.modal-dialog {
+    width: auto;
+    margin: 1.75rem auto;
+
+    .modal-content {
+        border: none;
+        .btn {
+          width: 100%; 
+          margin-top: 10px;
+        }
+        
+        .btn-icon img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .btn-success, .btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.modal-dialog-centered {
+    display: flex;
+    align-items: center; 
+    min-height: calc(100% - (1.75rem * 2));
+}
+
 
 
 @each $color-name, $color-value in $theme-colors {
