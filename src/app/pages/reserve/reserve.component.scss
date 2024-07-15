@@ -1,6 +1,8 @@
 @import "../../../styles/_variables.scss";
 
 .reserve-container {
+    padding-left: 10rem;
+    padding-right: 10rem;
     .btn-reserve {
         background-color: white; 
         color: map-get($theme-colors, "green"); 
@@ -19,6 +21,7 @@
     .btn-reserve-options {
         background-color: white; 
         color: map-get($theme-colors, "green"); 
+        font-size: map-get($font-size, "20");
         border: 2px solid map-get($theme-colors, "green-light"); 
         border-radius: 20px; 
         padding: 10px 30px; 
@@ -30,6 +33,19 @@
           color: white; 
         }
     }
+
+    .btn-primary {
+        background-color: map-get($theme-colors, "green");
+        color: white;
+        border: 2px solid map-get($theme-colors, "green");
+    }
+    
+    .btn-outline-primary {
+        background-color: white;
+        color: map-get($theme-colors, "green");
+        border: 2px solid map-get($theme-colors, "green");
+    }
+    
     
     .btn-outline-reserve {
         border-color: map-get($theme-colors, "green");
@@ -56,5 +72,26 @@
             width: 100%;
         }
     }
+
+    .position-relative {
+        position: relative;
+    }
+    
+    .badge-forfait {
+        position: absolute;
+        bottom: -5px;
+        top: 18px;
+        right: 7px;
+        background-color: #FE6D73;
+        color: white;
+        border-radius: 20px;
+        padding: 2px 20px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translate(50%, 50%);
+    }
+      
 }
 

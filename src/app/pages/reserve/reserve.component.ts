@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ReserveData } from '../../models/reserve-data.model';
@@ -16,56 +16,82 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ReserveComponent implements OnInit {
   reserveData$: Observable<ReserveData[] | null>;
-  activeSection: string = 'reflexology_plantar';
-  selectedSessionTitle: string;
-  selectedSessionContent: string;
+  activeSection: string = 'reflexology_plantar';  
+  selectedSessionTitle: string = '';  
+  selectedSessionContent: string = '';  
 
-  constructor(private wpService: WordpressService, private modalService: NgbModal) {
+  @ViewChild('reservationModal') reservationModalTemplate!: TemplateRef<any>;
+  @ViewChild('chooseEmailClientModal') chooseEmailClientModalTemplate!: TemplateRef<any>;
+
+  constructor(private wpService: WordpressService, private modalService: NgbModal, private ref: ChangeDetectorRef) {
     this.reserveData$ = this.wpService.getReservation().pipe(
       catchError(error => {
         console.error('Error retrieving reserve data:', error);
         return of(null);
       })
     );
-    this.selectedSessionTitle = '';
-    this.selectedSessionContent = '';
   }
 
   ngOnInit(): void {}
 
   setActiveSection(section: string): void {
-    console.log('Section active:', section);
+    console.log('Active section set to:', section);
     this.activeSection = section;
   }
 
-  openModal(content: any) {
-    this.modalService.open(content);
-  }  
+  setSessionAndOpenModal(title: string, content: string, modal: string) {
+    this.setSelectedSession(title, content);
+    if (modal === 'email') {
+      this.openModal(this.chooseEmailClientModalTemplate);
+    } else if (modal === 'call') {
+      window.location.href = 'tel:+33681002005';
+    } else {
+      this.openModal(this.reservationModalTemplate);
+    }
+  }
+
+  openModal(templateRef: TemplateRef<any>) {
+    this.modalService.open(templateRef, { backdrop: true });
+  }
 
   setSelectedSession(title: string, content: string) {
-    console.log('Session sélectionnée:', title);
-    this.selectedSessionTitle = title;
-    this.selectedSessionContent = content;
-  }  
+    if (this.selectedSessionTitle !== title || this.selectedSessionContent !== content) {
+      this.selectedSessionTitle = title;
+      this.selectedSessionContent = content;
+      this.ref.markForCheck();
+    }
+  }   
 
-  prepareMailToLink() {
-    console.log('Selected Title:', this.selectedSessionTitle); 
-    console.log('Selected Content:', this.selectedSessionContent); 
+  openEmailClient(client: string) {
+    const mailLink = this.prepareMailToLink();
+    let url = '';
+    switch (client) {
+      case 'gmail':
+        url = `https://mail.google.com/mail/?view=cm&fs=1&to=limago.reflexo@gmail.com&su=${mailLink.subject}&body=${mailLink.body}`;
+        break;
+      case 'outlook':
+        url = mailLink.fullLink;
+        break;
+      default:
+        url = mailLink.fullLink; 
+        break;
+    }
+    window.open(url, '_blank');
+  }
   
+  prepareMailToLink() {
     const subject = encodeURIComponent(`Réservation pour ${this.selectedSessionTitle}`);
     const body = encodeURIComponent(
-      `Bonjour Magali,\n\n` +
-      `Je souhaite réserver la séance suivante le [écrivez la date souhaitée] à [écrivez l'heure souhaitée]:\n\n` +
-      `- ${this.selectedSessionTitle}\n\n` +
-      `${this.selectedSessionContent}\n\n` +
-      `Merci de me confirmer par mail ou bien de m'appeler au [écrivez votre numéro de portable].\n\n` +
-      `Cordialement,\n\n` +
-      `Votre Nom et Prénom`
+      `Bonjour Magali,\n\nJe souhaite réserver la séance suivante le [écrivez la date souhaitée] à [écrivez l'heure souhaitée] :\n\n- ${this.selectedSessionTitle}\n\nMerci de me confirmer par mail ou bien de m'appeler au [écrivez votre numéro de portable].\n\nCordialement,\n\n[Votre Nom et Prénom]`
     );
-    return `mailto:limago.reflexo@gmail.com?subject=${subject}&body=${body}`;
-  }  
+    return {
+      subject,
+      body,
+      fullLink: `mailto:limago.reflexo@gmail.com?subject=${subject}&body=${body}`
+    };
+  }   
 
   get mailToLink(): string {
-    return this.prepareMailToLink();
+    return this.prepareMailToLink().fullLink;
   }
 }
