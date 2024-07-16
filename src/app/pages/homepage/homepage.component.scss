@@ -4,9 +4,30 @@
   position: relative;
   color: white;
 
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .image-fade-in {
+    animation: fadeIn 3.5s ease-out forwards;
+  }
+
+  .image-fade-in-2 {
+    animation: fadeIn 7.5s ease-out forwards;
+  }
+
   .reflexologist-info {
     font-weight: 200 !important;
     color: map-get($theme-colors, "white") !important;
+  }
+
+  .reflexologist-info .line {
+    margin-bottom: 10px;
+  }
+
+  .reflexologist-info .line:last-child {
+      margin-bottom: 0;
   }
 
   .slogan {
@@ -32,6 +53,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    font-weight: 700 !important;
     width: 150px;
     height: 150px;
     background-color: map-get($theme-colors, "green");
@@ -107,28 +129,29 @@
                     height: 100%;
                     display: flex;
                     flex-direction: column;
-                    justify-content: center;
+                    justify-content: flex-end;
                     align-items: center;
                     background-color: rgba(83, 83, 83, 0.5);
                     color: white;
                     padding: 15px;
                     box-sizing: border-box;
+                    cursor: pointer;
                 }
-            
-                .card-title {
+
+                .card-text-container {
+                  width: 80%;
+                  background-color: #d3d3d370; 
+                  text-align: center;
+                  padding: 10px 0; 
+                  box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+                  border-top: solid 1px #bbb;
+
+                  .card-title {
                     margin: 0;
-                    font-size: 24px;
+                    font-size: 18px;
                     font-weight: bold;
                     color: white !important;
-                }
-            
-                .card-text {
-                    text-align: center !important;
-                    color: white !important;
-                }
-            
-                .btn {
-                    margin-top: 20px;
+                  }
                 }
             }
         }
@@ -154,7 +177,7 @@
 
   @media (max-width: 1920px) {
     .btn-reserve {
-        top: 29.5%;
+        top: 29%;
     }
   }
   

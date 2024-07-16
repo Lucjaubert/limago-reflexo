@@ -39,17 +39,17 @@
                 <h4>{{ data.acf_fields.reflexology_plantar_title }}</h4>
                 <div class="line-reserve my-7"></div>
                 <p [innerHTML]="data.acf_fields.reflexology_plantar_content"></p>
-                <button class="btn btn-reserve mt-5" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_title, data.acf_fields.reflexology_plantar_content, reservationModal)">Réserver</button>
+                <button class="btn btn-reserve mt-8" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_title, data.acf_fields.reflexology_plantar_content, reservationModal)">Réserver</button>
               </div>
               <div *ngIf="activeSection === 'reflexology_plantar_package'" class="service-description pl-15">
-                <h4>{{ data.acf_fields.reflexology_plantar_title }}</h4>
+                <h4>{{ data.acf_fields.reflexology_plantar_package_title }}</h4>
                 <div class="line-reserve my-7"></div>
-                <p [innerHTML]="data.acf_fields.reflexology_plantar_package"></p>
-                <button class="btn btn-reserve mt-5" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_title, data.acf_fields.reflexology_plantar_package, reservationModal)">Réserver</button>
+                <p [innerHTML]="data.acf_fields.reflexology_plantar_package_content"></p>
+                <button class="btn btn-reserve mt-8" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_package_title, data.acf_fields.reflexology_plantar_package_content, reservationModal)">Réserver</button>
               </div>
               <div *ngIf="activeSection === 'reflexology_plantar_palmar'" class="service-description pl-15">
                 <h4>{{ data.acf_fields.reflexology_plantar_palmar }}</h4>
-                <div class="line-reserve my-7"></div>
+                <div class="line-reserve my-8"></div>
                 <p [innerHTML]="data.acf_fields.reflexology_plantar_palmar_content"></p>
                 <button class="btn btn-reserve mt-5" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_palmar, data.acf_fields.reflexology_plantar_palmar_content, reservationModal)">Réserver</button>
               </div>
