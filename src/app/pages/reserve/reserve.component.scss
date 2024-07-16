@@ -6,6 +6,7 @@
     .btn-reserve {
         background-color: white; 
         color: map-get($theme-colors, "green"); 
+        font-size: map-get($font-size, "20") !important;
         border: 2px solid map-get($theme-colors, "green"); 
         border-radius: 20px; 
         padding: 10px 30px; 
@@ -21,7 +22,6 @@
     .btn-reserve-options {
         background-color: white; 
         color: map-get($theme-colors, "green"); 
-        font-size: map-get($font-size, "20");
         border: 2px solid map-get($theme-colors, "green-light"); 
         border-radius: 20px; 
         padding: 10px 30px; 

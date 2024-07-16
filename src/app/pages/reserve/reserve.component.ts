@@ -32,7 +32,9 @@ export class ReserveComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.setActiveSection('reflexology_plantar');
+  }
 
   setActiveSection(section: string): void {
     console.log('Active section set to:', section);
