@@ -1,3 +1,4 @@
+// Couleurs du thème
 $theme-colors: (
   "green": #52796F,
   "green-light": #52796f3a,
@@ -10,6 +11,7 @@ $theme-colors: (
   "white": #f3f3f3,
 );
 
+// Tailles des bordures
 $border-size: (
   "1": 1px,
   "2": 2px,
@@ -23,48 +25,41 @@ $border-size: (
   "10": 10px,
 );
 
+// Tailles de police
 $font-size: (
-  "10": 0.75rem,
-  // 12px
-  "20": 0.875rem,
-  // 14px
-  "30": 1rem,
-  // 16px
-  "40": 1.25rem,
-  // 20px
-  "50": 1.5rem,
-  // 24px
-  "60": 1.75rem,
-  // 28px
-  "70": 2rem,
-  // 32px
-  "80": 2.25rem,
-  // 36px
+  "10": 0.75rem, // 12px
+  "20": 0.875rem, // 14px
+  "30": 1rem, // 16px
+  "40": 1.25rem, // 20px
+  "50": 1.5rem, // 24px
+  "60": 1.75rem, // 28px
+  "70": 2rem, // 32px
+  "80": 2.25rem, // 36px
 );
 
+// Poids des polices
 $font-weight: (
   "bold": 700,
   "regular": 400,
 );
 
-@each $name, $value in $font-size {
-  .text-fs-#{$name} {
-    font-size: $value;
-  }
-}
-@each $name, $value in $font-weight {
-  .text-fw-#{$name} {
-    font-weight: $value;
-  }
-}
-@each $name, $value in $theme-colors {
-  .bg-#{$name} {
-    background-color: $value;
-  }
-  .text-#{$name} {
-    color: $value;
-  }
-}
+// Points de rupture pour les réponses
+$breakpoints: (
+  "xs": 375px, // Extra small devices (portrait phones)
+  "sm": 576px, // Small devices (landscape phones)
+  "md": 768px, // Medium devices (tablets)
+  "lg": 992px, // Large devices (desktops)
+  "xl": 1200px // Extra large devices (large desktops)
+);
+
+// _variables.scss
+$breakpoint-xs: 375px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Espacements
 $spacers: (
   "0": 0rem,
   // 0px
@@ -473,61 +468,60 @@ $spacers: (
   "220": 216rem,    
   // 3456px
 );
-@each $name, $value in $spacers {
-  .p-#{$name} {
-    padding: $value;
+
+// Génération dynamique des classes de couleur, de taille de police et de poids de police
+@each $name, $value in $theme-colors {
+  .bg-#{$name} {
+    background-color: $value;
   }
-  .pl-#{$name} {
-    padding-left: $value;
+  .text-#{$name} {
+    color: $value;
   }
-  .pr-#{$name} {
-    padding-right: $value;
-  }
-  .pt-#{$name} {
-    padding-top: $value;
-  }
-  .pb-#{$name} {
-    padding-bottom: $value;
-  }
-  .px-#{$name} {
-    padding-right: $value;
-    padding-left: $value;
-  }
-  .py-#{$name} {
-    padding-top: $value;
-    padding-bottom: $value;
-  }
-  .m-#{$name} {
-    margin: $value;
-  }
-  .ml-#{$name} {
-    margin-left: $value;
-  }
-  .mr-#{$name} {
-    margin-right: $value;
-  }
-  .mt-#{$name} {
-    margin-top: $value;
-  }
-  .mb-#{$name} {
-    margin-bottom: $value;
-  }
-  .mx-#{$name} {
-    margin-right: $value;
-    margin-left: $value;
-  }
-  .my-#{$name} {
-    margin-top: $value;
-    margin-bottom: $value;
-  } 
 }
-$icon-sizes: (
-  small: map-get($font-size, 10),
-  medium: map-get($font-size, 30),
-  large: map-get($font-size, 40),
-);
-@each $name, $value in $icon-sizes {
-  .icon-#{$name} {
+
+@each $name, $value in $font-size {
+  .text-fs-#{$name} {
     font-size: $value;
   }
-} ;
+}
+
+@each $name, $value in $font-weight {
+  .text-fw-#{$name} {
+    font-weight: $value;
+  }
+}
+
+// Génération des classes de padding et margin pour tous les breakpoints
+@each $breakpoint-name, $breakpoint-value in $breakpoints {
+  @media (min-width: $breakpoint-value) {
+    @each $spacer-name, $spacer-value in $spacers {
+      // Padding
+      .p-#{$spacer-name}-#{$breakpoint-name} { padding: $spacer-value; }
+      .pt-#{$spacer-name}-#{$breakpoint-name} { padding-top: $spacer-value; }
+      .pb-#{$spacer-name}-#{$breakpoint-name} { padding-bottom: $spacer-value; }
+      .pl-#{$spacer-name}-#{$breakpoint-name} { padding-left: $spacer-value; }
+      .pr-#{$spacer-name}-#{$breakpoint-name} { padding-right: $spacer-value; }
+      .px-#{$spacer-name}-#{$breakpoint-name} { padding-left: $spacer-value; padding-right: $spacer-value; }
+      .py-#{$spacer-name}-#{$breakpoint-name} { padding-top: $spacer-value; padding-bottom: $spacer-value; }
+      // Margin
+      .m-#{$spacer-name}-#{$breakpoint-name} { margin: $spacer-value; }
+      .mt-#{$spacer-name}-#{$breakpoint-name} { margin-top: $spacer-value; }
+      .mb-#{$spacer-name}-#{$breakpoint-name} { margin-bottom: $spacer-value; }
+      .ml-#{$spacer-name}-#{$breakpoint-name} { margin-left: $spacer-value; }
+      .mr-#{$spacer-name}-#{$breakpoint-name} { margin-right: $spacer-value; }
+      .mx-#{$spacer-name}-#{$breakpoint-name} { margin-left: $spacer-value; margin-right: $spacer-value; }
+      .my-#{$spacer-name}-#{$breakpoint-name} { margin-top: $spacer-value; margin-bottom: $spacer-value; }
+    }
+  }
+}
+
+// Tailles d'icônes (exemple)
+$icon-sizes: (
+  small: map-get($font-size, "10"),
+  medium: map-get($font-size, "30"),
+  large: map-get($font-size, "40"),
+);
+
+@each $name, $value in $icon-sizes {
+  .icon-#{$name} { font-size: $value; }
+}

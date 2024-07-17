@@ -71,6 +71,18 @@ h1 {
     font-weight: 700;
     font-size: map-get($font-size, "80");
     color: map-get($theme-colors, "green") !important;
+
+    @media (max-width: $breakpoint-lg) {
+        font-size: map-get($font-size, "60");
+    }
+
+    @media (max-width: $breakpoint-md) {
+        font-size: map-get($font-size, "50");
+    }
+
+    @media (max-width: $breakpoint-xs) {
+        font-size: map-get($font-size, "40");
+    }
 }
   
 h2 {
@@ -79,6 +91,18 @@ h2 {
     src: url('/assets/fonts/NotoSansJP-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
+
+    @media (max-width: $breakpoint-lg) {
+        font-size: map-get($font-size, "50");
+    }
+
+    @media (max-width: $breakpoint-md) {
+        font-size: map-get($font-size, "40");
+    }
+
+    @media (max-width: $breakpoint-xs) {
+        font-size: map-get($font-size, "30");
+    }
 }
   
 h3 {
@@ -97,6 +121,20 @@ h5 {
     color: map-get($theme-colors, "green") !important;
     font-weight: 400;
     font-size: map-get($font-size, "30");
+}
+
+h2, h3, h4, h5, p, a {
+    @media (max-width: $breakpoint-lg) {
+        font-size: reduce(map-get($font-size, "current-font-size"), 10%);
+    }
+
+    @media (max-width: $breakpoint-md) {
+        font-size: reduce(map-get($font-size, "current-font-size"), 20%);
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        font-size: reduce(map-get($font-size, "current-font-size"), 30%);
+    }
 }
   
 p {
@@ -153,6 +191,10 @@ footer {
       background-color: map-get($theme-colors, "green"); 
       color: white; 
     }
+    @media (max-width: $breakpoint-sm) {
+        padding: 5px 15px;
+        font-size: map-get($font-size, "15");
+    }
 }
 
 .btn-reserve-options {
@@ -167,6 +209,10 @@ footer {
     &:hover {
       background-color: map-get($theme-colors, "green"); 
       color: white; 
+    }
+    @media (max-width: $breakpoint-sm) {
+        padding: 5px 15px;
+        font-size: map-get($font-size, "15");
     }
 }
 
@@ -196,6 +242,11 @@ footer {
             align-items: center;
             justify-content: center;
         }
+    }
+
+    @media (max-width: $breakpoint-md) {
+        width: 90%;
+        margin: 0.5rem auto;
     }
 }
 

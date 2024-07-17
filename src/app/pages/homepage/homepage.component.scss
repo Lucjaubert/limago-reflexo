@@ -38,6 +38,14 @@
     width: 100%;
     height: auto;
     object-fit: cover;
+
+    @media (max-width: $breakpoint-md) {
+      height: 290px;
+    }
+
+    @media (max-width: $breakpoint-xs) {
+      height: 230px;
+    }
   }
 
   .intro-section {
@@ -47,6 +55,22 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
+
+    @media (max-width: $breakpoint-xl) {
+      top: 15%;
+    }
+
+    @media (max-width: $breakpoint-lg) {
+      top: 15%;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      top: 11%; 
+    }
+  
+    @media (max-width: $breakpoint-xs) {
+      top: 10%; 
+    }
   }
 
   .btn-reserve {
@@ -67,21 +91,104 @@
     padding: 0;
     font-size: 0.75rem;
     text-align: center;
+
+    @media (max-width: $breakpoint-xl) {
+      top: 24.5%;
+    }
+  
+    @media (max-width: $breakpoint-lg) {
+      top: 21%;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      top: 14%; 
+      font-weight: 500 !important;
+      width: 90px;
+      height: 90px;
+      font-size: 0.5rem;
+    }
+    
+  
+    @media (max-width: $breakpoint-sm) {
+      top: 9.5%; 
+      font-weight: 500 !important;
+      width: 90px;
+      height: 90px;
+      font-size: 0.5rem;
+    }
+
+    @media (max-width: $breakpoint-xs) {
+      top: 7.5%; 
+      font-weight: 400 !important;
+      width: 70px;
+      height: 70px;
+      font-size: 0.5rem;
+    }
   }
 
   .info-section {
     position: absolute;
     display: flex;
     justify-content: space-between;
-    padding: 50px 18%;
+
+    @media (max-width: $breakpoint-xl) {
+      padding: 20px 15%;
+    }
+
+    @media (max-width: $breakpoint-lg) {
+      padding: 20px 15%;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      padding: 20px 15%;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      padding-top: 110px !important;
+      padding: 50px 18%;
+    }
+
+    @media (max-width: $breakpoint-xs) {
+      padding-top: 70px !important;
+      padding: 50px 18%;
+    }
 
     .content-wrapper {
       max-width: 50%;
+
+      @media (max-width: $breakpoint-sm) {
+        max-width: 100% !important;
+      }
+
+      @media (max-width: $breakpoint-xs) {
+        max-width: 100% !important;
+      }
     }
 
     .info-image {
       width: 25%;
       height: auto;
+
+      @media (max-width: $breakpoint-md) {
+        width: 30%;
+      }
+
+
+      @media (max-width: $breakpoint-md) {
+        width: 40%;
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        display: none;
+      }
+
+      @media (max-width: $breakpoint-xs) {
+        display: none;
+      }
+    }
+
+    @media (max-width: $breakpoint-xs) {
+      padding: 50px 18%;
     }
   }
 
@@ -91,7 +198,6 @@
     .triptych-content {
         position: relative;
         background-color: map-get($theme-colors, "grey-light");
-        margin-top: 2rem;
         width: 100%;
         height: auto;
         object-fit: cover;
@@ -105,9 +211,22 @@
             margin-left: 25px;
             margin-right: 25px;
             z-index: 2;
+
+            @media (max-width: $breakpoint-sm) {
+              padding-bottom: 20px;
+            }
+
+            @media (max-width: $breakpoint-xs) {
+              padding-bottom: 2px;
+            }
+            
                 .card {
                     position: relative;
                     margin-top: 20px;
+
+                    @media (max-width: $breakpoint-xs) {
+                      margin: 20px;
+                    }
 
                 .btn-see-more {
                     background-color: map-get($theme-colors, "green");
@@ -146,6 +265,10 @@
                   box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
                   border-top: solid 1px #bbb;
 
+                  @media (max-width: $breakpoint-md) {
+                    height: 90px;
+                  }
+
                   .card-title {
                     margin: 0;
                     font-size: 18px;
@@ -161,6 +284,19 @@
 
   .informations-section {
     width: 100%;
+
+    @media (max-width: $breakpoint-md) {
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      justify-content: center;
+      align-items: baseline;
+      padding-left: 55px;
+    }
+
+    @media (max-width: $breakpoint-xs) {
+      align-items: baseline;
+    }
   }
   
   
@@ -168,22 +304,17 @@
     color: map-get($theme-colors, "green");
   }
   
-
-  @media (min-width: 1921px) {
-    .btn-reserve {
-        top: 37%;
+  @media (max-width: $breakpoint-md) {
+    .intro-section .reflexologist-info,
+    .intro-section .slogan {
+      font-size: map-get($font-size, "40"); 
     }
-  }
-
-  @media (max-width: 1920px) {
-    .btn-reserve {
-        top: 29%;
-    }
-  }
   
-  //@media (max-width: 767px) {
-
-  //  .homepage-container {
-  //  }
-  //}
+    @media (max-width: $breakpoint-sm) {
+      .intro-section .reflexologist-info,
+      .intro-section .slogan {
+        font-size: map-get($font-size, "30"); 
+      }
+    }
+  }
 }

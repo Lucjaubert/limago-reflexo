@@ -4,15 +4,7 @@ import { RouterModule } from '@angular/router';
 import { Observable, catchError, of } from 'rxjs';
 import { WordpressService } from '../../../services/wordpress.service';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
-
-interface termsConditionsData {
-  title: string;
-  acf_fields: {
-    title: string;
-    content: string;
-  };
-}
-
+import { TermsData } from '../../../models/terms-data.model';
 @Component({
   selector: 'app-terms-conditions',
   templateUrl: './terms-conditions.component.html',
@@ -22,12 +14,12 @@ interface termsConditionsData {
 })
 export class TermsConditionsComponent implements OnInit {
   isHomepage = false;
-  termsConditionsData$: Observable<termsConditionsData[] | null>;
+  termsData$: Observable<TermsData[] | null>;
 
   constructor(
     private wpService: WordpressService, 
   ) { 
-    this.termsConditionsData$ = this.wpService.getTermsConditions().pipe(
+    this.termsData$ = this.wpService.getTermsConditions().pipe(
       catchError(error => {
         console.error('Erreur lors de la récupération des données de la page ateliers:', error);
         return of(null); 
