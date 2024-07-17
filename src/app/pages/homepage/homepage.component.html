@@ -1,60 +1,57 @@
 <div class="container d-flex flex-column justify-content-center px-0">
   <img src="assets/img/img-background-homepage.png" class="img-background">
-  <div class="intro-section">
-    <h2 class="reflexologist-info text-center image-fade-in">
+  <div class="intro-section pb-lg-15">
+    <h2 class="reflexologist-info text-center image-fade-in pb-3 pb-md-0">
       <div class="line">MAGALI JAUBERT</div>
       <div class="line">RÉFLEXOLOGUE PLANTAIRE ET PALMAIRE</div>
       <div class="line">- CASTILLONNES -</div>
     </h2>
-    <h2 class="slogan pb-md-19 pt-md-10 image-fade-in-2">
+    <h2 class="slogan pb-md-14 pb-sm-22 pt-sm-8 pb-22 pt-1 px-5 mt-lg-12 image-fade-in-2">
       NOS PIEDS NOUS ANCRENT À L’ÉNERGIE DE LA TERRE
     </h2>
   </div>
-  <button class="btn btn-reserve" (click)="navigateToReserve()">RÉSERVER UN SOIN</button>
+  <button class="btn btn-reserve mb-lg-49" (click)="navigateToReserve()">RÉSERVER UN SOIN</button>
   <ng-container *ngIf="homepageData$ | async as homepageData">
     <div *ngFor="let homepageData of homepageData">
-      <div class="info-section d-flex justify-content-between align-items-center pt-md-14">
-        <div class="content-wrapper">
-          <h2 class="info-title">{{ homepageData.acf_fields.title1 }}</h2>
-          <h2 class="info-title">{{ homepageData.acf_fields.title2 }}</h2>
-          <p class="info-content text-left pt-md-4" [innerHTML]="homepageData.acf_fields.content"></p>
+      <div class="info-section d-flex flex-column flex-md-row justify-content-between align-items-center pt-md-14 pt-12 pt-10 px-lg-21">
+        <div class="content-wrapper w-100">
+          <h2 class="info-title col-12">{{ homepageData.acf_fields.title1 }}</h2>
+          <h2 class="info-title col-12">{{ homepageData.acf_fields.title2 }}</h2>
+          <p class="info-content text-left pt-md-4 pt-1 col-12" [innerHTML]="homepageData.acf_fields.content"></p>
         </div>
-        <img [src]="homepageData.acf_fields.image" class="info-image">
+        <img [src]="homepageData.acf_fields.image" class="info-image col-md-auto">
       </div>
     </div>
   </ng-container>
-  <div class="triptych-container d-flex justify-content-between align-items-center pt-md-41">
-    <div class="row triptych-content">
+  <div class="triptych-container d-flex justify-content-between align-items-center pt-lg-40 pt-md-43 pt-41 pt-30">
+    <div class="row triptych-content mt-md-2 ">
       <div class="row background-triptych">
-        <!-- Card 1 -->
-        <div class="col-md-4 py-md-9 pl-15 d-flex justify-content-center">
+        <div class="col-md-4 py-md-9 pl-md-15 d-flex justify-content-center">
           <div class="card">
             <img src="assets/img/mag.png" class="card-img-top" alt="Magali">
-            <div class="card-body pb-8" routerLink="/qui-suis-je" routerLinkActive="active">
-              <div class="card-text-container">
-                <h5 class="card-title py-5 mb-2">Qui suis-je?</h5>
+            <div class="card-body pb-md-8" routerLink="/qui-suis-je" routerLinkActive="active">
+              <div class="card-text-container d-flex justify-content-center align-items-center mb-7">
+                <h5 class="card-title py-md-5 mb-md-2">Qui suis-je?</h5>
               </div>
             </div>
           </div>
         </div>
-        <!-- Card 2 -->
         <div class="col-md-4 py-md-9 d-flex justify-content-center">
           <div class="card">
             <img src="assets/img/office.png" class="card-img-top" alt="Reflexologie">
             <div class="card-body pt-md-5 pb-8" routerLink="/reflexologie" routerLinkActive="active">
-              <div class="card-text-container">
-                <h5 class="card-title py-3 text-center">Qu'est-ce que la réflexologie ?</h5>
+              <div class="card-text-container d-flex justify-content-center align-items-center px-4 mb-7">
+                <h5 class="card-title py-md-3 text-center">Qu'est-ce que la réflexologie ?</h5>
               </div>
             </div>
           </div>
         </div>
-        <!-- Card 3 -->
-        <div class="col-md-4 py-md-9 pr-15 d-flex justify-content-center">
+        <div class="col-md-4 py-md-9 pb-sm-6 pr-md-15 d-flex justify-content-center">
           <div class="card">
             <img src="assets/img/hands.png" class="card-img-top" alt="Prestations">
             <div class="card-body pt-md-8 pb-8" routerLink="/prestations" routerLinkActive="active">
-              <div class="card-text-container">
-                <h5 class="card-title py-5 mb-2">Prestations</h5>
+              <div class="card-text-container d-flex justify-content-center align-items-center mb-7">
+                <h5 class="card-title py-md-5 mb-md-2">Prestations</h5>
               </div>
             </div>
           </div>
@@ -64,16 +61,14 @@
   </div>
   <ng-container *ngIf="homepageData$ | async as homepageData">
     <div *ngFor="let homepageData of homepageData">
-      <div class="informations-section px-md-25 pt-md-13 pb-md-8">
-        <div class="d-flex justify-content-between">
-          <div class="d-flex flex-column">
-            <h4 class="info-title pb-5">{{ homepageData.acf_fields.schedulesTitle }}</h4>
-            <p class="info-content" [innerHTML]="homepageData.acf_fields.schedulesContent"></p>
-          </div>
-          <div class="d-flex flex-column">
-            <h4 class="info-title pb-5">{{ homepageData.acf_fields.officeTitle }}</h4>
-            <p class="info-content" [innerHTML]="homepageData.acf_fields.officeContent"></p>
-          </div>
+      <div class="informations-section d-flex flex-column flex-md-row justify-content-between px-lg-21 px-md-10 pt-md-13 pb-md-8">
+        <div class="flex-fill-left py-md-0 mx-md-0 py-8">
+          <h4 class="info-title pb-md-5">{{ homepageData.acf_fields.schedulesTitle }}</h4>
+          <p class="info-content" [innerHTML]="homepageData.acf_fields.schedulesContent"></p>
+        </div>
+        <div class="flex-fill-right py-md-0 mx-md-0 py-6 mx-9">
+          <h4 class="info-title py-md-0 pb-md-5">{{ homepageData.acf_fields.officeTitle }}</h4>
+          <p class="info-content" [innerHTML]="homepageData.acf_fields.officeContent"></p>
         </div>
       </div>
     </div>
