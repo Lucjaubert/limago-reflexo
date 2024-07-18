@@ -46,18 +46,18 @@ $font-weight: (
 // Points de rupture pour les réponses
 $breakpoints: (
   "xs": 375px, // Extra small devices (portrait phones)
-  "sm": 576px, // Small devices (landscape phones)
+  "sm": 425px, // Small devices (landscape phones)
   "md": 768px, // Medium devices (tablets)
-  "lg": 992px, // Large devices (desktops)
-  "xl": 1200px // Extra large devices (large desktops)
+  "lg": 1024px, // Large devices (desktops)
+  "xl": 1440px // Extra large devices (large desktops)
 );
 
 // _variables.scss
 $breakpoint-xs: 375px;
-$breakpoint-sm: 576px;
+$breakpoint-sm: 425px;
 $breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1440px;
 
 // Espacements
 $spacers: (
