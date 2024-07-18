@@ -1,7 +1,6 @@
 @import "../../../styles/_variables.scss";
 
 .container {
-  position: relative;
   color: white;
 
   @keyframes fadeIn {
@@ -35,6 +34,7 @@
   }
 
   .img-background {
+    position: relative;
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -56,20 +56,40 @@
     transform: translate(-50%, -50%);
     width: 100%;
 
+    @media (max-width: $breakpoint-xxl) {
+      top: 16%;
+    }
+
     @media (max-width: $breakpoint-xl) {
-      top: 15%;
+      top: 17%;
     }
 
     @media (max-width: $breakpoint-lg) {
-      top: 15%;
+      top: 14%;
     }
 
     @media (max-width: $breakpoint-md) {
-      top: 11%; 
+      bottom: 65% !important;
     }
+
+    @media (max-width: $breakpoint-sm) {
+      top: 13% !important;
+    }
+
+    .slogan {
+    
+      @media (max-width: $breakpoint-xl) {
+        top: 15%;
+      }
   
-    @media (max-width: $breakpoint-xs) {
-      top: 10%; 
+      @media (max-width: $breakpoint-lg) {
+        padding: 55px !important;
+      }
+  
+      @media (max-width: $breakpoint-md) {
+        bottom: 60% !important;
+        padding: 10px !important;
+      }
     }
   }
 
@@ -78,8 +98,6 @@
     left: 50%;
     transform: translateX(-50%);
     font-weight: 700 !important;
-    width: 150px;
-    height: 150px;
     background-color: map-get($theme-colors, "green");
     color: white;
     border: 0.5px solid white;
@@ -92,15 +110,37 @@
     font-size: 0.75rem;
     text-align: center;
 
-    @media (max-width: $breakpoint-xl) {
-      top: 24.5%;
-    }
-  
-    @media (max-width: $breakpoint-lg) {
-      top: 21%;
+    @media (min-width: 1909px) {
+      top: 35%;
+      width: 170px;
+      height: 170px;
     }
 
-    @media (max-width: $breakpoint-md) {
+    @media (max-width: 1908px) {
+      top: 29.5%;
+      width: 170px;
+      height: 170px;
+    }
+
+    @media (max-width: 1440px) {
+      top: 28.5%;
+      width: 160px;
+      height: 160px;
+    }
+
+    @media (max-width: 1200px) {
+      top: 29.5%;
+      width: 160px;
+      height: 160px;
+    }
+  
+    @media (max-width: 1024px) {
+      top: 21%;
+      width: 150px;
+      height: 150px;
+    }
+
+    @media (max-width: 768px) {
       top: 14%; 
       font-weight: 500 !important;
       width: 90px;
@@ -109,7 +149,7 @@
     }
     
   
-    @media (max-width: $breakpoint-sm) {
+    @media (max-width: 426px) {
       top: 9.5%; 
       font-weight: 500 !important;
       width: 90px;
@@ -117,7 +157,7 @@
       font-size: 0.5rem;
     }
 
-    @media (max-width: $breakpoint-xs) {
+    @media (max-width: 375px) {
       top: 7.5%; 
       font-weight: 400 !important;
       width: 70px;
@@ -285,13 +325,10 @@
   .informations-section {
     width: 100%;
 
-    @media (max-width: $breakpoint-md) {
-    }
-
     @media (max-width: $breakpoint-sm) {
       justify-content: center;
       align-items: baseline;
-      padding-left: 55px;
+      padding-left: 25px;
     }
 
     @media (max-width: $breakpoint-xs) {
