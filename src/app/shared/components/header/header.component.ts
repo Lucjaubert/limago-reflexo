@@ -13,6 +13,7 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isHeaderHidden = false; 
+  navbarExpanded = false;
   private mouseMove = new Subject<MouseEvent>(); 
   private subscription!: Subscription; 
 
@@ -34,6 +35,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
+    }
+  }
+
+  toggleMenu() {
+    this.navbarExpanded = !this.navbarExpanded;
+    const headerElement = document.querySelector('.header') as HTMLElement;
+    if (headerElement) {
+        if (this.navbarExpanded) {
+            headerElement.classList.add('is-active');
+        } else {
+            headerElement.classList.remove('is-active');
+        }
     }
   }
 }
