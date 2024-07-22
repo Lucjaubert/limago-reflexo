@@ -1,6 +1,6 @@
 <header [class.hidden]="isHeaderHidden" [class.is-active]="navbarExpanded" class="header">
   <div class="menu-toggle" (click)="toggleMenu()" [ngClass]="{'active': navbarExpanded}">
-    <div class="animated-icon1" [ngClass]="{'open': navbarExpanded}">
+    <div class="animated-icon1" [ngClass]="{'open': !navbarExpanded}">
       <div class="menu-line"></div>
       <div class="menu-line"></div>
       <div class="menu-line"></div>
@@ -18,10 +18,3 @@
     </nav>
   </div>
 </header>
-
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy, ChangeDetectorRef  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
@@ -17,29 +17,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private mouseMove = new Subject<MouseEvent>(); 
   private subscription!: Subscription; 
 
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.subscription = this.mouseMove.pipe(
       debounceTime(300)  
     ).subscribe(event => {
       this.isHeaderHidden = event.clientY > 100;
+      this.cdr.detectChanges();
     });
-  }
-
-  @HostListener('window:mousemove', ['$event'])
-  onMouseMove(event: MouseEvent) {
-    this.mouseMove.next(event); 
-  }
-
-  ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
   }
 
   toggleMenu() {
     this.navbarExpanded = !this.navbarExpanded;
+    console.log("Menu toggle state:", this.navbarExpanded);
+    this.cdr.detectChanges();
     const headerElement = document.querySelector('.header') as HTMLElement;
     if (headerElement) {
         if (this.navbarExpanded) {
@@ -49,4 +41,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
         }
     }
   }
+  
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+  
+  @HostListener('window:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent) {
+    this.mouseMove.next(event); 
+  }
+
 }

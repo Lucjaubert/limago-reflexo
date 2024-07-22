@@ -6,7 +6,7 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(248, 249, 250, 0.5);
+    background-color: rgba(248, 249, 250, 0.712);
     border-bottom: 1px solid map-get($theme-colors, "white");
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: flex;
@@ -85,19 +85,7 @@
                 &:nth-child(2) { top: 9px; }
                 &:nth-child(3) { top: 18px; }
 
-                &.open {
-                    &:nth-child(1) {
-                        top: 9px;
-                        transform: rotate(45deg);
-                    }
-                    &:nth-child(2) {
-                        opacity: 0;
-                    }
-                    &:nth-child(3) {
-                        top: 9px;
-                        transform: rotate(-45deg);
-                    }
-                }
+                
             }
         }
     }
@@ -142,4 +130,37 @@
             }
         }
     }
+
+    .menu-toggle .animated-icon1 {
+        width: 30px;
+        height: 20px;
+        position: relative;
+    
+        .menu-line {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: map-get($theme-colors, "grey");
+            position: absolute;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+    
+            &:nth-child(1), &:nth-child(3) {
+                transform-origin: 50%;
+            }
+        }
+    
+        &.open .menu-line {
+            &:nth-child(1) {
+                top: 9px !important;
+                transform: rotate(45deg);
+            }
+            &:nth-child(2) {
+                opacity: 0;
+            }
+            &:nth-child(3) {
+                top: 9px !important;
+                transform: rotate(-45deg);
+            }
+        }
+    }    
 }
