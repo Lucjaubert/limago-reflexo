@@ -184,7 +184,7 @@
 
     @media (max-width: $breakpoint-xs) {
       padding-top: 70px !important;
-      padding: 50px 18%;
+      padding: 10px 10%;
     }
 
     .content-wrapper {
@@ -242,8 +242,6 @@
 
         .background-triptych {
             background-color: map-get($theme-colors, "white");
-            margin-left: 25px;
-            margin-right: 25px;
             z-index: 2;
 
             @media (max-width: $breakpoint-sm) {
