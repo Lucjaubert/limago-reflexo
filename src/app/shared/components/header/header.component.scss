@@ -43,14 +43,15 @@
 
         .logo-container {
             .logo-homepage {
-                height: 125px;
+                height: 110px;
             }
         }
 
         .navbar {
             display: flex;
             align-items: center;
-            gap: 110px;
+            gap: 150px;
+            margin-right: 100px;
 
             a {
                 color: #333;
