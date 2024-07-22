@@ -178,25 +178,6 @@ footer {
     transform: translateY(100%);
 }
 
-.btn-reserve {
-    background-color: white; 
-    color: map-get($theme-colors, "green"); 
-    border: 2px solid map-get($theme-colors, "green"); 
-    border-radius: 20px; 
-    padding: 10px 30px; 
-    cursor: pointer; 
-    transition: background-color 0.3s, color 0.3s; 
-  
-    &:hover {
-      background-color: map-get($theme-colors, "green"); 
-      color: white; 
-    }
-    @media (max-width: $breakpoint-sm) {
-        padding: 5px 15px;
-        font-size: map-get($font-size, "15");
-    }
-}
-
 .btn-reserve-options {
     background-color: white; 
     color: map-get($theme-colors, "green"); 
