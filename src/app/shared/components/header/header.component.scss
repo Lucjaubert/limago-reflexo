@@ -6,7 +6,7 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(248, 249, 250, 0.5);
+    background-color: rgba(248, 249, 250, 0.712);
     border-bottom: 1px solid map-get($theme-colors, "white");
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: flex;
@@ -19,34 +19,148 @@
         transform: translateY(-100%);
     }
 
-    .logo-container {
-        .logo-homepage {
-            height: 125px;
-            margin-right: auto; 
-        }
-    }
-
-    .navbar {
-        display: flex;
+    &.is-active .navbar-container {
+        display: flex; 
+        flex-direction: column;
         align-items: center;
-        gap: 110px; 
+        justify-content: center;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        width: 100%;
+        background-color: #fff; 
 
-        a {
-            color: #333;
-            text-decoration: none;
-            padding: 5px;
-            border-radius: 5px;
+        .logo-container, .navbar {
+            display: none;
+        }
+    }
+
+    .navbar-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo-container {
+            .logo-homepage {
+                height: 125px;
+            }
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            gap: 110px;
+
+            a {
+                color: #333;
+                text-decoration: none;
+                padding: 5px;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    .menu-toggle {
+        cursor: pointer;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        display: none;
+        z-index: 1050;
+
+        .animated-icon1 {
+            width: 30px;
+            height: 20px;
+
+            .menu-line {
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: map-get($theme-colors, "grey");
+                position: absolute;
+                transition: all 0.3s ease;
+                
+                &:nth-child(1) { top: 0; }
+                &:nth-child(2) { top: 9px; }
+                &:nth-child(3) { top: 18px; }
+
+                
+            }
         }
     }
 }
 
-@media (max-width: 768px) {
-    .navbar {
-        gap: 10px; // Smaller gap on smaller screens
+@media (max-width: $breakpoint-lg) {
+    .menu-toggle {
+        display: block !important;
     }
-}
 
-.header.hidden {
-    transform: translateY(-100%);
-    transition: transform 0.3s ease-in-out;
+    .logo-container {
+        display: none !important;
+    }
+
+    .header.is-active .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        padding: 10px 0;
+    }
+
+    .header:not(.is-active) .navbar-container {
+        display: none; 
+    }
+
+    .navbar-container {
+        .navbar {
+            width: 100%;
+            gap: 50px !important;
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+            a {
+                display: block;
+                text-align: center;
+                width: 100%;
+            }
+        }
+    }
+
+    .menu-toggle .animated-icon1 {
+        width: 30px;
+        height: 20px;
+        position: relative;
+    
+        .menu-line {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: map-get($theme-colors, "grey");
+            position: absolute;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+    
+            &:nth-child(1), &:nth-child(3) {
+                transform-origin: 50%;
+            }
+        }
+    
+        &.open .menu-line {
+            &:nth-child(1) {
+                top: 9px !important;
+                transform: rotate(45deg);
+            }
+            &:nth-child(2) {
+                opacity: 0;
+            }
+            &:nth-child(3) {
+                top: 9px !important;
+                transform: rotate(-45deg);
+            }
+        }
+    }    
 }

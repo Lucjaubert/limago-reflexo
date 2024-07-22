@@ -1,12 +1,20 @@
-<!--<header [class.hidden]="isHeaderHidden" class="header d-flex">
-    <div class="logo-container pr-15">
-      <img src="assets/img/logo-limago-reflexo.png" alt="Logo LimagoReflexo" class="logo-homepage">
+<header [class.hidden]="isHeaderHidden" [class.is-active]="navbarExpanded" class="header">
+  <div class="menu-toggle" (click)="toggleMenu()" [ngClass]="{'active': navbarExpanded}">
+    <div class="animated-icon1" [ngClass]="{'open': !navbarExpanded}">
+      <div class="menu-line"></div>
+      <div class="menu-line"></div>
+      <div class="menu-line"></div>
     </div>
-    <nav class="navbar pr-15">
+  </div>
+  <div class="navbar-container d-flex">
+    <div class="logo-container">
+        <img src="assets/img/logo-limago-reflexo.png" alt="Logo LimagoReflexo" class="logo-homepage">
+    </div>
+    <nav class="navbar">
       <a routerLink="/accueil" routerLinkActive="active">Accueil</a>
       <a routerLink="/qui-suis-je" routerLinkActive="active">Qui suis-je?</a>
       <a routerLink="/reflexologie" routerLinkActive="active">La réflexologie</a>
       <a routerLink="/prestations" routerLinkActive="active">Prestations</a>
     </nav>
-</header>-->
-
+  </div>
+</header>
