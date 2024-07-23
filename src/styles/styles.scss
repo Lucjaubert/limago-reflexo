@@ -72,15 +72,15 @@ h1 {
     font-size: map-get($font-size, "80");
     color: map-get($theme-colors, "green") !important;
 
-    @media (max-width: $breakpoint-lg) {
+    @media (max-width: 1024px) {
         font-size: map-get($font-size, "60");
     }
 
-    @media (max-width: $breakpoint-md) {
+    @media (max-width: 768px) {
         font-size: map-get($font-size, "50");
     }
 
-    @media (max-width: $breakpoint-xs) {
+    @media (max-width: 375px) {
         font-size: map-get($font-size, "40");
     }
 }
@@ -92,15 +92,15 @@ h2 {
     font-weight: 700;
     font-style: normal;
 
-    @media (max-width: $breakpoint-lg) {
+    @media (max-width: 1024px) {
         font-size: map-get($font-size, "50");
     }
 
-    @media (max-width: $breakpoint-md) {
+    @media (max-width: 768px) {
         font-size: map-get($font-size, "40");
     }
 
-    @media (max-width: $breakpoint-xs) {
+    @media (max-width: 375px) {
         font-size: map-get($font-size, "30");
     }
 }
@@ -124,15 +124,15 @@ h5 {
 }
 
 h2, h3, h4, h5, p, a {
-    @media (max-width: $breakpoint-lg) {
+    @media (max-width: 1024px) {
         font-size: reduce(map-get($font-size, "current-font-size"), 10%);
     }
 
-    @media (max-width: $breakpoint-md) {
+    @media (max-width: 768px) {
         font-size: reduce(map-get($font-size, "current-font-size"), 20%);
     }
 
-    @media (max-width: $breakpoint-sm) {
+    @media (max-width: 425px) {
         font-size: reduce(map-get($font-size, "current-font-size"), 30%);
     }
 }
@@ -191,7 +191,7 @@ footer {
       background-color: map-get($theme-colors, "green"); 
       color: white; 
     }
-    @media (max-width: $breakpoint-sm) {
+    @media (max-width: 425px) {
         padding: 5px 15px;
         font-size: map-get($font-size, "15");
     }
@@ -225,7 +225,7 @@ footer {
         }
     }
 
-    @media (max-width: $breakpoint-md) {
+    @media (max-width: 768px) {
         width: 90%;
         margin: 0.5rem auto;
     }

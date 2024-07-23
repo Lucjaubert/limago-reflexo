@@ -15,9 +15,9 @@ export const routes: Routes = [
     { path: "qui-suis-je", component: WhoAmIComponent, title: 'Qui suis-je' },
     { path: "reflexologie", component: ReflexologyComponent, title: 'La réflexologie' },
     { path: "prestations", component: ServicesComponent, title: 'Prestations' },
-    { path: "reserve", component: ReserveComponent, title: 'Réserver' },
+    { path: "reservation", component: ReserveComponent, title: 'Réserver' },
     { path: 'mentions-legales', component: LegalNoticesComponent, title: 'Mentions Légales' },
     { path: 'politique-de-confidentialite', component: PrivacyPolicyComponent, title: 'Politique de Confidentialité' },
-    { path: 'conditions-generales-de-vente', component: TermsConditionsComponent, title: 'Conditions Générales de Ventes' }
+    { path: 'conditions-generales-de-vente', component: TermsConditionsComponent, title: 'Conditions Générales de Ventes' },
 ];
 
