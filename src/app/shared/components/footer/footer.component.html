@@ -33,5 +33,27 @@
         <a href="/conditions-generales-de-vente" class="footer-link text-fs-30">CGV</a>
       </div>
     </div>
+    <!-- Axeptio Script -->
+    <script>
+    window.axeptioSettings = {
+      clientId: "669fb31d1646a3d144f05cce",
+      cookiesVersion: "limago-reflexo-fr-EU",
+      googleConsentMode: {
+        default: {
+          analytics_storage: "denied",
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          wait_for_update: 500
+        }
+      }
+    };
+
+    (function(d, s) {
+      var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+      e.async = true; e.src = "//static.axept.io/sdk.js";
+      t.parentNode.insertBefore(e, t);
+    })(document, "script");
+    </script>
   </div>
 </div>

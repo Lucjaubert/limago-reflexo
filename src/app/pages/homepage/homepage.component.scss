@@ -39,11 +39,11 @@
     height: auto;
     object-fit: cover;
 
-    @media (max-width: $breakpoint-md) {
+    @media (max-width: 768px) {
       height: 290px;
     }
 
-    @media (max-width: $breakpoint-xs) {
+    @media (max-width: 375px) {
       height: 230px;
     }
   }
@@ -56,37 +56,41 @@
     transform: translate(-50%, -50%);
     width: 100%;
 
-    @media (max-width: $breakpoint-xxl) {
+    @media (max-width: 1980px) {
       top: 16%;
     }
 
-    @media (max-width: $breakpoint-xl) {
-      top: 17%;
+    @media (max-width: 1440px) {
+      top: 12%;
     }
 
-    @media (max-width: $breakpoint-lg) {
-      top: 14%;
+    @media (max-width: 1024px) {
+      top: 11%;
     }
 
-    @media (max-width: $breakpoint-md) {
-      bottom: 65% !important;
+    @media (max-width: 768px) {
+      top: 5.5% !important;
     }
 
-    @media (max-width: $breakpoint-sm) {
-      top: 13% !important;
+    @media (max-width: 425px) {
+      top: 5.5% !important;
+    }
+
+    @media (max-width: 375px) {
+      top: 4% !important;
     }
 
     .slogan {
     
-      @media (max-width: $breakpoint-xl) {
+      @media (max-width: 1440px) {
         top: 15%;
       }
   
-      @media (max-width: $breakpoint-lg) {
+      @media (max-width: 1024px) {
         padding: 55px !important;
       }
   
-      @media (max-width: $breakpoint-md) {
+      @media (max-width: 768px) {
         bottom: 60% !important;
         padding: 10px !important;
       }
@@ -117,34 +121,33 @@
     }
 
     @media (max-width: 1908px) {
-      top: 29.5%;
+      top: 28%;
       width: 170px;
       height: 170px;
     }
 
     @media (max-width: 1440px) {
-      top: 27%;
+      top: 27.5%;
       width: 160px;
       height: 160px;
     }
   
     @media (max-width: 1024px) {
-      top: 20%;
-      width: 150px;
-      height: 150px;
+      top: 21.5%;
+      width: 130px;
+      height: 130px;
     }
 
     @media (max-width: 768px) {
-      top: 14%; 
+      top: 9%; 
       font-weight: 500 !important;
       width: 90px;
       height: 90px;
       font-size: 0.5rem;
     }
-    
   
     @media (max-width: 426px) {
-      top: 9.5%; 
+      top: 9%; 
       font-weight: 500 !important;
       width: 90px;
       height: 90px;
@@ -161,68 +164,55 @@
   }
 
   .info-section {
-    position: absolute;
-    display: flex;
     justify-content: space-between;
 
-    @media (max-width: $breakpoint-xl) {
-      padding: 20px 15%;
+    @media (max-width: 1440px) {
+      padding: 30px 15%;
     }
 
-    @media (max-width: $breakpoint-lg) {
-      padding: 20px 15%;
+    @media (max-width: 1024px) {
+      padding: 30px 15%;
     }
 
-    @media (max-width: $breakpoint-md) {
-      padding: 20px 15%;
+    @media (max-width: 768px) {
+      padding: 30px 15%;
     }
 
-    @media (max-width: $breakpoint-sm) {
+    @media (max-width: 425px) {
       padding-top: 110px !important;
-      padding: 50px 18%;
+      padding: 50px 10%;
     }
 
-    @media (max-width: $breakpoint-xs) {
+    @media (max-width: 375px) {
       padding-top: 70px !important;
-      padding: 50px 18%;
-    }
-
-    .content-wrapper {
-      max-width: 50%;
-
-      @media (max-width: $breakpoint-sm) {
-        max-width: 100% !important;
-      }
-
-      @media (max-width: $breakpoint-xs) {
-        max-width: 100% !important;
-      }
+      padding: 10px 10%;
     }
 
     .info-image {
-      width: 25%;
-      height: auto;
 
-      @media (max-width: $breakpoint-md) {
+      @media (max-width: 1440px) {
+        width: 25%;
+      }
+
+      @media (max-width: 1024px) {
         width: 30%;
+        padding-left: 30px;
+        
       }
 
-
-      @media (max-width: $breakpoint-md) {
-        width: 40%;
+      @media (max-width: 768px) {
+        width: 30%;
+        padding-top: 15px;
+        padding-left: 0px;
       }
 
-      @media (max-width: $breakpoint-sm) {
+      @media (max-width: 425px) {
         display: none;
       }
 
-      @media (max-width: $breakpoint-xs) {
+      @media (max-width: 375px) {
         display: none;
       }
-    }
-
-    @media (max-width: $breakpoint-xs) {
-      padding: 50px 18%;
     }
   }
 
@@ -230,7 +220,6 @@
     justify-content: center !important;
 
     .triptych-content {
-        position: relative;
         background-color: map-get($theme-colors, "grey-light");
         width: 100%;
         height: auto;
@@ -242,15 +231,13 @@
 
         .background-triptych {
             background-color: map-get($theme-colors, "white");
-            margin-left: 25px;
-            margin-right: 25px;
             z-index: 2;
 
-            @media (max-width: $breakpoint-sm) {
+            @media (max-width: 425px) {
               padding-bottom: 20px;
             }
 
-            @media (max-width: $breakpoint-xs) {
+            @media (max-width: 375px) {
               padding-bottom: 2px;
             }
             
@@ -258,7 +245,7 @@
                     position: relative;
                     margin-top: 20px;
 
-                    @media (max-width: $breakpoint-xs) {
+                    @media (max-width: 375px) {
                       margin: 20px;
                     }
 
@@ -299,7 +286,7 @@
                   box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
                   border-top: solid 1px #bbb;
 
-                  @media (max-width: $breakpoint-md) {
+                  @media (max-width: 768px) {
                     height: 90px;
                   }
 
@@ -319,13 +306,13 @@
   .informations-section {
     width: 100%;
 
-    @media (max-width: $breakpoint-sm) {
+    @media (max-width: 425px) {
       justify-content: center;
       align-items: baseline;
       padding-left: 25px;
     }
 
-    @media (max-width: $breakpoint-xs) {
+    @media (max-width: 375px) {
       align-items: baseline;
     }
   }
@@ -335,13 +322,13 @@
     color: map-get($theme-colors, "green");
   }
   
-  @media (max-width: $breakpoint-md) {
+  @media (max-width: 768pxd) {
     .intro-section .reflexologist-info,
     .intro-section .slogan {
       font-size: map-get($font-size, "40"); 
     }
   
-    @media (max-width: $breakpoint-sm) {
+    @media (max-width: 425px) {
       .intro-section .reflexologist-info,
       .intro-section .slogan {
         font-size: map-get($font-size, "30"); 

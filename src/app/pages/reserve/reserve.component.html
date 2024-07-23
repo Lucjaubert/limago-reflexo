@@ -1,4 +1,4 @@
-<div class="container reserve-container mt-15 mb-5">
+<div class="container reserve-container mt-lg-15 mb-lg-5 mt-10 mb-4">
   <div *ngIf="reserveData$ | async as reserveDataArray" class="row">
     <ng-container *ngFor="let data of reserveDataArray">
         <div class="row">
@@ -12,29 +12,26 @@
           <div class="options d-flex justify-content-center mb-4">
             <button class="btn btn-reserve-options mx-7"
                     [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar', 'btn-outline-primary': activeSection !== 'reflexology_plantar'}"
-                    (click)="setActiveSection('reflexology_plantar')">
-              Réflexologie plantaire
+                    (click)="setActiveSection('reflexology_plantar')">Réflexologie plantaire
             </button>
-            <button class="btn btn-reserve-options mx-7 position-relative"
+            <button class="btn btn-reserve-options mx-7 d-flex justify-content-center align-items-center"
                     [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar_package', 'btn-outline-primary': activeSection !== 'reflexology_plantar_package'}"
-                    (click)="setActiveSection('reflexology_plantar_package')">
-              Réflexologie plantaire 4 séances
-              <span class="badge badge-forfait">Forfait</span>
+                    (click)="setActiveSection('reflexology_plantar_package')">Réflexologie plantaire 4 séances
+                    <span class="badge badge-forfait px-6">Forfait</span>
             </button>
             <button class="btn btn-reserve-options mx-7"
                     [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar_palmar', 'btn-outline-primary': activeSection !== 'reflexology_plantar_palmar'}"
-                    (click)="setActiveSection('reflexology_plantar_palmar')">
-              Réflexologie plantaire et palmaire
+                    (click)="setActiveSection('reflexology_plantar_palmar')">Réflexologie plantaire et palmaire
             </button>
           </div>          
         </div>
         
         <div class="col-lg-12 d-flex justify-content-center">
           <div class="text-center d-flex align-items-center">
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center img-container">
               <img [src]="data.acf_fields.image" alt="Image Description" class="img-fluid my-9">
             </div>
-            <div class="reserve-content px-7">
+            <div class="reserve-content px-md-10">
               <div *ngIf="activeSection === 'reflexology_plantar'" class="service-description pl-15">
                 <h4>{{ data.acf_fields.reflexology_plantar_title }}</h4>
                 <div class="line-reserve my-7"></div>

@@ -13,17 +13,17 @@
   <button class="btn btn-reserve mb-lg-49" (click)="navigateToReserve()">RÉSERVER UN SOIN</button>
   <ng-container *ngIf="homepageData$ | async as homepageData">
     <div *ngFor="let homepageData of homepageData">
-      <div class="info-section d-flex flex-column flex-md-row justify-content-between align-items-center pt-md-14 pt-12 pt-10 px-lg-21">
-        <div class="content-wrapper w-100">
+      <div class="info-section d-flex flex-column flex-md-row justify-content-between align-items-center py-md-9 py-sm-12 py-12 pt-10 px-lg-14">
+        <div class="content-wrapper w-100 px-lg-10">
           <h2 class="info-title col-12">{{ homepageData.acf_fields.title1 }}</h2>
           <h2 class="info-title col-12">{{ homepageData.acf_fields.title2 }}</h2>
           <p class="info-content text-left pt-md-4 pt-1 col-12" [innerHTML]="homepageData.acf_fields.content"></p>
         </div>
-        <img [src]="homepageData.acf_fields.image" class="info-image col-md-auto">
+        <img [src]="homepageData.acf_fields.image" class="info-image col-md-auto mt-xl-12 mt-lg-14 mt-md-0">
       </div>
     </div>
   </ng-container>
-  <div class="triptych-container d-flex justify-content-between align-items-center pt-lg-47 pt-md-43 pt-41 pt-30">
+  <div class="triptych-container d-flex justify-content-between align-items-center">
     <div class="row triptych-content mt-md-2 ">
       <div class="row background-triptych">
         <div class="col-md-4 py-md-9 pl-md-15 d-flex justify-content-center">
@@ -61,12 +61,12 @@
   </div>
   <ng-container *ngIf="homepageData$ | async as homepageData">
     <div *ngFor="let homepageData of homepageData">
-      <div class="informations-section d-flex flex-column flex-md-row justify-content-between px-lg-21 px-md-10 pt-md-13 pb-md-8">
-        <div class="flex-fill-left py-md-0 mx-md-0 py-8">
+      <div class="informations-section d-flex flex-column flex-md-row justify-content-between px-xl-18 px-md-10 pt-md-13 pb-md-8">
+        <div class="flex-fill-left py-md-0 mx-md-0 px-xl-10 px-md-8 px-sm-5 py-8 mx-9">
           <h4 class="info-title pb-md-5">{{ homepageData.acf_fields.schedulesTitle }}</h4>
           <p class="info-content" [innerHTML]="homepageData.acf_fields.schedulesContent"></p>
         </div>
-        <div class="flex-fill-right py-md-0 mx-md-0 py-6 mx-9">
+        <div class="flex-fill-right py-md-0 mx-md-0 px-xl-10 px-md-6 px-sm-5 py-6 mx-9">
           <h4 class="info-title py-md-0 pb-md-5">{{ homepageData.acf_fields.officeTitle }}</h4>
           <p class="info-content" [innerHTML]="homepageData.acf_fields.officeContent"></p>
         </div>
