@@ -2,10 +2,10 @@
   <ng-container *ngFor="let whoAmIData of whoAmIDataArray">
     <div class="row">
       <div class="col-md-5 px-3 px-md-0 img-content mt-md-14">
-        <img [src]="whoAmIData.acf_fields.image" alt="Photo de Magali" class="img-fluid">
+        <img [src]="whoAmIData.acf_fields.image" alt="Photo de Magali" loading="lazy" class="img-fluid">
       </div>
       <div class="col-md-7 who-content px-md-10 d-flex flex-column align-items-start">
-        <h2 class="who-title display-5 mb-5 mb-md-10">{{ whoAmIData.acf_fields.title }}</h2>
+        <h1 class="who-title display-5 mb-5 mb-md-10">{{ whoAmIData.acf_fields.title }}</h1>
         <p [innerHTML]="whoAmIData.acf_fields.content" class="lead"></p>
       </div>
     </div>
