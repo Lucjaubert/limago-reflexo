@@ -68,20 +68,22 @@ html, body {
 }
   
 h1 {
-    font-weight: 700;
-    font-size: map-get($font-size, "80");
     color: map-get($theme-colors, "green") !important;
+    font-size: map-get($font-size, "70");
+    src: url('/assets/fonts/NotoSansJP-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
 
     @media (max-width: 1024px) {
-        font-size: map-get($font-size, "60");
-    }
-
-    @media (max-width: 768px) {
         font-size: map-get($font-size, "50");
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 768px) {
         font-size: map-get($font-size, "40");
+    }
+
+    @media (max-width: 375px) {
+        font-size: map-get($font-size, "30");
     }
 }
   

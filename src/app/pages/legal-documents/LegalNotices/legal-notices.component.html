@@ -1,6 +1,6 @@
 <div class="legal-container mt-15 mb-5" *ngIf="legal$ | async as legalDataArray">
   <section *ngFor="let legalData of legalDataArray">
-      <h2 class="mb-5">{{ legalData.acf_fields.title }}</h2>
+      <h1 class="mb-5">{{ legalData.acf_fields.title }}</h1>
       <div class="px-0 py-7" *ngIf="legalData?.acf_fields" [innerHTML]="legalData.acf_fields.content"></div>    
   </section>
 </div>

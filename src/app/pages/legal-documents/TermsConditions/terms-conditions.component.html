@@ -1,6 +1,6 @@
 <div class="terms-container mt-15 mb-5" *ngIf="termsData$ | async as termsDataArray">
   <section *ngFor="let termsData of termsDataArray">
-      <h2 class="mb-5">{{ termsData.acf_fields.title }}</h2>
+      <h1 class="mb-5">{{ termsData.acf_fields.title }}</h1>
       <div class="px-0 py-7" *ngIf="termsData?.acf_fields" [innerHTML]="termsData.acf_fields.content"></div>    
   </section>
 </div>
