@@ -5,6 +5,8 @@ import { catchError, Observable, of } from 'rxjs';
 import { WordpressService } from '../../../services/wordpress.service';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { PrivacyData } from '../../../models/privacy-data.model';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-privacy-policy',
   templateUrl: './privacy-policy.component.html',
@@ -18,6 +20,7 @@ export class PrivacyPolicyComponent implements OnInit {
 
   constructor(
     private wpService: WordpressService, 
+    private sanitizer: DomSanitizer
   ) { 
     this.privacyData$ = this.wpService.getPrivacyPolicy().pipe(
       catchError(error => {
@@ -30,4 +33,7 @@ export class PrivacyPolicyComponent implements OnInit {
   ngOnInit() {
   }
 
+  getSafeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
+  }
 }

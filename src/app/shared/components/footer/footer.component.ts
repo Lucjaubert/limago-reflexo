@@ -10,10 +10,10 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule, RouterModule],
 })
 export class FooterComponent implements OnInit {
+  isVisible: boolean = false;  
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }

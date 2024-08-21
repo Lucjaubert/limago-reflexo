@@ -5,6 +5,8 @@ import { Observable, catchError, of } from 'rxjs';
 import { WordpressService } from '../../../services/wordpress.service';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { LegalData } from '../../../models/legal-data.model';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-legal-notices',
   templateUrl: './legal-notices.component.html',
@@ -18,6 +20,7 @@ export class LegalNoticesComponent implements OnInit {
 
   constructor(
     private wpService: WordpressService, 
+    private sanitizer: DomSanitizer
   ) { 
     this.legal$ = this.wpService.getLegalNotices().pipe(
       catchError(error => {
@@ -28,6 +31,10 @@ export class LegalNoticesComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  getSafeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 
 }

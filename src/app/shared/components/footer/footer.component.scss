@@ -1,9 +1,9 @@
 @import "../../../../styles/_variables.scss";
 
-.footer-item {
+.footer-container {
+    justify-content: space-between;
     background-color: #719673; 
     color: white;
-    margin-top: auto;
 
     .footer-content-container {
         display: flex;
@@ -22,7 +22,7 @@
 
         .footer-sections {
             display: flex;
-            justify-content: between;
+            justify-content: space-between;
 
             .footer-section {
               display: flex;

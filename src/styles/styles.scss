@@ -3,35 +3,35 @@
 
 @font-face {
     font-family: 'Noto Sans JP';
-    src: url('/assets/fonts/NotoSansJP-Light.ttf') format('truetype');
+    src: url('/assets/fonts/NotoSansJP-Light.woff2') format('truetype');
     font-weight: 200;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Noto Sans JP';
-    src: url('/assets/fonts/NotoSansJP-Regular.ttf') format('truetype');
+    src: url('/assets/fonts/NotoSansJP-Regular.woff2') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Noto Sans JP';
-    src: url('/assets/fonts/NotoSansJP-Medium.ttf') format('truetype');
+    src: url('/assets/fonts/NotoSansJP-Medium.woff2') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Noto Sans JP';
-    src: url('/assets/fonts/NotoSansJP-SemiBold.ttf') format('truetype');
+    src: url('/assets/fonts/NotoSansJP-SemiBold.woff2') format('truetype');
     font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Noto Sans JP';
-    src: url('/assets/fonts/NotoSansJP-Bold.ttf') format('truetype');
+    src: url('/assets/fonts/NotoSansJP-Bold.woff2') format('truetype');
     font-weight: 700;
     font-style: normal;
 }
@@ -41,19 +41,25 @@
     max-width: 100% !important;
     display: flex;
     flex-direction: column;
-    min-height: 100vh
 }
 
-.app-container {
+#app-container {
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 100vh !important;
-    transition: opacity 0.3s ease-in-out;
+    min-height:100vh !important;
+    height: auto !important;
+    overflow: hidden;
+}
 
-    &.loading {
-        opacity: 0.5; 
-    }
+#page {
+    flex: 1;
+}
+
+footer {
+    position: sticky !important;
+    bottom:0 !important;
+    width:100%;
 }
 
 html, body {
@@ -155,31 +161,6 @@ a {
     opacity: 0;
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    transition: opacity 0.5s ease-in-out;
-}
-
-footer {
-    transition: visibility 0.5s, opacity 0.5s ease-in-out;
-}
-  
-.router-link-active footer {
-    visibility: hidden;
-    opacity: 0;
-}
-  
-
-.loading footer {
-    opacity: 0;
-}
-
-.router-link-active footer {
-    transform: translateY(100%);
-}
-
 .btn-reserve-options {
     background-color: white; 
     color: map-get($theme-colors, "green"); 
@@ -255,3 +236,10 @@ footer {
         font-size: $value;
     }
 }
+
+// .form-floating > ~ label {
+//     // Neutraliser cette règle
+// }
+  
+  
+  

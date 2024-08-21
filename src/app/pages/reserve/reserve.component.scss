@@ -3,20 +3,6 @@
 .reserve-container {
     padding-left: 10rem;
     padding-right: 10rem;
-    @media (min-width: 1909px) {
-        padding-left: 10rem;
-        padding-right: 10rem;
-    }
-  
-    @media (max-width: 1908px) {
-        padding-left: 10rem;
-        padding-right: 10rem;
-    }
-
-    @media (max-width: 1440px) {
-        padding-left: 10rem;
-        padding-right: 10rem;
-    }
 
     @media (max-width: 1024px) {
         padding-left: 5rem;
@@ -32,113 +18,95 @@
         padding-left: 1rem;
         padding-right: 1rem;
     }
-  
-    @media (max-width: 375px) {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-    
-    .btn-reserve {
-        background-color: white; 
-        color: map-get($theme-colors, "green"); 
-        font-size: map-get($font-size, "20") !important;
-        border: 2px solid map-get($theme-colors, "green"); 
-        border-radius: 20px; 
-        padding: 10px 30px; 
-        cursor: pointer; 
+
+    .btn-reserve, .btn-reserve-options, .btn-primary, .btn-outline-primary, .btn-outline-reserve {
         transition: background-color 0.3s, color 0.3s;
+        border-radius: 20px;
+        padding: 10px 30px;
+        cursor: pointer;
+    }
+
+    .btn-reserve, .btn-reserve-options {
+        background-color: white;
+        color: map-get($theme-colors, "green");
+        border: 2px solid map-get($theme-colors, "green");
         
         &:hover {
-          background-color: map-get($theme-colors, "green"); 
-          color: white; 
+            background-color: map-get($theme-colors, "green");
+            color: white;
         }
     }
 
     .btn-reserve-options {
-        background-color: white; 
-        color: map-get($theme-colors, "green"); 
-        border: 2px solid map-get($theme-colors, "green-light"); 
-        border-radius: 35px; 
-        padding: 10px 30px; 
-        cursor: pointer; 
-        transition: background-color 0.3s, color 0.3s; 
-        
-        &:hover {
-          background-color: map-get($theme-colors, "green"); 
-          color: white; 
-        }
+        border-color: map-get($theme-colors, "green-light");
+    }
+
+    .line-reserve {
+        background-color: map-get($theme-colors, "green");
+        height: 1px;
     }
 
     .btn-primary {
         background-color: map-get($theme-colors, "green");
         color: white;
-        border: 2px solid map-get($theme-colors, "green");
     }
     
     .btn-outline-primary {
         background-color: white;
         color: map-get($theme-colors, "green");
-        border: 2px solid map-get($theme-colors, "green");
     }
-    
     
     .btn-outline-reserve {
-        border-color: map-get($theme-colors, "green");
+        background-color: transparent;
         color: map-get($theme-colors, "green");
+        
+        &:hover {
+            background-color: map-get($theme-colors, "green");
+            color: white;
+        }
     }
-    
-    .btn-outline-reserve:hover {
-        background-color: map-get($theme-colors, "green");
-        color: #fff;
-    }
-      
+
     .img-fluid {
         max-width: 100%;
         height: auto;
     }
 
-    .details .row {
-        align-items: center; 
+    .details .row, .options {
+        align-items: center;
     }
 
-    .reserve-content {
-        .line-reserve {
-            border: map-get($border-size, "1") solid map-get($theme-colors, "green-light");
+    .options {
+        flex-direction: row;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+        }
+
+        .btn-reserve-options {
+            margin-bottom: 15px;
             width: 100%;
         }
     }
 
-    .position-relative {
-        position: relative;
-    }
-    
-    .badge-forfait {
-        top: 8px;
-        background-color: #FE6D73;
-        color: white;
-        border-radius: 20px;
-        font-size: 12px;
-        align-items: center;
-        justify-content: center;
-        transform: translate(20%, -30%);
-    }
-
-    @media (max-width: 768px) {  
-        .options {
-            flex-direction: column;  
-            align-items: center;    
-        }
-        
-        .btn-reserve-options {
-            margin-bottom: 15px;  
-            width: 100%; 
-        }
-
-        .img-container {
+    .img-container {
+        @media (max-width: 768px) {  
             .img-fluid {
                 display: none;
             }
         }
-    }  
-}
+    }
+    
+    .position-relative {
+        position: relative;
+    }
 
+    .badge-forfait {
+        background-color: #FE6D73;
+        color: white;
+        font-size: 12px;
+        border-radius: 20px;
+        position: absolute;
+        top: 8px;
+        transform: translate(20%, -30%);
+    }
+}

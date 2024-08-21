@@ -6,6 +6,7 @@ import { WordpressService } from '../../services/wordpress.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-reserve',
@@ -23,7 +24,7 @@ export class ReserveComponent implements OnInit {
   @ViewChild('reservationModal') reservationModalTemplate!: TemplateRef<any>;
   @ViewChild('chooseEmailClientModal') chooseEmailClientModalTemplate!: TemplateRef<any>;
 
-  constructor(private wpService: WordpressService, private modalService: NgbModal, private ref: ChangeDetectorRef) {
+  constructor(private wpService: WordpressService, private modalService: NgbModal, private ref: ChangeDetectorRef, private sanitizer: DomSanitizer) {
     this.reserveData$ = this.wpService.getReservation().pipe(
       catchError(error => {
         console.error('Error retrieving reserve data:', error);
@@ -41,16 +42,18 @@ export class ReserveComponent implements OnInit {
     this.activeSection = section;
   }
 
-  setSessionAndOpenModal(title: string, content: string, modal: string) {
+  setSessionAndOpenModal(title: string, content: string, modal: TemplateRef<any> | string) {
     this.setSelectedSession(title, content);
-    if (modal === 'email') {
-      this.openModal(this.chooseEmailClientModalTemplate);
-    } else if (modal === 'call') {
-      window.location.href = 'tel:+33681002005';
+    if (typeof modal === 'string') {
+      if (modal === 'email') {
+        this.openModal(this.chooseEmailClientModalTemplate);
+      } else if (modal === 'call') {
+        window.location.href = 'tel:+33681002005';
+      }
     } else {
-      this.openModal(this.reservationModalTemplate);
+      this.openModal(modal);
     }
-  }
+  }  
 
   openModal(templateRef: TemplateRef<any>) {
     this.modalService.open(templateRef, { backdrop: true });
@@ -95,5 +98,9 @@ export class ReserveComponent implements OnInit {
 
   get mailToLink(): string {
     return this.prepareMailToLink().fullLink;
+  }
+
+  getSafeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 }

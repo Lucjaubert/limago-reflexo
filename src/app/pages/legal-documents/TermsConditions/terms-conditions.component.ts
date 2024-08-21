@@ -5,6 +5,7 @@ import { Observable, catchError, of } from 'rxjs';
 import { WordpressService } from '../../../services/wordpress.service';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { TermsData } from '../../../models/terms-data.model';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 @Component({
   selector: 'app-terms-conditions',
   templateUrl: './terms-conditions.component.html',
@@ -18,6 +19,7 @@ export class TermsConditionsComponent implements OnInit {
 
   constructor(
     private wpService: WordpressService, 
+    private sanitizer: DomSanitizer
   ) { 
     this.termsData$ = this.wpService.getTermsConditions().pipe(
       catchError(error => {
@@ -28,6 +30,10 @@ export class TermsConditionsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  getSafeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 
 }
