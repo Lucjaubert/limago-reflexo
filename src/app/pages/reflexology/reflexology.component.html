@@ -2,18 +2,18 @@
   <ng-container *ngFor="let reflexologyData of reflexologyDataArray">
     <div class="row">
       <div class="col-md-5 px-3 px-md-0 mb-sm-10 mb-5 d-flex justify-content-center align-items-center">
-        <img [src]="reflexologyData.acf_fields.image" alt="Reflexology" class="img-fluid">
+        <img [src]="reflexologyData.acf_fields.image" alt="Pieds nus" loading="lazy" class="img-fluid">
       </div>
       <div class="col-md-7 px-md-10 d-flex flex-column align-items-start">
         <h1 class="display-5 mb-5 mb-md-10">{{ reflexologyData.acf_fields.title }}</h1>
-        <p class="lead mb-7" [innerHTML]="reflexologyData.acf_fields.content1"></p>
+        <p class="lead mb-7" [innerHTML]="getSafeHtml(reflexologyData.acf_fields.content1)"></p>
         <div class="btn-container d-flex justify-content-center">
-          <button class="btn btn-reserve" (click)="navigateToReserve()">Réserver un soin</button>
+          <button class="btn btn-reserve" (click)="navigateToReservation()">Réserver un soin</button>
         </div>
       </div>
       <div class="operation-content col-md-12 mt-3">
-        <p class="lead my-10" [innerHTML]="reflexologyData.acf_fields.content2"></p>
-        <p class="custom-border mt-7" [innerHTML]="reflexologyData.acf_fields.operation"></p>
+        <p class="lead my-10" [innerHTML]="getSafeHtml(reflexologyData.acf_fields.content2)"></p>
+        <p class="custom-border mt-7" [innerHTML]="getSafeHtml(reflexologyData.acf_fields.operation)"></p>
       </div>      
     </div>      
   </ng-container>

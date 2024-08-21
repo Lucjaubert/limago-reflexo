@@ -1,7 +1,7 @@
 <div class="privacy-container mt-15 mb-5" *ngIf="privacyData$ | async as privacyDataArray">
   <section *ngFor="let privacyData of privacyDataArray">
       <h1 class="mb-5">{{ privacyData.acf_fields.title }}</h1>
-      <div class="px-0 py-7" *ngIf="privacyData?.acf_fields" [innerHTML]="privacyData.acf_fields.content"></div>    
+      <div class="px-0 py-7" *ngIf="privacyData?.acf_fields" [innerHTML]="getSafeHtml(privacyData.acf_fields.content)"></div>    
   </section>
 </div>
 

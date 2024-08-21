@@ -5,6 +5,7 @@ import { WhoAmIData } from '../../models/whoami-data.model';
 import { WordpressService } from '../../services/wordpress.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-who-am-i',
@@ -16,7 +17,7 @@ import { RouterModule } from '@angular/router';
 export class WhoAmIComponent implements OnInit {
   whoAmIData$: Observable<WhoAmIData[] | null>;
 
-  constructor(private wpService: WordpressService) {
+  constructor(private wpService: WordpressService, private sanitizer: DomSanitizer) {
     this.whoAmIData$ = this.wpService.getWhoAmI().pipe(
       catchError(error => {
         console.error('Error retrieving whoAmI data:', error);
@@ -26,4 +27,8 @@ export class WhoAmIComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  getSafeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
+  }
 }

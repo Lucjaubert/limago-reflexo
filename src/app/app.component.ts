@@ -15,13 +15,19 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     HeaderComponent,
     FooterComponent
   ],
+  
 })
 export class AppComponent {
+  title = 'limago-reflexo';
   showHeader = true;
+  isPageFullyLoaded = false;
 
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
+        setTimeout(() => {
+          this.isPageFullyLoaded = true;
+        }, 1000);
         this.showHeader = this.router.url !== '/';
       }
     });

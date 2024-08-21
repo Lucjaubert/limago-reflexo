@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { WordpressService } from '../../services/wordpress.service';
 import { HomepageData } from '../../models/homepage-data.model';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-homepage',
@@ -18,7 +19,8 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     private wpService: WordpressService,
-    private router: Router  
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {
     this.homepageData$ = this.wpService.getHomepage().pipe(
       catchError(error => {
@@ -30,7 +32,11 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  navigateToReserve(): void {
-    this.router.navigate(['/reserve']); 
+  navigateToReservation(): void {
+    this.router.navigate(['/reservation']); 
+  }
+
+  getSafeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 }

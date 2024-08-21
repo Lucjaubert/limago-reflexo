@@ -10,16 +10,16 @@
         </div>
         <div class="col-lg-12 mb-5">
           <div class="options d-flex justify-content-center mb-4">
-            <button class="btn btn-reserve-options mx-7"
+            <button class="btn btn-reserve-options mx-7 py-5"
                     [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar', 'btn-outline-primary': activeSection !== 'reflexology_plantar'}"
                     (click)="setActiveSection('reflexology_plantar')">Réflexologie plantaire
             </button>
-            <button class="btn btn-reserve-options mx-7 d-flex justify-content-center align-items-center"
+            <button class="btn btn-reserve-options mx-7 py-5 d-flex justify-content-center align-items-center"
                     [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar_package', 'btn-outline-primary': activeSection !== 'reflexology_plantar_package'}"
                     (click)="setActiveSection('reflexology_plantar_package')">Réflexologie plantaire 4 séances
-                    <span class="badge badge-forfait px-6">Forfait</span>
+                    <!--<span class="badge badge-forfait px-6">Forfait</span>-->
             </button>
-            <button class="btn btn-reserve-options mx-7"
+            <button class="btn btn-reserve-options mx-7 py-5"
                     [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar_palmar', 'btn-outline-primary': activeSection !== 'reflexology_plantar_palmar'}"
                     (click)="setActiveSection('reflexology_plantar_palmar')">Réflexologie plantaire et palmaire
             </button>
@@ -35,20 +35,21 @@
               <div *ngIf="activeSection === 'reflexology_plantar'" class="service-description pl-15">
                 <h4>{{ data.acf_fields.reflexology_plantar_title }}</h4>
                 <div class="line-reserve my-7"></div>
-                <p [innerHTML]="data.acf_fields.reflexology_plantar_content"></p>
+                <p [innerHTML]="getSafeHtml(data.acf_fields.reflexology_plantar_content)"></p>
                 <button class="btn btn-reserve mt-8" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_title, data.acf_fields.reflexology_plantar_content, reservationModal)">Réserver</button>
               </div>
               <div *ngIf="activeSection === 'reflexology_plantar_package'" class="service-description pl-15">
                 <h4>{{ data.acf_fields.reflexology_plantar_package_title }}</h4>
                 <div class="line-reserve my-7"></div>
-                <p [innerHTML]="data.acf_fields.reflexology_plantar_package_content"></p>
+                <p [innerHTML]="getSafeHtml(data.acf_fields.reflexology_plantar_package_content)"></p>
                 <button class="btn btn-reserve mt-8" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_package_title, data.acf_fields.reflexology_plantar_package_content, reservationModal)">Réserver</button>
               </div>
               <div *ngIf="activeSection === 'reflexology_plantar_palmar'" class="service-description pl-15">
                 <h4>{{ data.acf_fields.reflexology_plantar_palmar }}</h4>
                 <div class="line-reserve my-8"></div>
-                <p [innerHTML]="data.acf_fields.reflexology_plantar_palmar_content"></p>
-                <button class="btn btn-reserve mt-5" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_palmar, data.acf_fields.reflexology_plantar_palmar_content, reservationModal)">Réserver</button>
+                <p [innerHTML]="getSafeHtml(data.acf_fields.reflexology_plantar_palmar_content)"></p>
+                <button class="btn btn-reserve mt-8" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_title, data.acf_fields.reflexology_plantar_content, reservationModalTemplate)">Réserver</button>
+
               </div>
             </div>            
           </div>

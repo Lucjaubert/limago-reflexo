@@ -5,6 +5,7 @@ import { ReflexologyData } from '../../models/reflexology-data.model';
 import { WordpressService } from '../../services/wordpress.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-reflexology',
@@ -18,7 +19,8 @@ export class ReflexologyComponent implements OnInit {
 
   constructor(
     private wpService: WordpressService, 
-    private router: Router 
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {
     this.reflexologyData$ = this.wpService.getReflexology().pipe(
       catchError(error => {
@@ -30,7 +32,11 @@ export class ReflexologyComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  navigateToReserve(): void {
-    this.router.navigate(['/reserve']); 
+  navigateToReservation(): void {
+    this.router.navigate(['/reservation']); 
+  }
+
+  getSafeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 }
