@@ -10,32 +10,50 @@ export function app(): express.Express {
   const server = express();
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
   const browserDistFolder = resolve(serverDistFolder, '../browser');
-  const indexHtml = join(serverDistFolder, 'index.server.html');
+  const indexHtml = join(serverDistFolder, '../browser/index.html');
 
   const commonEngine = new CommonEngine();
 
+  // Configuration des vues pour Express
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
-  // Example Express Rest API endpoints
-  // server.get('/api/**', (req, res) => { });
-  // Serve static files from /browser
-  server.get('**', express.static(browserDistFolder, {
-    maxAge: '1y',
-    index: 'index.html',
-  }));
+  // Liste des routes spécifiques pour redirection
+  const routes = [
+    '/accueil',
+    '/mentions-legales',
+    '/conditions-generales-de-vente',
+    '/politique-de-confidentialite',
+    '/prestations',
+    '/qui-suis-je',
+    '/reflexologie'
+  ];
 
-  // All regular routes use the Angular engine
+  // Redirections spécifiques pour les pages importantes
+  routes.forEach(route => {
+    server.get(route, (req, res, next) => {
+      commonEngine
+        .render({
+          bootstrap,
+          documentFilePath: indexHtml,
+          url: req.originalUrl,
+          publicPath: browserDistFolder,
+          providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }],
+        })
+        .then((html) => res.send(html))
+        .catch((err) => next(err));
+    });
+  });
+
+  // Capturer toutes les autres routes pour un rendu SSR standard
   server.get('**', (req, res, next) => {
-    const { protocol, originalUrl, baseUrl, headers } = req;
-
     commonEngine
       .render({
         bootstrap,
         documentFilePath: indexHtml,
-        url: `${protocol}://${headers.host}${originalUrl}`,
+        url: req.originalUrl,
         publicPath: browserDistFolder,
-        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
+        providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }],
       })
       .then((html) => res.send(html))
       .catch((err) => next(err));
@@ -46,11 +64,9 @@ export function app(): express.Express {
 
 function run(): void {
   const port = process.env['PORT'] || 4000;
-
-  // Start up the Node server
   const server = app();
   server.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
+    console.log(`Serveur Node Express en écoute sur http://localhost:${port}`);
   });
 }
 

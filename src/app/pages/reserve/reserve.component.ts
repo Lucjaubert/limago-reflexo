@@ -4,10 +4,10 @@ import { catchError } from 'rxjs/operators';
 import { ReserveData } from '../../models/reserve-data.model';
 import { WordpressService } from '../../services/wordpress.service';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-
+import { Title, Meta } from '@angular/platform-browser';
 @Component({
   selector: 'app-reserve',
   templateUrl: './reserve.component.html',
@@ -24,7 +24,15 @@ export class ReserveComponent implements OnInit {
   @ViewChild('reservationModal') reservationModalTemplate!: TemplateRef<any>;
   @ViewChild('chooseEmailClientModal') chooseEmailClientModalTemplate!: TemplateRef<any>;
 
-  constructor(private wpService: WordpressService, private modalService: NgbModal, private ref: ChangeDetectorRef, private sanitizer: DomSanitizer) {
+  constructor(
+    private wpService: WordpressService, 
+    private modalService: NgbModal, 
+    private ref: ChangeDetectorRef, 
+    private sanitizer: DomSanitizer, 
+    private titleService: Title, 
+    private metaService: Meta,
+    private router: Router
+  ) {
     this.reserveData$ = this.wpService.getReservation().pipe(
       catchError(error => {
         console.error('Error retrieving reserve data:', error);
@@ -35,6 +43,13 @@ export class ReserveComponent implements OnInit {
 
   ngOnInit(): void {
     this.setActiveSection('reflexology_plantar');
+
+    this.titleService.setTitle('Réserver un soin - Limago Reflexo');
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Réservez une séance de réflexologie plantaire ou palmaire avec Magali Jaubert chez Limago Reflexo pour améliorer votre bien-être général.'
+    });
+    this.metaService.updateTag({ name: 'canonical', href: `https://limago-reflexo.fr${this.router.url}` });
   }
 
   setActiveSection(section: string): void {

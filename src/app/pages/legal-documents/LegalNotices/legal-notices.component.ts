@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Observable, catchError, of } from 'rxjs';
 import { WordpressService } from '../../../services/wordpress.service';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { LegalData } from '../../../models/legal-data.model';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-
+import { Title, Meta } from '@angular/platform-browser';
 @Component({
   selector: 'app-legal-notices',
   templateUrl: './legal-notices.component.html',
@@ -20,7 +20,10 @@ export class LegalNoticesComponent implements OnInit {
 
   constructor(
     private wpService: WordpressService, 
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private titleService: Title,
+    private metaService: Meta,
+    private router: Router
   ) { 
     this.legal$ = this.wpService.getLegalNotices().pipe(
       catchError(error => {
@@ -31,6 +34,12 @@ export class LegalNoticesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.titleService.setTitle('Mentions Légales - Limago Reflexo');
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Lisez les mentions légales de Limago Reflexo pour en savoir plus sur nos termes, conditions et la réglementation applicable.'
+    });
+    this.metaService.updateTag({ name: 'canonical', href: `https://limago-reflexo.fr${this.router.url}` });
   }
 
   getSafeHtml(content: string): SafeHtml {

@@ -6,7 +6,7 @@ import { WordpressService } from '../../services/wordpress.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-
+import { Title, Meta } from '@angular/platform-browser';
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
@@ -20,7 +20,9 @@ export class ServicesComponent implements OnInit {
   constructor(
     private wpService: WordpressService,
     private router: Router,
-    private sanitizer: DomSanitizer 
+    private sanitizer: DomSanitizer,
+    private titleService: Title,
+    private metaService: Meta
   ) {
     this.servicesData$ = this.wpService.getServices().pipe(
       catchError(error => {
@@ -30,7 +32,15 @@ export class ServicesComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.titleService.setTitle('Nos Prestations - Limago Reflexo');
+
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Explorez les diverses prestations de réflexologie offertes par Limago Reflexo pour prendre soin de votre santé et bien-être.'
+    });
+    this.metaService.updateTag({ name: 'canonical', href: `https://limago-reflexo.fr${this.router.url}` });
+  }
 
   navigateToReservation(): void {
     this.router.navigate(['/reservation']); 
