@@ -9,8 +9,8 @@ import bootstrap from './src/main.server';
 export function app(): express.Express {
   const server = express();
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
-  const browserDistFolder = resolve(serverDistFolder, '../browser');
-  const indexHtml = join(serverDistFolder, '../browser/index.html');
+  const browserDistFolder = resolve(serverDistFolder, '../');
+  const indexHtml = join(serverDistFolder, '../index.html');
 
   const commonEngine = new CommonEngine();
 
