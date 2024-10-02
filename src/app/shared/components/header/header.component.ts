@@ -20,6 +20,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
+    const mediaQuery = window.matchMedia('(max-width: 768px)'); 
+    this.navbarExpanded = mediaQuery.matches ? true : false;
+
     this.subscription = this.mouseMove.pipe(
       debounceTime(300)  
     ).subscribe(event => {
@@ -52,5 +55,4 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onMouseMove(event: MouseEvent) {
     this.mouseMove.next(event); 
   }
-
 }

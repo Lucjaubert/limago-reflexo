@@ -20,4 +20,10 @@
     width: 35vw; 
     height: auto;
     transition: width 1.5s ease;
+
+    @media (max-width: 768px) {
+      width: 70vw;
+    }
   }
+
+  

@@ -2,8 +2,6 @@
 
 .footer-container {
     justify-content: space-between;
-    background-color: #719673; 
-    color: white;
 
     .footer-content-container {
         display: flex;
@@ -88,13 +86,11 @@
 }
 
 @media (max-width: 1024px) {
-    .footer-item {
-        background-color: #719673; 
-        color: white;
+    .footer-container {
         padding: 20px; 
 
         .footer-content-container {
-            flex-direction: column;
+            flex-direction: column !important;
             align-items: center !important;
             padding-left: 20px;
             padding-right: 20px;
