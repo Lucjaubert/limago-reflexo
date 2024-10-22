@@ -1,19 +1,19 @@
 <div class="container d-flex flex-column justify-content-center px-0">
-  <img src="assets/img/img-background-homepage.png" class="img-background" alt="image de fond papillon" loading="lazy">
+  <img src="assets/img/img-background-homepage.webp" class="img-background" alt="image de fond papillon" loading="eager" width="1920" height="1080">
   <div class="intro-section">
     <h1 class="reflexologist-info text-center image-fade-in pb-3 pb-md-0">
       <div class="line">MAGALI JAUBERT</div>
       <div class="line">RÉFLEXOLOGUE PLANTAIRE ET PALMAIRE</div>
       <div class="line">- CASTILLONNES -</div>
     </h1>
-    <h2 class="slogan pt-lg-10 image-fade-in-2">
+    <h2 class="slogan pt-5 image-fade-in-2 d-md-block d-none">
       NOS PIEDS NOUS ANCRENT À L’ÉNERGIE DE LA TERRE
     </h2>
+    <button class="btn btn-reserve" (click)="navigateToReservation()">RÉSERVER UN SOIN</button>
   </div>
-  <button class="btn btn-reserve mb-lg-49" (click)="navigateToReservation()">RÉSERVER UN SOIN</button>
   <ng-container *ngIf="homepageData$ | async as homepageData">
     <div *ngFor="let homepageData of homepageData">
-      <div class="info-section d-flex flex-column flex-md-row justify-content-between align-items-center py-md-9 py-sm-12 py-12 pt-10 px-lg-14">
+      <div class="info-section d-flex flex-column flex-md-row justify-content-between align-items-center pb-md-11 pb-sm-12 pb-10 px-lg-14">
         <div class="content-wrapper w-100 px-lg-10">
           <h2 class="info-title col-12">{{ homepageData.acf_fields.title1 }}</h2>
           <h2 class="info-title col-12">{{ homepageData.acf_fields.title2 }}</h2>
@@ -28,7 +28,7 @@
       <div class="row background-triptych">
         <div class="col-md-4 py-md-9 pl-md-15 d-flex justify-content-center">
           <div class="card">
-            <img src="assets/img/mag.png" class="card-img-top" alt="Image Magali reflexologue" loading="lazy">
+            <img src="assets/img/mag.webp" class="card-img-top" alt="Image Magali reflexologue" loading="lazy">
             <div class="card-body pb-md-8" routerLink="/qui-suis-je" routerLinkActive="active">
               <div class="card-text-container d-flex justify-content-center align-items-center mb-7">
                 <h5 class="card-title py-md-5 mb-md-2">Qui suis-je?</h5>
@@ -38,7 +38,7 @@
         </div>
         <div class="col-md-4 py-md-9 d-flex justify-content-center">
           <div class="card">
-            <img src="assets/img/office.png" class="card-img-top" alt="intérieur cabinet" loading="lazy">
+            <img src="assets/img/office.webp" class="card-img-top" alt="intérieur cabinet" loading="lazy">
             <div class="card-body pt-md-5 pb-8" routerLink="/reflexologie" routerLinkActive="active">
               <div class="card-text-container d-flex justify-content-center align-items-center px-4 mb-7">
                 <h5 class="card-title py-md-3 text-center">Qu'est-ce que la réflexologie ?</h5>
@@ -48,7 +48,7 @@
         </div>
         <div class="col-md-4 py-md-9 pb-sm-6 pr-md-15 d-flex justify-content-center">
           <div class="card">
-            <img src="assets/img/hands.png" class="card-img-top" alt="image de mains qui masse pieds bébé" loading="lazy">
+            <img src="assets/img/hands.webp" class="card-img-top" alt="image de mains qui masse pieds bébé" loading="lazy">
             <div class="card-body pt-md-8 pb-8" routerLink="/prestations" routerLinkActive="active">
               <div class="card-text-container d-flex justify-content-center align-items-center mb-7">
                 <h5 class="card-title py-md-5 mb-md-2">Prestations</h5>
@@ -60,8 +60,8 @@
     </div>
   </div>
   <ng-container *ngIf="homepageData$ | async as homepageData">
-    <div *ngFor="let homepageData of homepageData">
-      <div class="informations-section d-flex flex-column flex-md-row justify-content-between px-xl-18 px-md-10 pt-md-13 pb-md-8">
+    <div *ngFor="let homepageData of homepageData" class="col-12">
+      <div class="informations-section d-flex flex-column flex-md-row justify-content-between justify-content-center text-start px-xl-18 px-md-10 px-12 pt-md-13 pb-md-8">
         <div class="flex-fill-left py-md-0 mx-md-0 px-xl-10 px-md-8 px-sm-5 py-8 mx-9">
           <h4 class="info-title pb-md-5">{{ homepageData.acf_fields.schedulesTitle }}</h4>
           <p class="info-content" [innerHTML]="getSafeHtml(homepageData.acf_fields.schedulesContent)"></p>

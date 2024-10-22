@@ -47,30 +47,29 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height:100vh !important;
-    height: auto !important;
-    overflow: hidden;
+    min-height: 110vh; 
 }
 
 #page {
     flex: 1;
+    min-height: calc(110vh - 100px); 
 }
 
-footer {
-    position: sticky !important;
-    bottom:0 !important;
-    width:100%;
+app-footer {
+    width: 100%;
+    height: 100px;
+    margin-top: auto; 
 }
 
 html, body {
+    height: 100%;
     font-family: 'Noto Sans JP', sans-serif;
     color: map-get($theme-colors, "green");
     background-color: map-get($theme-colors, "light-grey");
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
   
 h1 {
@@ -85,11 +84,11 @@ h1 {
     }
 
     @media (max-width: 768px) {
-        font-size: map-get($font-size, "40");
+        font-size: map-get($font-size, "30");
     }
 
-    @media (max-width: 375px) {
-        font-size: map-get($font-size, "30");
+    @media (max-width: 425px) {
+        font-size: map-get($font-size, "20");
     }
 }
   
@@ -108,7 +107,7 @@ h2 {
         font-size: map-get($font-size, "40");
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 425px) {
         font-size: map-get($font-size, "30");
     }
 }
@@ -117,31 +116,54 @@ h3 {
     color: map-get($theme-colors, "green") !important;
     font-weight: 500 !important;
     font-size: map-get($font-size, "60");
+
+    @media (max-width: 1024px) {
+        font-size: map-get($font-size, "40");
+    }
+
+    @media (max-width: 768px) {
+        font-size: map-get($font-size, "30");
+    }
+
+    @media (max-width: 425px) {
+        font-size: map-get($font-size, "20");
+    }
 }
   
 h4 {
     color: map-get($theme-colors, "green") !important;
     font-weight: 500;
     font-size: map-get($font-size, "50");
+
+    @media (max-width: 1024px) {
+        font-size: map-get($font-size, "40");
+    }
+
+    @media (max-width: 768px) {
+        font-size: map-get($font-size, "30");
+    }
+
+    @media (max-width: 425px) {
+        font-size: map-get($font-size, "20");
+    }
 }
   
+
 h5 {
     color: map-get($theme-colors, "green") !important;
     font-weight: 400;
     font-size: map-get($font-size, "30");
-}
 
-h2, h3, h4, h5, p, a {
     @media (max-width: 1024px) {
-        font-size: reduce(map-get($font-size, "current-font-size"), 10%);
+        font-size: map-get($font-size, "30") !important;
     }
 
     @media (max-width: 768px) {
-        font-size: reduce(map-get($font-size, "current-font-size"), 20%);
+        font-size: map-get($font-size, "20")!important;
     }
 
     @media (max-width: 425px) {
-        font-size: reduce(map-get($font-size, "current-font-size"), 30%);
+        font-size: map-get($font-size, "20") !important;
     }
 }
   
@@ -149,6 +171,18 @@ p {
     font-size: map-get($font-size, "20");
     font-weight: 400;
     color: map-get($theme-colors, "green");
+
+    @media (max-width: 1024px) {
+        p, ul, li, a { font-size: calc(map-get($font-size, "20") * 0.9); }
+    }
+    
+    @media (max-width: 768px) {
+        p, ul, li, a  { font-size: calc(map-get($font-size, "10") * 0.8); }
+    }
+    
+    @media (max-width: 425px) {
+        p, ul, li, a  { font-size: calc(map-get($font-size, "10") * 0.7); }
+    }
 }
 
 a {
@@ -237,9 +271,4 @@ a {
     }
 }
 
-// .form-floating > ~ label {
-//     // Neutraliser cette règle
-// }
-  
-  
   

@@ -6,6 +6,7 @@ import { Router, RouterModule } from '@angular/router';
 import { WordpressService } from '../../services/wordpress.service';
 import { HomepageData } from '../../models/homepage-data.model';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-homepage',
@@ -20,7 +21,10 @@ export class HomepageComponent implements OnInit {
   constructor(
     private wpService: WordpressService,
     private router: Router,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private titleService: Title,
+    private metaService: Meta
+
   ) {
     this.homepageData$ = this.wpService.getHomepage().pipe(
       catchError(error => {
@@ -30,7 +34,14 @@ export class HomepageComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.titleService.setTitle('Limago reflexo - Magali Jaubert, réflexologie plantaire et palmaire');
+
+    this.metaService.updateTag({ name: 'description', content: 'Limago reflexo offre des services de reflexologie plantaire et palmaire dans la région du Lot-et-Garonne. Découvrez nos services pour améliorer votre bien-être quotidien.' });
+
+    this.metaService.updateTag({ name: 'canonical', href: `https://limago-reflexo.fr${this.router.url}` });
+  }
+  
 
   navigateToReservation(): void {
     this.router.navigate(['/reservation']); 
