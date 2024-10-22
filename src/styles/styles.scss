@@ -39,6 +39,7 @@
 .container {
     width: 100% !important;
     max-width: 100% !important;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
 }
@@ -47,12 +48,13 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 110vh; 
+    min-height: 100vh; 
+    overflow: hidden;
 }
 
 #page {
     flex: 1;
-    min-height: calc(110vh - 100px); 
+    min-height: calc(100vh - 100px); 
 }
 
 app-footer {
@@ -61,15 +63,21 @@ app-footer {
     margin-top: auto; 
 }
 
+
 html, body {
     height: 100%;
+    width: 100%;
     font-family: 'Noto Sans JP', sans-serif;
     color: map-get($theme-colors, "green");
     background-color: map-get($theme-colors, "light-grey");
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
   
 h1 {

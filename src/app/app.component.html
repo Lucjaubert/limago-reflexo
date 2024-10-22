@@ -5,7 +5,9 @@
     <div id='page'>
       <router-outlet></router-outlet>
     </div>
-    <app-footer *ngIf="isPageFullyLoaded"></app-footer>
+    <ng-container *ngIf="showFooter && isPageFullyLoaded">
+      <app-footer></app-footer>
+    </ng-container>
 </div>
 
     

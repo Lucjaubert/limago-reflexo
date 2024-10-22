@@ -21,14 +21,18 @@ export class AppComponent {
   title = 'limago-reflexo';
   showHeader = true;
   isPageFullyLoaded = false;
+  showFooter = true;
 
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
+        this.showFooter = this.router.url !== '/'; 
+        
+        this.showHeader = this.router.url !== '/';
+        
         setTimeout(() => {
           this.isPageFullyLoaded = true;
         }, 1000);
-        this.showHeader = this.router.url !== '/';
       }
     });
   }
