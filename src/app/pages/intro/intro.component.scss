@@ -1,29 +1,36 @@
 @import "../../../styles/_variables.scss";
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Empêche le débordement horizontal */
+}
+
 .intro-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100vw;       /* Assure que la largeur est égale à la taille de l'écran */
+  overflow: hidden;   /* Empêche tout débordement non souhaité */
+  box-sizing: border-box;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  .image-fade-in {
-    animation: fadeIn 2.5s ease-out forwards;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-  .logo-intro {
-    width: 35vw; 
-    height: auto;
-    transition: width 1.5s ease;
+.image-fade-in {
+  animation: fadeIn 2.5s ease-out forwards;
+}
 
-    @media (max-width: 768px) {
-      width: 70vw;
-    }
+.logo-intro {
+  width: 35vw;
+  height: auto;
+  transition: width 1.5s ease;
+
+  @media (max-width: 768px) {
+    width: 70vw;
   }
-
-  
+}

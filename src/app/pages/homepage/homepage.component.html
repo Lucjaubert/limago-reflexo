@@ -13,13 +13,13 @@
   </div>
   <ng-container *ngIf="homepageData">
     <div *ngFor="let homepageData of homepageData">
-      <div class="info-section d-flex flex-column flex-md-row justify-content-between align-items-center pb-md-11 pb-sm-12 pb-10 px-lg-14">
+      <div class="info-section d-flex flex-column flex-md-row justify-content-between align-items-center pb-md-11 pb-sm-12 pb-10 px-lg-17">
         <div class="content-wrapper w-100 px-lg-10">
           <h2 class="info-title col-12">{{ homepageData.acf_fields.title1 }}</h2>
           <h2 class="info-title col-12">{{ homepageData.acf_fields.title2 }}</h2>
           <p class="info-content text-left pt-md-4 pt-1 col-12" [innerHTML]="getSafeHtml(homepageData.acf_fields.content)"></p>
         </div>
-        <img [src]="homepageData.acf_fields.image" class="info-image col-md-auto mt-xl-12 mt-lg-14 mt-md-0" alt="Image pieds" loading="lazy">
+        <img [src]="homepageData.acf_fields.image" class="info-image col-md-auto mt-xl-12 mt-lg-14 mt-md-0 px-lg-7" alt="Image pieds" loading="lazy">
       </div>
     </div>
   </ng-container>
