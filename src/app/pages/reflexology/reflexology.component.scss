@@ -9,24 +9,39 @@
 
     @media (max-width: 768px) {
         padding: 0 3rem;
+        display: flex;
+        flex-direction: column;
+
+        .content-container {
+            order: 1; // le contenu vient en premier
+        }
+
+        .image-container {
+            order: 2; 
+            margin-top: 3rem;
+        }
+
+        .operation-content {
+            order: 3; // operation-content vient en dernier sur les petits écrans
+        }
     }
 
     @media (max-width: 426px) {
         padding: 0 1rem;
     }
-   
+
     .operation-content {
         .custom-border {
             border: map-get($border-size, "1") solid map-get($theme-colors, "green");
-            padding: 3rem; 
+            padding: 3rem;
         }
     }
 
     .btn-container {
         display: flex;
-        justify-content: center; 
-        align-items: center;   
-        width: 100%;  
+        justify-content: center;
+        align-items: center;
+        width: 100%;
 
         .btn-reserve {
             display: flex;
@@ -44,8 +59,8 @@
             height: 130px;
 
             &:hover {
-                background-color: map-get($theme-colors, "green"); 
-                color: white; 
+                background-color: map-get($theme-colors, "green");
+                color: white;
             }
         }
     }

@@ -1,10 +1,10 @@
 <div class="container services-container mt-lg-15 mb-lg-5 mt-10 mb-4" *ngIf="servicesData$ | async as servicesDataArray">
   <ng-container *ngFor="let servicesData of servicesDataArray">
     <div class="row">
-      <div class="col-md-5 mt-md-14 px-3 px-md-0 mb-sm-10 mb-5 d-flex justify-content-center">
+      <div class="col-md-5 mt-md-14 px-3 px-md-0 mb-sm-10 mb-5 d-flex justify-content-center img-content">
         <img [src]="servicesData.acf_fields.image" alt="intérieur cabinet" loading="lazy" class="img-fluid">
       </div>
-      <div class="col-md-7 px-md-10 d-flex flex-column align-items-start justify-content-center">
+      <div class="col-md-7 px-md-10 d-flex flex-column align-items-start justify-content-center content-section">
         <h1 class="display-5 mb-5 mb-md-10 mr-13">{{ servicesData.acf_fields.title }}</h1>
         <p class="lead mb-7" [innerHTML]="getSafeHtml(servicesData.acf_fields.content1)"></p>
         <div class="btn-container d-flex justify-content-center">

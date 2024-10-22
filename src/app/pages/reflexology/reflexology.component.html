@@ -1,10 +1,10 @@
 <div class="reflexology-container mt-lg-15 mb-lg-5 mt-10 mb-4" *ngIf="reflexologyData$ | async as reflexologyDataArray">
   <ng-container *ngFor="let reflexologyData of reflexologyDataArray">
     <div class="row">
-      <div class="col-md-5 px-3 px-md-0 mb-sm-10 mb-5 d-flex justify-content-center align-items-center">
+      <div class="col-md-5 mt-md-15 px-3 px-md-0 mb-sm-10 mb-5 d-flex justify-content-center align-items-center image-container">
         <img [src]="reflexologyData.acf_fields.image" alt="Pieds nus" loading="lazy" class="img-fluid">
       </div>
-      <div class="col-md-7 px-md-10 d-flex flex-column align-items-start">
+      <div class="col-md-7 px-md-10 d-flex flex-column align-items-start content-container">
         <h1 class="display-5 mb-5 mb-md-10">{{ reflexologyData.acf_fields.title }}</h1>
         <p class="lead mb-7" [innerHTML]="getSafeHtml(reflexologyData.acf_fields.content1)"></p>
         <div class="btn-container d-flex justify-content-center">
@@ -14,7 +14,7 @@
       <div class="operation-content col-md-12 mt-3">
         <p class="lead my-10" [innerHTML]="getSafeHtml(reflexologyData.acf_fields.content2)"></p>
         <p class="custom-border mt-7" [innerHTML]="getSafeHtml(reflexologyData.acf_fields.operation)"></p>
-      </div>      
-    </div>      
+      </div>
+    </div>
   </ng-container>
 </div>
