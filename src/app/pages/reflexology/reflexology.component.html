@@ -1,5 +1,5 @@
-<div class="reflexology-container mt-lg-15 mb-lg-5 mt-10 mb-4" *ngIf="reflexologyData$ | async as reflexologyDataArray">
-  <ng-container *ngFor="let reflexologyData of reflexologyDataArray">
+<div class="reflexology-container mt-lg-15 mb-lg-5 mt-10 mb-4" *ngIf="reflexologyData">
+  <ng-container *ngFor="let reflexologyData of reflexologyData">
     <div class="row">
       <div class="col-md-5 mt-md-15 px-3 px-md-0 mb-sm-10 mb-5 d-flex justify-content-center align-items-center image-container">
         <img [src]="reflexologyData.acf_fields.image" alt="Pieds nus" loading="lazy" class="img-fluid">

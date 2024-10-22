@@ -26,6 +26,7 @@
     "@ng-bootstrap/ng-bootstrap": "^17.0.0",
     "bootstrap": "^5.3.3",
     "express": "^4.18.2",
+    "gsap": "^3.12.5",
     "ngx-bootstrap": "^18.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

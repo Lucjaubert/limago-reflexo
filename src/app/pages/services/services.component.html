@@ -1,16 +1,16 @@
-<div class="container services-container mt-lg-15 mb-lg-5 mt-10 mb-4" *ngIf="servicesData$ | async as servicesDataArray">
-  <ng-container *ngFor="let servicesData of servicesDataArray">
+<div class="container services-container mt-lg-15 mb-lg-5 mt-10 mb-4" *ngIf="servicesData">
+  <ng-container *ngFor="let servicesDataItem of servicesData">
     <div class="row">
-      <div class="col-md-5 mt-md-14 px-3 px-md-0 mb-sm-10 mb-5 d-flex justify-content-center img-content">
-        <img [src]="servicesData.acf_fields.image" alt="intérieur cabinet" loading="lazy" class="img-fluid">
+      <div class="col-md-5 mt-md-14 px-3 px-md-0 mb-sm-10 mb-5 d-flex justify-content-center img-content image-container">
+        <img [src]="servicesDataItem.acf_fields.image" alt="intérieur cabinet" loading="lazy" class="img-fluid">
       </div>
-      <div class="col-md-7 px-md-10 d-flex flex-column align-items-start justify-content-center content-section">
-        <h1 class="display-5 mb-5 mb-md-10 mr-13">{{ servicesData.acf_fields.title }}</h1>
-        <p class="lead mb-7" [innerHTML]="getSafeHtml(servicesData.acf_fields.content1)"></p>
+      <div class="col-md-7 px-md-10 d-flex flex-column align-items-start justify-content-center content-section content-container">
+        <h1 class="display-5 mb-5 mb-md-10 mr-13">{{ servicesDataItem.acf_fields.title }}</h1>
+        <p class="lead mb-7" [innerHTML]="getSafeHtml(servicesDataItem.acf_fields.content1)"></p>
         <div class="btn-container d-flex justify-content-center">
             <button class="btn btn-reserve" (click)="navigateToReservation()">Réserver un soin</button>
         </div>
-        <p class="lead my-10" [innerHTML]="getSafeHtml(servicesData.acf_fields.content2)"></p>
+        <p class="lead my-10" [innerHTML]="getSafeHtml(servicesDataItem.acf_fields.content2)"></p>
       </div>
     </div>      
   </ng-container>
