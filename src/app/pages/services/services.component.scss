@@ -13,11 +13,11 @@
         flex-direction: column;
 
         .content-section {
-            order: 1; // Le contenu (texte et titre) reste en premier
+            order: 1;
         }
 
         .img-content {
-            order: 2; // L'image passe après le titre et le texte
+            order: 2; 
             padding-bottom: 30px;
         }
     }

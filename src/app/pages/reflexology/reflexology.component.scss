@@ -13,7 +13,7 @@
         flex-direction: column;
 
         .content-container {
-            order: 1; // le contenu vient en premier
+            order: 1; 
         }
 
         .image-container {
@@ -22,7 +22,7 @@
         }
 
         .operation-content {
-            order: 3; // operation-content vient en dernier sur les petits écrans
+            order: 3; 
         }
     }
 

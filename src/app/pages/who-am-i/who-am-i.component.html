@@ -1,17 +1,17 @@
-<div class="container whoami-container mt-lg-15 mb-lg-5 mt-10 mb-4" *ngIf="whoAmIData$ | async as whoAmIDataArray">
-  <ng-container *ngFor="let whoAmIData of whoAmIDataArray">
+<div class="container whoami-container mt-lg-15 mb-lg-5 mt-10 mb-4" *ngIf="whoAmIData">
+  <ng-container *ngFor="let whoAmIDataItem of whoAmIData">
     <div class="row">
-      <div class="col-md-5 px-3 px-md-0 img-content mt-md-14">
-        <img [src]="whoAmIData.acf_fields.image" alt="Photo de Magali" loading="lazy" class="img-fluid">
+      <div class="col-md-5 px-3 px-md-0 img-content mt-md-14 image-container">
+        <img [src]="whoAmIDataItem.acf_fields.image" alt="Photo de Magali" loading="lazy" class="img-fluid">
       </div>
-      <div class="col-md-7 who-content px-md-10 d-flex flex-column align-items-start">
-        <h1 class="who-title display-5 mb-5 mb-md-10">{{ whoAmIData.acf_fields.title }}</h1>
-        <p [innerHTML]="getSafeHtml(whoAmIData.acf_fields.content)" class="lead"></p>
+      <div class="col-md-7 who-content px-md-10 d-flex flex-column align-items-start content-container">
+        <h1 class="who-title display-5 mb-5 mb-md-10">{{ whoAmIDataItem.acf_fields.title }}</h1>
+        <p [innerHTML]="getSafeHtml(whoAmIDataItem.acf_fields.content)" class="lead"></p>
       </div>
     </div>
     <div class="degrees-content mt-8">
-      <h2 class="degrees-title pb-5">{{ whoAmIData.acf_fields.degreesTitle }}</h2>
-      <p [innerHTML]="getSafeHtml(whoAmIData.acf_fields.degreesContent)"></p>
+      <h2 class="degrees-title pb-5">{{ whoAmIDataItem.acf_fields.degreesTitle }}</h2>
+      <p [innerHTML]="getSafeHtml(whoAmIDataItem.acf_fields.degreesContent)"></p>
     </div>
   </ng-container>
 </div>
