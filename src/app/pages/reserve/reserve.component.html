@@ -58,11 +58,11 @@
 
 <ng-template #reservationModal let-modal>
   <div class="modal-dialog modal-dialog-centered custom-modal">
-    <div class="modal-content">
+    <div class="modal-content d-flex justify-content-center align-items-center">
       <div class="modal-body text-center"> 
-        <div class="d-flex justify-content-around align-items-center">
-          <a href="tel:+33681002005" class="btn btn-icon my-0">
-            <img src="assets/img/appel.png" alt="Appeler" loading="lazy">
+        <div class="d-flex align-items-center reservation-button">
+          <a href="tel:+33681002005" class="btn btn-icon my-0 d-lg-none">
+            <img src="assets/img/appel.png" alt="Appeler" loading="lazy" class="call-icon">
           </a>
           <a class="btn btn-icon my-0" (click)="openModal(chooseEmailClientModalTemplate)">
             <img src="assets/img/mail.png" alt="Email" loading="lazy">
@@ -82,9 +82,6 @@
         </button>
         <button class="btn mx-3" (click)="openEmailClient('outlook')">
           <img src="assets/img/icons8-outlook-48.png" alt="Outlook" loading="lazy">
-        </button>
-        <button class="btn mx-3" (click)="openEmailClient('default')">
-          <img src="assets/img/icons8-mail-48.png" alt="Client par défaut" loading="lazy">
         </button>
       </div>
     </div>
