@@ -1,5 +1,5 @@
 <div class="container d-flex flex-column justify-content-center px-0">
-  <img src="assets/img/img-background-homepage.webp" class="img-background" alt="image de fond papillon" loading="eager" width="1920" height="1080">
+  <img src="assets/img/img-background-homepage.webp" class="img-background" alt="image de fond papillon" loading="eager">
   <div class="intro-section">
     <h1 class="reflexologist-info text-center image-fade-in pb-3 pb-md-0">
       <div class="line">MAGALI JAUBERT</div>
@@ -13,7 +13,7 @@
   </div>
   <ng-container *ngIf="homepageData">
     <div *ngFor="let homepageData of homepageData">
-      <div class="info-section d-flex flex-column flex-md-row justify-content-between align-items-center pb-md-11 pb-sm-12 pb-10 px-lg-17">
+      <div class="info-section d-flex flex-column flex-md-row justify-content-between align-items-center pb-md-11 pb-sm-12 pb-10 px-lg-12">
         <div class="content-wrapper w-100 px-lg-10">
           <h2 class="info-title col-12">{{ homepageData.acf_fields.title1 }}</h2>
           <h2 class="info-title col-12">{{ homepageData.acf_fields.title2 }}</h2>

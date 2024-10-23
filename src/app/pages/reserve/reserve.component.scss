@@ -109,4 +109,25 @@
         top: 8px;
         transform: translate(20%, -30%);
     }
+
+    
 }
+
+.reservation-button {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+  
+    @media (max-width: 425px) {
+      justify-content: space-around; 
+    }
+  
+    .call-icon {
+      display: none; 
+      
+      @media (max-width: 425px) {
+        display: block; 
+      }
+    }
+  }
+  

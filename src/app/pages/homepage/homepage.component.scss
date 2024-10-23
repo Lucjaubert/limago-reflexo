@@ -25,30 +25,11 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; 
     max-height: 100vh;
     object-fit: cover;
     z-index: -1;
 
-    @media (max-width: 2560px) {
-      width: 100%;
-      min-height: 100vh;
-    }
 
-    @media (max-width: 1440px) {
-      width: 100%;
-      height: 69vh;
-    }
-
-    @media (max-width: 1024px) {
-      width: 100%;
-      height: 45vh;
-    }
-
-    @media (max-width: 768px) {
-      width: 100%;
-      height: 45vh;
-    }
   }
 
   .intro-section {
@@ -60,15 +41,19 @@
     z-index: 1;
 
     @media (max-width: 2560px) {
-      margin-top: 15%;
+      margin-top: 19%;
+    }
+
+    @media (max-width: 1750px) {
+      margin-top: 19%;
     }
 
     @media (max-width: 1440px) {
-      margin-top: 8%;
+      margin-top: 15%;
     }
 
     @media (max-width: 1024px) {
-      margin-top: 7%;
+      margin-top: 15%;
     }
 
     @media (max-width: 768px) {
@@ -76,7 +61,11 @@
     }
 
     @media (max-width: 425px) {
-      margin-top: 25%;
+      margin-top: 11%;
+    }
+
+    @media (max-width: 375px) {
+      margin-top: 9%;
     }
 
     .reflexologist-info {
@@ -116,28 +105,28 @@
       @media (max-width: 2560px) {
         width: 150px;
         height: 150px;
-        margin-top: 46%;
+        margin-top: 35%;
         font-size: 0.65rem;
       }
 
       @media (max-width: 1750px) {
         width: 150px;
         height: 150px;
-        margin-top: 24%;
+        margin-top: 17%;
         font-size: 0.65rem;
       }
 
       @media (max-width: 1440px) {
         width: 150px;
         height: 150px;
-        margin-top: 9%;
+        margin-top: 24%;
         font-size: 0.65rem;
       }
 
       @media (max-width: 1024px) {
         width: 110px;
         height: 110px;
-        margin-top: 1%;
+        margin-top: 19%;
         font-size: 0.5rem;
       }
 
@@ -145,16 +134,24 @@
         width: 90px;
         height: 90px;
         font-size: 0.45rem;
-        font-weight: 500 !important;
-        margin-top: 5%;
+        font-weight: 500;
+        margin-top: 11%;
       }
 
       @media (max-width: 425px) {
-        width: 90px;
-        height: 90px;
+        width: 80px;
+        height: 80px;
         font-size: 0.45rem;
-        font-weight: 400 !important;
-        margin-top: 2% !important;
+        font-weight: 400;
+        margin-top: 4%;
+      }
+
+      @media (max-width: 375px) {
+        width: 80px;
+        height: 80px;
+        font-size: 0.45rem;
+        font-weight: 400;
+        margin-top: 0%;
       }
     }
   }
@@ -176,12 +173,12 @@
     }
 
     @media (max-width: 425px) {
-      padding-top: 110px !important;
+      padding-top: 60px !important;
       padding: 50px 10%;
     }
 
     @media (max-width: 375px) {
-      padding-top: 70px !important;
+      padding-top: 50px !important;
       padding: 10px 10%;
     }
 
