@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { of } from 'rxjs';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { of, Subscription } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ServicesData } from '../../models/services-data.model';
 import { WordpressService } from '../../services/wordpress.service';
@@ -10,6 +10,8 @@ import { Title, Meta } from '@angular/platform-browser';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import { LanguageService, Lang } from '../../services/language.service';
+
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
@@ -17,8 +19,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   standalone: true,
   imports: [CommonModule, RouterModule]
 })
-export class ServicesComponent implements OnInit {
+export class ServicesComponent implements OnInit, OnDestroy {
   servicesData: ServicesData[] | null = null;
+
+  lang: Lang = 'fr';
+  private langSub?: Subscription;
 
   constructor(
     private wpService: WordpressService,
@@ -26,19 +31,35 @@ export class ServicesComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private titleService: Title,
     private metaService: Meta,
-    private cdr: ChangeDetectorRef
-  ) { }
+    private cdr: ChangeDetectorRef,
+    private languageService: LanguageService
+  ) {}
 
   ngOnInit(): void {
-    this.titleService.setTitle('Nos Prestations - Limago Reflexo');
-
-    this.metaService.updateTag({
-      name: 'description',
-      content: 'Explorez les diverses prestations de réflexologie offertes par Limago Reflexo pour prendre soin de votre santé et bien-être.'
-    });
-    this.metaService.updateTag({ name: 'canonical', href: `https://limago-reflexo.fr${this.router.url}` });
-
     gsap.registerPlugin(ScrollTrigger);
+
+    // Langue globale
+    this.lang = this.languageService.current;
+
+    this.langSub = this.languageService.lang$.subscribe(l => {
+      this.lang = l;
+
+      if (l === 'fr') {
+        this.titleService.setTitle('Nos Prestations - Limago Reflexo');
+        this.metaService.updateTag({
+          name: 'description',
+          content: 'Explorez les diverses prestations de réflexologie offertes par Limago Reflexo pour prendre soin de votre santé et bien-être.'
+        });
+      } else {
+        this.titleService.setTitle('Services and prices - Limago Reflexo');
+        this.metaService.updateTag({
+          name: 'description',
+          content: 'Discover Limago Reflexo services and prices: foot and hand reflexology sessions, packages, children and babies sessions, including Bach Flowers support.'
+        });
+      }
+
+      this.metaService.updateTag({ name: 'canonical', href: `https://limago-reflexo.fr${this.router.url}` });
+    });
 
     this.wpService.getServices().pipe(
       catchError(error => {
@@ -50,6 +71,10 @@ export class ServicesComponent implements OnInit {
       this.cdr.detectChanges();
       this.initAnimations();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.langSub?.unsubscribe();
   }
 
   initAnimations(): void {
@@ -76,13 +101,14 @@ export class ServicesComponent implements OnInit {
         }
       }
     );
+
     gsap.fromTo('.btn-reserve',
       { opacity: 0, scale: 0.8 },
       {
-        opacity: 1, scale: 1, duration: 1.5, ease: 'back.out(1.7)',
+        opacity: 1, scale: 1, duration: 1.2, ease: 'back.out(1.7)',
         scrollTrigger: {
           trigger: '.btn-reserve',
-          start: 'top 80%',
+          start: 'top 85%',
           toggleActions: 'play none none none',
         }
       }
@@ -90,7 +116,7 @@ export class ServicesComponent implements OnInit {
   }
 
   navigateToReservation(): void {
-    this.router.navigate(['/reservation']); 
+    this.router.navigate(['/reservation']);
   }
 
   getSafeHtml(content: string): SafeHtml {

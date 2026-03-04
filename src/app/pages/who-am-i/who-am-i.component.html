@@ -1,17 +1,82 @@
-<div class="container whoami-container mt-lg-15 mb-lg-5 mt-10 mb-4" *ngIf="whoAmIData">
+<div class="whoami-container mt-lg-15 mb-lg-5 mt-10 mb-4" *ngIf="whoAmIData">
   <ng-container *ngFor="let whoAmIDataItem of whoAmIData">
     <div class="row">
-      <div class="col-md-5 px-3 px-md-0 img-content mt-md-14 image-container">
-        <img [src]="whoAmIDataItem.acf_fields.image" alt="Photo de Magali" loading="lazy" class="img-fluid">
+      <!-- IMAGE (commune FR/EN) -->
+      <div class="col-md-5 px-3 px-md-0 img-content mt-md-14 d-flex justify-content-center image-container">
+        <img
+          [src]="whoAmIDataItem.acf_fields.image"
+          alt="Photo of Magali"
+          loading="lazy"
+          class="img-fluid whoami-image"
+        >
       </div>
+
+      <!-- CONTENT (FR/EN) -->
       <div class="col-md-7 who-content px-md-10 d-flex flex-column align-items-start content-container">
-        <h1 class="who-title display-5 mb-5 mb-md-10">{{ whoAmIDataItem.acf_fields.title }}</h1>
-        <p [innerHTML]="getSafeHtml(whoAmIDataItem.acf_fields.content)" class="lead"></p>
+
+        <!-- ===== FR (ACF / WP) ===== -->
+        <ng-container *ngIf="lang === 'fr'">
+          <h1 class="who-title display-5 mb-5 mb-md-10">{{ whoAmIDataItem.acf_fields.title }}</h1>
+          <p [innerHTML]="getSafeHtml(whoAmIDataItem.acf_fields.content)" class="lead"></p>
+        </ng-container>
+
+        <!-- ===== EN (texte cliente) ===== -->
+        <ng-container *ngIf="lang === 'en'">
+          <h1 class="who-title display-5 mb-5 mb-md-10">Who am I?</h1>
+
+          <div class="lead">
+            <p>
+              After several years working in the pharmaceutical industry, I decided to go for a career change after the birth
+              of my first daughter and got a dietitian diploma in 2013.
+            </p>
+
+            <p>
+              Following a tragic family event, I decided in 2014, to become a full-time stay-at-home mom, and then, in 2016,
+              my husband got a job opportunity that brought us to Michigan in the US.
+            </p>
+
+            <p>
+              When my second daughter turned 3, I thought it was time for a new career change and that is how I ended up learning
+              reflexology with Barbara Brower and Rebecca Sundeen, who had respectively been practicing for 40 and 20 years, at the
+              Branch Reflexology Institute in Okemos, Michigan.
+            </p>
+
+            <p>
+              What makes this course unique is “The Body Talks©” Method approach that links emotions to physical ailments.
+              The idea behind is that each organ or part of the body matches a specific emotion. The use of Bach Flowers comes as a support
+              to the foot or hand reflexology session and helps deal with the corresponding emotions. That is why I also took the Bach Centre
+              level 1 distance learning programme.
+            </p>
+
+            <p class="mb-0">
+              After moving back to France in 2023, I decided to settle and open my practice in Castillonnès, the village where my grand-parents used to live.
+            </p>
+          </div>
+        </ng-container>
       </div>
     </div>
+
+    <!-- DEGREES (FR/EN) -->
     <div class="degrees-content mt-8">
-      <h2 class="degrees-title pb-5">{{ whoAmIDataItem.acf_fields.degreesTitle }}</h2>
-      <p [innerHTML]="getSafeHtml(whoAmIDataItem.acf_fields.degreesContent)"></p>
+      <ng-container *ngIf="lang === 'fr'">
+        <h2 class="degrees-title pb-5">{{ whoAmIDataItem.acf_fields.degreesTitle }}</h2>
+        <div class="degrees-box" [innerHTML]="getSafeHtml(whoAmIDataItem.acf_fields.degreesContent)"></div>
+      </ng-container>
+
+      <ng-container *ngIf="lang === 'en'">
+        <h2 class="degrees-title pb-5">My diplomas:</h2>
+
+        <div class="degrees-box">
+          <ul class="degrees-list">
+            <li>Branch Reflexology Institute “The Body Talks©” Clinical Foot Reflexology Certificate</li>
+            <li>Branch Reflexology Institute Clinical Hand Reflexology Certificate</li>
+            <li>Bach Centre Distance Learning Programme covering the use of Dr Edward Bach’s system of 38 flower remedies - Level One</li>
+            <li>Quintessence Reflexology for children and babies certificate</li>
+            <li>Quintessence Reflexology and maternity certificate</li>
+          </ul>
+        </div>
+      </ng-container>
     </div>
+
   </ng-container>
 </div>

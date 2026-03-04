@@ -1,133 +1,176 @@
 @import "../../../styles/_variables.scss";
 
 .reserve-container {
-    padding-left: 10rem;
-    padding-right: 10rem;
+  /* Rail home géré par content-gutter en global.
+     On garde un fallback léger si content-gutter n'est pas présent. */
+  padding-left: 10rem;
+  padding-right: 10rem;
 
-    @media (max-width: 1024px) {
-        padding-left: 5rem;
-        padding-right: 5rem;
-    }
+  @media (max-width: 1024px) {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
 
-    @media (max-width: 768px) {
-        padding-left: 3rem;
-        padding-right: 3rem;
-    }
+  @media (max-width: 768px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 
-    @media (max-width: 426px) {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
-    .btn-reserve, .btn-reserve-options, .btn-primary, .btn-outline-primary, .btn-outline-reserve {
-        transition: background-color 0.3s, color 0.3s;
-        border-radius: 20px;
-        padding: 10px 30px;
-        cursor: pointer;
-    }
-
-    .btn-reserve, .btn-reserve-options {
-        background-color: white;
-        color: map-get($theme-colors, "green");
-        border: 2px solid map-get($theme-colors, "green");
-        
-        &:hover {
-            background-color: map-get($theme-colors, "green");
-            color: white;
-        }
-    }
-
-    .btn-reserve-options {
-        border-color: map-get($theme-colors, "green-light");
-    }
-
-    .line-reserve {
-        background-color: map-get($theme-colors, "green");
-        height: 1px;
-    }
-
-    .btn-primary {
-        background-color: map-get($theme-colors, "green");
-        color: white;
-    }
-    
-    .btn-outline-primary {
-        background-color: white;
-        color: map-get($theme-colors, "green");
-    }
-    
-    .btn-outline-reserve {
-        background-color: transparent;
-        color: map-get($theme-colors, "green");
-        
-        &:hover {
-            background-color: map-get($theme-colors, "green");
-            color: white;
-        }
-    }
-
-    .img-fluid {
-        max-width: 100%;
-        height: auto;
-    }
-
-    .details .row, .options {
-        align-items: center;
-    }
-
-    .options {
-        flex-direction: row;
-
-        @media (max-width: 768px) {
-            flex-direction: column;
-        }
-
-        .btn-reserve-options {
-            margin-bottom: 15px;
-            width: 100%;
-        }
-    }
-
-    .img-container {
-        @media (max-width: 768px) {  
-            .img-fluid {
-                display: none;
-            }
-        }
-    }
-    
-    .position-relative {
-        position: relative;
-    }
-
-    .badge-forfait {
-        background-color: #FE6D73;
-        color: white;
-        font-size: 12px;
-        border-radius: 20px;
-        position: absolute;
-        top: 8px;
-        transform: translate(20%, -30%);
-    }
-
-    
+  @media (max-width: 426px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
-.reservation-button {
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-  
-    @media (max-width: 425px) {
-      justify-content: space-around; 
-    }
-  
-    .call-icon {
-      display: none; 
-      
-      @media (max-width: 425px) {
-        display: block; 
-      }
+/* Si tu utilises content-gutter (recommandé), on neutralise le padding local */
+.reserve-container.content-gutter {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* =========================
+   Layout
+   ========================= */
+.reserve-layout {
+  gap: 56px;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 22px;
+  }
+}
+
+/* =========================
+   Options buttons
+   ========================= */
+.options {
+  flex-direction: row;
+  gap: 18px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-reserve-options {
+    width: auto;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      margin: 0 !important;
     }
   }
-  
+}
+
+/* =========================
+   Buttons styling
+   ========================= */
+.btn-reserve,
+.btn-reserve-options,
+.btn-primary,
+.btn-outline-primary {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+  border-radius: 18px;
+  padding: 12px 26px;
+  cursor: pointer;
+}
+
+.btn-reserve,
+.btn-reserve-options {
+  background-color: white;
+  color: map-get($theme-colors, "green");
+  border: 2px solid map-get($theme-colors, "green");
+
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+
+  &:hover {
+    background-color: map-get($theme-colors, "green");
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.btn-reserve-options {
+  border-color: map-get($theme-colors, "green-light");
+}
+
+.btn-primary {
+  background-color: map-get($theme-colors, "green");
+  color: white;
+  border: 2px solid map-get($theme-colors, "green");
+}
+
+.btn-outline-primary {
+  background-color: white;
+  color: map-get($theme-colors, "green");
+  border: 2px solid map-get($theme-colors, "green-light");
+}
+
+/* =========================
+   Divider
+   ========================= */
+.line-reserve {
+  background-color: rgba(0, 0, 0, 0.18);
+  height: 1px;
+  width: 100%;
+}
+
+/* =========================
+   Image
+   ========================= */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  display: block;
+
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Hide image on mobile (like you had) */
+.img-container {
+  @media (max-width: 768px) {
+    .img-fluid {
+      display: none;
+    }
+  }
+}
+
+/* =========================
+   Service description
+   ========================= */
+.service-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  h4 {
+    margin-bottom: 0;
+  }
+}
+
+/* =========================
+   Reservation modal icons row
+   ========================= */
+.reservation-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  @media (max-width: 425px) {
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .call-icon {
+    display: none;
+
+    @media (max-width: 425px) {
+      display: block;
+    }
+  }
+}

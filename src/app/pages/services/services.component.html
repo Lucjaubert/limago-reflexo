@@ -1,17 +1,60 @@
-<div class="container services-container mt-lg-15 mb-lg-5 mt-10 mb-4" *ngIf="servicesData">
+<div class="services-container mt-lg-15 mb-lg-5 mt-10 mb-4" *ngIf="servicesData">
   <ng-container *ngFor="let servicesDataItem of servicesData">
     <div class="row">
+
+      <!-- IMAGE (commune FR/EN) -->
       <div class="col-md-5 mt-md-14 px-3 px-md-0 mb-sm-10 mb-5 d-flex justify-content-center img-content image-container">
-        <img [src]="servicesDataItem.acf_fields.image" alt="intérieur cabinet" loading="lazy" class="img-fluid">
+        <img
+          [src]="servicesDataItem.acf_fields.image"
+          alt="Practice room"
+          loading="lazy"
+          class="img-fluid services-image"
+        >
       </div>
+
+      <!-- CONTENT (FR/EN) -->
       <div class="col-md-7 px-md-10 d-flex flex-column align-items-start justify-content-center content-section content-container">
-        <h1 class="display-5 mb-5 mb-md-10 mr-13">{{ servicesDataItem.acf_fields.title }}</h1>
-        <p class="lead mb-7" [innerHTML]="getSafeHtml(servicesDataItem.acf_fields.content1)"></p>
-        <div class="btn-container d-flex justify-content-center">
+
+        <!-- ===== FR (ACF / WP) ===== -->
+        <ng-container *ngIf="lang === 'fr'">
+          <h1 class="display-5 mb-5 mb-md-10 mr-13">{{ servicesDataItem.acf_fields.title }}</h1>
+
+          <p class="lead mb-7" [innerHTML]="getSafeHtml(servicesDataItem.acf_fields.content1)"></p>
+
+          <div class="btn-container d-flex justify-content-center">
             <button class="btn btn-reserve" (click)="navigateToReservation()">Réserver un soin</button>
-        </div>
-        <p class="lead my-10" [innerHTML]="getSafeHtml(servicesDataItem.acf_fields.content2)"></p>
+          </div>
+
+          <p class="lead my-10" [innerHTML]="getSafeHtml(servicesDataItem.acf_fields.content2)"></p>
+        </ng-container>
+
+        <!-- ===== EN (hardcoded - texte cliente) ===== -->
+        <ng-container *ngIf="lang === 'en'">
+          <h1 class="display-5 mb-5 mb-md-10 mr-13">Services and prices</h1>
+
+          <div class="lead mb-7">
+            <p>Foot reflexology session - 1h - 60eur</p>
+            <p>Foot and hand reflexology session - 1h30 - 80eur</p>
+            <p>4 sessions foot reflexology package - 210eur</p>
+            <p>Children reflexology session - 30 min - 30eur</p>
+            <p>Babies reflexology session - 20 min - 20eur</p>
+            <p>Bach Flowers personalized consultation included in each session</p>
+          </div>
+
+          <div class="btn-container d-flex justify-content-center">
+            <button class="btn btn-reserve" (click)="navigateToReservation()">Book a treatment</button>
+          </div>
+
+          <div class="lead my-10">
+            <p>I am available Mondays, Tuesdays, Thursdays, Fridays and some Saturdays</p>
+            <p>Contact</p>
+            <p>limago.reflexo&#64;gmail.com</p>
+            <p>06.81.00.20.05</p>
+            <p class="mb-0">Book a treatment by phone or via email.</p>
+          </div>
+        </ng-container>
+
       </div>
-    </div>      
+    </div>
   </ng-container>
 </div>

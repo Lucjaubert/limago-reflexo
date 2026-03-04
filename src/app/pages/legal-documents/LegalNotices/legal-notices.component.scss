@@ -19,3 +19,33 @@
         padding-right: 1rem;
     }
 }
+
+.back-btn.back-btn--icon {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(0,0,0,0.25);
+  border-radius: 10px;
+  background: #fff;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  margin: 24px 0 18px 0;
+
+  color: rgba(0,0,0,0.75);
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  opacity: 0.95;
+
+  &:hover {
+    transform: translateY(-1px);
+    opacity: 1;
+  }
+}
+
+.back-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}

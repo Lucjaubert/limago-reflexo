@@ -1,74 +1,177 @@
-<div class="container reserve-container mt-lg-15 mb-lg-5 mt-10 mb-4" *ngIf="reserveData">
+
+
+<div class="container reserve-container content-gutter mt-lg-15 mb-lg-5 mt-10 mb-4" *ngIf="reserveData">
   <div class="row">
     <ng-container *ngFor="let data of reserveData">
+
+      <!-- TITLE -->
       <div class="row">
-        <div class="col-lg-6">
-        </div>
-        <div class="col-lg-6 mb-10 pl-14">
-          <h1 class="display-5">{{ data.acf_fields.title }}</h1>
+        <div class="col-lg-6"></div>
+        <div class="col-lg-6 mb-10 px-7">
+          <h1 class="display-5">
+            <ng-container *ngIf="lang === 'fr'">{{ data.acf_fields.title }}</ng-container>
+            <ng-container *ngIf="lang === 'en'">Book a treatment</ng-container>
+          </h1>
         </div>
       </div>
-      <div class="col-lg-12 mb-5">
+
+      <!-- OPTIONS -->
+      <div class="col-lg-12 mb-5 px-7">
         <div class="options d-flex justify-content-center mb-4">
-          <button class="btn btn-reserve-options mx-7 py-5"
-                  [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar', 'btn-outline-primary': activeSection !== 'reflexology_plantar'}"
-                  (click)="setActiveSection('reflexology_plantar')">Réflexologie plantaire
+
+          <button
+            class="btn btn-reserve-options mx-7 py-5"
+            [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar', 'btn-outline-primary': activeSection !== 'reflexology_plantar'}"
+            (click)="setActiveSection('reflexology_plantar')">
+            <ng-container *ngIf="lang === 'fr'">Réflexologie plantaire</ng-container>
+            <ng-container *ngIf="lang === 'en'">Foot reflexology</ng-container>
           </button>
-          <button class="btn btn-reserve-options mx-7 py-5 d-flex justify-content-center align-items-center"
-                  [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar_package', 'btn-outline-primary': activeSection !== 'reflexology_plantar_package'}"
-                  (click)="setActiveSection('reflexology_plantar_package')">Réflexologie plantaire 4 séances
+
+          <button
+            class="btn btn-reserve-options mx-7 py-5 d-flex justify-content-center align-items-center"
+            [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar_package', 'btn-outline-primary': activeSection !== 'reflexology_plantar_package'}"
+            (click)="setActiveSection('reflexology_plantar_package')">
+            <ng-container *ngIf="lang === 'fr'">Réflexologie plantaire 4 séances</ng-container>
+            <ng-container *ngIf="lang === 'en'">Foot reflexology (package of 4)</ng-container>
           </button>
-          <button class="btn btn-reserve-options mx-7 py-5"
-                  [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar_palmar', 'btn-outline-primary': activeSection !== 'reflexology_plantar_palmar'}"
-                  (click)="setActiveSection('reflexology_plantar_palmar')">Réflexologie plantaire et palmaire
+
+          <button
+            class="btn btn-reserve-options mx-7 py-5"
+            [ngClass]="{'btn-primary': activeSection === 'reflexology_plantar_palmar', 'btn-outline-primary': activeSection !== 'reflexology_plantar_palmar'}"
+            (click)="setActiveSection('reflexology_plantar_palmar')">
+            <ng-container *ngIf="lang === 'fr'">Réflexologie plantaire et palmaire</ng-container>
+            <ng-container *ngIf="lang === 'en'">Foot and hand reflexology</ng-container>
           </button>
-        </div>          
-      </div>
-      
-      <div class="col-lg-12 d-flex justify-content-center">
-        <div class="text-center d-flex align-items-center">
-          <div class="d-flex justify-content-center img-container image-container">
-            <img [src]="data.acf_fields.image" alt="pieds nus" loading="lazy" class="img-fluid my-9">
-          </div>
-          <div class="reserve-content px-md-10 content-container">
-            <div *ngIf="activeSection === 'reflexology_plantar'" class="service-description pl-15">
-              <h4>{{ data.acf_fields.reflexology_plantar_title }}</h4>
-              <div class="line-reserve my-7"></div>
-              <p [innerHTML]="getSafeHtml(data.acf_fields.reflexology_plantar_content)"></p>
-              <button class="btn btn-reserve mt-8" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_title, data.acf_fields.reflexology_plantar_content, reservationModal)">Réserver</button>
-            </div>
-            <div *ngIf="activeSection === 'reflexology_plantar_package'" class="service-description pl-15">
-              <h4>{{ data.acf_fields.reflexology_plantar_package_title }}</h4>
-              <div class="line-reserve my-7"></div>
-              <p [innerHTML]="getSafeHtml(data.acf_fields.reflexology_plantar_package_content)"></p>
-              <button class="btn btn-reserve mt-8" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_package_title, data.acf_fields.reflexology_plantar_package_content, reservationModal)">Réserver</button>
-            </div>
-            <div *ngIf="activeSection === 'reflexology_plantar_palmar'" class="service-description pl-15">
-              <h4>{{ data.acf_fields.reflexology_plantar_palmar }}</h4>
-              <div class="line-reserve my-8"></div>
-              <p [innerHTML]="getSafeHtml(data.acf_fields.reflexology_plantar_palmar_content)"></p>
-              <button class="btn btn-reserve mt-8" (click)="setSessionAndOpenModal(data.acf_fields.reflexology_plantar_palmar, data.acf_fields.reflexology_plantar_palmar_content, reservationModal)">Réserver</button>
-            </div>
-          </div>            
+
         </div>
       </div>
+
+      <!-- CONTENT -->
+      <div class="col-lg-12 d-flex justify-content-center">
+        <div class="text-center d-flex align-items-center reserve-layout">
+
+          <!-- IMAGE -->
+          <div class="d-flex justify-content-center img-container image-container">
+            <img [src]="data.acf_fields.image" alt="Reflexology" loading="lazy" class="img-fluid my-9">
+          </div>
+
+          <!-- RIGHT CONTENT -->
+          <div class="reserve-content px-md-10 content-container">
+
+            <!-- ========== SECTION 1 ========== -->
+            <div *ngIf="activeSection === 'reflexology_plantar'" class="service-description">
+              <h4>
+                <ng-container *ngIf="lang === 'fr'">{{ data.acf_fields.reflexology_plantar_title }}</ng-container>
+                <ng-container *ngIf="lang === 'en'">Foot reflexology session - 1h - 60€</ng-container>
+              </h4>
+
+              <div class="line-reserve my-7"></div>
+
+              <ng-container *ngIf="lang === 'fr'">
+                <p [innerHTML]="getSafeHtml(data.acf_fields.reflexology_plantar_content)"></p>
+              </ng-container>
+
+              <ng-container *ngIf="lang === 'en'">
+                <p>Bach Flowers personalized consultation included in each session.</p>
+              </ng-container>
+
+              <button
+                class="btn btn-reserve mt-8"
+                (click)="setSessionAndOpenModal(
+                  lang === 'fr' ? data.acf_fields.reflexology_plantar_title : 'Foot reflexology session - 1h - 60€',
+                  lang === 'fr' ? data.acf_fields.reflexology_plantar_content : 'Foot reflexology session - 1h - 60€',
+                  reservationModal
+                )">
+                <ng-container *ngIf="lang === 'fr'">Réserver</ng-container>
+                <ng-container *ngIf="lang === 'en'">Book</ng-container>
+              </button>
+            </div>
+
+            <!-- ========== SECTION 2 ========== -->
+            <div *ngIf="activeSection === 'reflexology_plantar_package'" class="service-description">
+              <h4>
+                <ng-container *ngIf="lang === 'fr'">{{ data.acf_fields.reflexology_plantar_package_title }}</ng-container>
+                <ng-container *ngIf="lang === 'en'">4 sessions foot reflexology package - 210€</ng-container>
+              </h4>
+
+              <div class="line-reserve my-7"></div>
+
+              <ng-container *ngIf="lang === 'fr'">
+                <p [innerHTML]="getSafeHtml(data.acf_fields.reflexology_plantar_package_content)"></p>
+              </ng-container>
+
+              <ng-container *ngIf="lang === 'en'">
+                <p>Bach Flowers personalized consultation included in each session.</p>
+              </ng-container>
+
+              <button
+                class="btn btn-reserve mt-8"
+                (click)="setSessionAndOpenModal(
+                  lang === 'fr' ? data.acf_fields.reflexology_plantar_package_title : '4 sessions foot reflexology package - 210€',
+                  lang === 'fr' ? data.acf_fields.reflexology_plantar_package_content : '4 sessions foot reflexology package - 210€',
+                  reservationModal
+                )">
+                <ng-container *ngIf="lang === 'fr'">Réserver</ng-container>
+                <ng-container *ngIf="lang === 'en'">Book</ng-container>
+              </button>
+            </div>
+
+            <!-- ========== SECTION 3 ========== -->
+            <div *ngIf="activeSection === 'reflexology_plantar_palmar'" class="service-description">
+              <h4>
+                <ng-container *ngIf="lang === 'fr'">{{ data.acf_fields.reflexology_plantar_palmar }}</ng-container>
+                <ng-container *ngIf="lang === 'en'">Foot and hand reflexology session - 1h30 - 80€</ng-container>
+              </h4>
+
+              <div class="line-reserve my-8"></div>
+
+              <ng-container *ngIf="lang === 'fr'">
+                <p [innerHTML]="getSafeHtml(data.acf_fields.reflexology_plantar_palmar_content)"></p>
+              </ng-container>
+
+              <ng-container *ngIf="lang === 'en'">
+                <p>Bach Flowers personalized consultation included in each session.</p>
+              </ng-container>
+
+              <button
+                class="btn btn-reserve mt-8"
+                (click)="setSessionAndOpenModal(
+                  lang === 'fr' ? data.acf_fields.reflexology_plantar_palmar : 'Foot and hand reflexology session - 1h30 - 80€',
+                  lang === 'fr' ? data.acf_fields.reflexology_plantar_palmar_content : 'Foot and hand reflexology session - 1h30 - 80€',
+                  reservationModal
+                )">
+                <ng-container *ngIf="lang === 'fr'">Réserver</ng-container>
+                <ng-container *ngIf="lang === 'en'">Book</ng-container>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
     </ng-container>
   </div>
 </div>
 
+<!-- =========================
+     MODALS
+     ========================= -->
 <ng-template #reservationModal let-modal>
   <div class="modal-dialog modal-dialog-centered custom-modal">
     <div class="modal-content d-flex justify-content-center align-items-center">
-      <div class="modal-body text-center"> 
+      <div class="modal-body text-center">
         <div class="d-flex align-items-center reservation-button">
-          <a href="tel:+33681002005" class="btn btn-icon my-0 d-lg-none">
-            <img src="assets/img/appel.png" alt="Appeler" loading="lazy" class="call-icon">
+
+          <a href="tel:+33681002005" class="btn btn-icon my-0 d-lg-none" aria-label="Call">
+            <img src="assets/img/appel.png" alt="Call" loading="lazy" class="call-icon">
           </a>
-          <a class="btn btn-icon my-0" (click)="openModal(chooseEmailClientModalTemplate)">
+
+          <a class="btn btn-icon my-0" (click)="openModal(chooseEmailClientModalTemplate)" aria-label="Email">
             <img src="assets/img/mail.png" alt="Email" loading="lazy">
-          </a>                   
+          </a>
+
         </div>
-      </div>      
+      </div>
     </div>
   </div>
 </ng-template>
@@ -77,16 +180,13 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content d-flex">
       <div class="modal-body d-flex">
-        <button class="btn mx-3" (click)="openEmailClient('gmail')">
+        <button class="btn mx-3" (click)="openEmailClient('gmail')" aria-label="Open Gmail">
           <img src="assets/img/icons8-gmail-48.png" alt="Gmail" loading="lazy">
         </button>
-        <button class="btn mx-3" (click)="openEmailClient('outlook')">
+        <button class="btn mx-3" (click)="openEmailClient('outlook')" aria-label="Open Outlook">
           <img src="assets/img/icons8-outlook-48.png" alt="Outlook" loading="lazy">
         </button>
       </div>
     </div>
   </div>
 </ng-template>
-
-
-

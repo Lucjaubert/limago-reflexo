@@ -1,13 +1,22 @@
 <div #appRoot id="app-container">
-   <ng-container *ngIf="showHeader">
-      <app-header></app-header>
-    </ng-container>
-    <div id='page'>
-      <router-outlet></router-outlet>
-    </div>
-    <ng-container *ngIf="showFooter && isPageFullyLoaded">
-      <app-footer></app-footer>
-    </ng-container>
-</div>
 
-    
+  <!-- Switch global FR/EN -->
+  <div class="lang-switch lang-switch--dark-text" role="group" aria-label="Language switch">
+    <button type="button" class="lang-btn" [class.is-active]="lang === 'fr'" (click)="setLang('fr')">FR</button>
+    <span class="lang-sep" aria-hidden="true">/</span>
+    <button type="button" class="lang-btn" [class.is-active]="lang === 'en'" (click)="setLang('en')">EN</button>
+  </div>
+
+  <ng-container *ngIf="showHeader">
+    <app-header></app-header>
+  </ng-container>
+
+  <div id="page">
+    <router-outlet></router-outlet>
+  </div>
+
+  <ng-container *ngIf="showFooter && isPageFullyLoaded">
+    <app-footer></app-footer>
+  </ng-container>
+
+</div>

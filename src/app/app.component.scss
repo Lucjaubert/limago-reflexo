@@ -1,0 +1,92 @@
+/* Switch FR/EN global */
+.lang-switch {
+  position: fixed;
+  top: 125px;
+  right: 50px;
+  z-index: 9999;
+
+  @media (max-width: 991.98px) {
+    top: 18px;
+    right: 16px;
+  }
+
+  @media (max-width: 375px) {
+    top: 18px;
+    right: 16px;
+  }
+
+
+
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.lang-btn {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+
+  font-size: 0.9rem;
+  line-height: 1;
+
+  opacity: 0.8;
+  transition: opacity 0.15s ease;
+
+  &:hover { opacity: 1; }
+
+  &.is-active {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.lang-sep {
+  font-weight: 300;
+  line-height: 1;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Par défaut: texte sombre (fond clair) */
+.lang-switch--dark-text .lang-btn,
+.lang-switch--dark-text .lang-sep {
+  color: rgba(0, 0, 0, 0.65) !important;
+}
+.lang-switch--dark-text .lang-btn.is-active {
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+/* Variante texte clair si tu veux l’utiliser sur hero
+   => tu peux mettre lang-switch--light-text sur certaines pages via une classe conditionnelle plus tard */
+.lang-switch--light-text .lang-btn,
+.lang-switch--light-text .lang-sep {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+.lang-switch--light-text .lang-btn.is-active {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+@media (max-width: 991.98px) {
+  .lang-btn,
+  .lang-sep {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .lang-btn,
+  .lang-sep {
+    font-size: 0.68rem;
+  }
+}

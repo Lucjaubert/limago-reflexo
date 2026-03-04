@@ -1,301 +1,438 @@
 @import "./_variables.scss";
 @import "node_modules/bootstrap/scss/bootstrap";
 
-@font-face {
-    font-family: 'Noto Sans JP';
-    src: url('/assets/fonts/NotoSansJP-Light.woff2') format('truetype');
-    font-weight: 200;
-    font-style: normal;
+/* =========================
+   RAILS / BORDURES (LOGIQUE DE L'AUTRE PROJET)
+   ========================= */
+:root {
+  --content-gutter: 13px; /* bordure mobile par défaut */
+  --rail-width: 200px;    /* bordure desktop */
+  --footer-h: 100px;
+  --vh-fudge: 110vh;
 }
 
-@font-face {
-    font-family: 'Noto Sans JP';
-    src: url('/assets/fonts/NotoSansJP-Regular.woff2') format('truetype');
-    font-weight: 400;
-    font-style: normal;
+/* Desktop: on applique le rail */
+@media (min-width: 992px) {
+  :root { --content-gutter: var(--rail-width); }
 }
 
-@font-face {
-    font-family: 'Noto Sans JP';
-    src: url('/assets/fonts/NotoSansJP-Medium.woff2') format('truetype');
-    font-weight: 500;
-    font-style: normal;
+/* Classe à réutiliser dans tes composants pour aligner tout sur les mêmes rails */
+.content-gutter {
+  padding-left: var(--content-gutter) !important;
+  padding-right: var(--content-gutter) !important;
 }
 
-@font-face {
-    font-family: 'Noto Sans JP';
-    src: url('/assets/fonts/NotoSansJP-SemiBold.woff2') format('truetype');
-    font-weight: 600;
-    font-style: normal;
+/* Optionnel: section qui doit aller full width (débordement contrôlé) */
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
+/* =========================
+   FONTS
+   ========================= */
 @font-face {
-    font-family: 'Noto Sans JP';
-    src: url('/assets/fonts/NotoSansJP-Bold.woff2') format('truetype');
-    font-weight: 700;
-    font-style: normal;
+  font-family: 'Noto Sans JP';
+  src: url('/assets/fonts/NotoSansJP-Light.woff2') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  src: url('/assets/fonts/NotoSansJP-Regular.woff2') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  src: url('/assets/fonts/NotoSansJP-Medium.woff2') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  src: url('/assets/fonts/NotoSansJP-SemiBold.woff2') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  src: url('/assets/fonts/NotoSansJP-Bold.woff2') format('truetype');
+  font-weight: 700;
+  font-style: normal;
 }
 
+/* =========================
+   LAYOUT GLOBAL
+   ========================= */
 .container {
-    width: 100% !important;
-    max-width: 100% !important;
-    display: flex;
-    flex-direction: column;
-    
+  width: 100% !important;
+  max-width: 100% !important;
+  display: flex;
+  flex-direction: column;
 }
 
 #app-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-height: 110vh; 
-    
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: var(--vh-fudge);
 }
 
 #page {
-    flex: 1;
-    min-height: calc(110vh - 100px); 
-    
+  flex: 1;
+  min-height: calc(var(--vh-fudge) - var(--footer-h));
 }
 
 app-footer {
-    width: 100%;
-    height: 100px;
-    margin-top: auto; 
+  width: 100%;
+  height: var(--footer-h);
+  margin-top: auto;
 }
 
+/* =========================
+   BASE
+   ========================= */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: map-get($theme-colors, "green");
+  background-color: map-get($theme-colors, "light-grey");
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 
-html, body {
-    height: 100%;
-    width: 100%;
-    font-family: 'Noto Sans JP', sans-serif;
-    color: map-get($theme-colors, "green");
-    background-color: map-get($theme-colors, "light-grey");
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
+  /* plus propre que hidden (évite certains bugs de layout) */
+  overflow-x: clip !important;
+  overflow-y: auto !important;
 }
-  
+
+/* =========================
+   HIDE SCROLLBAR (vertical)
+   - garde le scroll, mais cache la barre
+   ========================= */
+html {
+  scrollbar-width: none; /* Firefox */
+}
+body {
+  -ms-overflow-style: none; /* IE/Edge legacy */
+}
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* =========================
+   GLOBAL LANG SWITCH (FR/EN)
+   - même placement sur toutes les pages
+   ========================= */
+.lang-switch {
+  position: fixed;
+  top: 18px;
+  right: 16px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.lang-btn {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+
+  font-size: 0.9rem;
+  line-height: 1;
+
+  opacity: 0.8;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.is-active {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.lang-sep {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 300;
+  line-height: 1;
+  font-size: 0.9rem;
+}
+
+/* Variante pour pages sur fond clair (optionnel: ajoute class="lang-switch lang-switch--dark-text") */
+.lang-switch--dark-text .lang-btn,
+.lang-switch--dark-text .lang-sep {
+  color: rgba(0, 0, 0, 0.65) !important;
+}
+.lang-switch--dark-text .lang-btn.is-active {
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+@media (max-width: 991.98px) {
+  .lang-btn,
+  .lang-sep {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .lang-btn,
+  .lang-sep {
+    font-size: 0.68rem;
+  }
+}
+
+/* =========================
+   TYPO
+   ========================= */
 h1 {
-    color: map-get($theme-colors, "green") !important;
-    font-size: map-get($font-size, "70");
-    src: url('/assets/fonts/NotoSansJP-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
+  color: map-get($theme-colors, "green") !important;
+  font-size: map-get($font-size, "70");
+  src: url('/assets/fonts/NotoSansJP-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
 
-    @media (max-width: 2560px) {
-        font-size: map-get($font-size, "90");
-    }
+  @media (max-width: 2560px) {
+    font-size: map-get($font-size, "90");
+  }
 
-    @media (max-width: 1024px) {
-        font-size: map-get($font-size, "60");
-    }
-
-    @media (max-width: 768px) {
-        font-size: map-get($font-size, "50");
-    }
-
-    @media (max-width: 425px) {
-        font-size: map-get($font-size, "20");
-    }
-}
-  
-h2 {
-    color: map-get($theme-colors, "green") !important;
-    font-size: map-get($font-size, "70");
-    src: url('/assets/fonts/NotoSansJP-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-
-    @media (max-width: 2560px) {
-        font-size: map-get($font-size, "70");
-    }
-
-    @media (max-width: 1024px) {
-        font-size: map-get($font-size, "50");
-    }
-
-    @media (max-width: 768px) {
-        font-size: map-get($font-size, "40");
-    }
-
-    @media (max-width: 425px) {
-        font-size: map-get($font-size, "30");
-    }
-}
-  
-h3 {
-    color: map-get($theme-colors, "green") !important;
-    font-weight: 500 !important;
+  @media (max-width: 1024px) {
     font-size: map-get($font-size, "60");
+  }
 
-    @media (max-width: 2560px) {
-        font-size: map-get($font-size, "60");
-    }
-
-    @media (max-width: 1024px) {
-        font-size: map-get($font-size, "40");
-    }
-
-    @media (max-width: 768px) {
-        font-size: map-get($font-size, "30");
-    }
-
-    @media (max-width: 425px) {
-        font-size: map-get($font-size, "20");
-    }
-}
-  
-h4 {
-    color: map-get($theme-colors, "green") !important;
-    font-weight: 500;
+  @media (max-width: 768px) {
     font-size: map-get($font-size, "50");
+  }
 
-    @media (max-width: 2560px) {
-        font-size: map-get($font-size, "60");
-    }
-
-    @media (max-width: 1024px) {
-        font-size: map-get($font-size, "40");
-    }
-
-    @media (max-width: 768px) {
-        font-size: map-get($font-size, "30");
-    }
-
-    @media (max-width: 425px) {
-        font-size: map-get($font-size, "20");
-    }
+  @media (max-width: 425px) {
+    font-size: map-get($font-size, "20");
+  }
 }
-  
+
+h2 {
+  color: map-get($theme-colors, "green") !important;
+  font-size: map-get($font-size, "70");
+  src: url('/assets/fonts/NotoSansJP-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+
+  @media (max-width: 2560px) {
+    font-size: map-get($font-size, "70");
+  }
+
+  @media (max-width: 1024px) {
+    font-size: map-get($font-size, "50");
+  }
+
+  @media (max-width: 768px) {
+    font-size: map-get($font-size, "40");
+  }
+
+  @media (max-width: 425px) {
+    font-size: map-get($font-size, "30");
+  }
+}
+
+h3 {
+  color: map-get($theme-colors, "green") !important;
+  font-weight: 500 !important;
+  font-size: map-get($font-size, "60");
+
+  @media (max-width: 2560px) {
+    font-size: map-get($font-size, "60");
+  }
+
+  @media (max-width: 1024px) {
+    font-size: map-get($font-size, "40");
+  }
+
+  @media (max-width: 768px) {
+    font-size: map-get($font-size, "30");
+  }
+
+  @media (max-width: 425px) {
+    font-size: map-get($font-size, "20");
+  }
+}
+
+h4 {
+  color: map-get($theme-colors, "green") !important;
+  font-weight: 700;
+  font-size: map-get($font-size, "20");
+
+  @media (max-width: 2560px) {
+    font-size: map-get($font-size, "20");
+  }
+
+  @media (max-width: 1024px) {
+    font-size: map-get($font-size, "20");
+  }
+
+  @media (max-width: 768px) {
+    font-size: map-get($font-size, "20");
+  }
+
+  @media (max-width: 425px) {
+    font-size: map-get($font-size, "20");
+  }
+}
 
 h5 {
-    color: map-get($theme-colors, "green") !important;
-    font-weight: 400;
-    font-size: map-get($font-size, "30");
+  color: map-get($theme-colors, "green") !important;
+  font-weight: 400;
+  font-size: map-get($font-size, "30");
 
-    @media (max-width: 2560px) {
-        font-size: map-get($font-size, "50");
-    }
+  @media (max-width: 2560px) {
+    font-size: map-get($font-size, "50");
+  }
 
-    @media (max-width: 1024px) {
-        font-size: map-get($font-size, "30") !important;
-    }
+  @media (max-width: 1024px) {
+    font-size: map-get($font-size, "30") !important;
+  }
 
-    @media (max-width: 768px) {
-        font-size: map-get($font-size, "20")!important;
-    }
+  @media (max-width: 768px) {
+    font-size: map-get($font-size, "20") !important;
+  }
 
-    @media (max-width: 425px) {
-        font-size: map-get($font-size, "20") !important;
-    }
+  @media (max-width: 425px) {
+    font-size: map-get($font-size, "20") !important;
+  }
 }
-  
-p {
-    font-size: map-get($font-size, "20");
-    font-weight: 400;
-    color: map-get($theme-colors, "green");
 
-    @media (max-width: 1024px) {
-        p, ul, li, a { font-size: calc(map-get($font-size, "20") * 0.9); }
+p {
+  font-size: map-get($font-size, "20");
+  font-weight: 400;
+  color: map-get($theme-colors, "green");
+
+  @media (max-width: 1024px) {
+    p,
+    ul,
+    li,
+    a {
+      font-size: calc(map-get($font-size, "20") * 0.9);
     }
-    
-    @media (max-width: 768px) {
-        p, ul, li, a  { font-size: calc(map-get($font-size, "10") * 0.8); }
+  }
+
+  @media (max-width: 768px) {
+    p,
+    ul,
+    li,
+    a {
+      font-size: calc(map-get($font-size, "10") * 0.8);
     }
-    
-    @media (max-width: 425px) {
-        p, ul, li, a  { font-size: calc(map-get($font-size, "10") * 0.7); }
+  }
+
+  @media (max-width: 425px) {
+    p,
+    ul,
+    li,
+    a {
+      font-size: calc(map-get($font-size, "10") * 0.7);
     }
+  }
 }
 
 a {
-    font-size: map-get($font-size, "20") !important;
-    font-weight: 500 !important;
-    color: map-get($theme-colors, "green");
+  font-size: map-get($font-size, "20") !important;
+  font-weight: 500 !important;
+  color: map-get($theme-colors, "green");
 }
 
 .router-link-active .main-content {
-    opacity: 0;
+  opacity: 0;
 }
 
+/* =========================
+   BUTTONS / MODALS
+   ========================= */
 .btn-reserve-options {
-    background-color: white; 
-    color: map-get($theme-colors, "green"); 
-    border: 2px solid map-get($theme-colors, "green-light"); 
-    border-radius: 20px; 
-    padding: 10px 30px; 
-    cursor: pointer; 
-    transition: background-color 0.3s, color 0.3s; 
-  
-    &:hover {
-      background-color: map-get($theme-colors, "green"); 
-      color: white; 
-    }
-    @media (max-width: 425px) {
-        padding: 5px 15px;
-        font-size: map-get($font-size, "15");
-    }
+  background-color: white;
+  color: map-get($theme-colors, "green");
+  border: 2px solid map-get($theme-colors, "green-light");
+  border-radius: 20px;
+  padding: 10px 30px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: map-get($theme-colors, "green");
+    color: white;
+  }
+
+  @media (max-width: 425px) {
+    padding: 5px 15px;
+    font-size: map-get($font-size, "15");
+  }
 }
 
 .modal.show .modal-dialog {
-    top: 30% !important;
-    width: 200px;
+  top: 30% !important;
+  width: 200px;
 }
 
 .modal-dialog {
-    width: auto;
-    margin: 1.75rem auto;
+  width: auto;
+  margin: 1.75rem auto;
 
-    .modal-content {
-        border: none;
-        .btn {
-          width: 100%; 
-          margin-top: 10px;
-        }
-        
-        .btn-icon img {
-            width: 40px;
-            height: 40px;
-        }
-        
-        .btn-success, .btn-primary {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+  .modal-content {
+    border: none;
+
+    .btn {
+      width: 100%;
+      margin-top: 10px;
     }
 
-    @media (max-width: 768px) {
-        width: 90%;
-        margin: 0.5rem auto;
+    .btn-icon img {
+      width: 40px;
+      height: 40px;
     }
+
+    .btn-success,
+    .btn-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+    margin: 0.5rem auto;
+  }
 }
 
 .modal-dialog-centered {
-    display: flex;
-    align-items: center; 
-    min-height: calc(100% - (1.75rem * 2));
+  display: flex;
+  align-items: center;
+  min-height: calc(100% - (1.75rem * 2));
 }
 
-
-
+/* =========================
+   UTILS (colors/fonts)
+   ========================= */
 @each $color-name, $color-value in $theme-colors {
-    .text-#{$color-name} {
-        color: $color-value;
-    }
-    .bg-#{$color-name} {
-        background-color: $color-value;
-    }
+  .text-#{$color-name} { color: $color-value; }
+  .bg-#{$color-name} { background-color: $color-value; }
 }
 
 @each $name, $value in $font-size {
-    .text-fs-#{$name} {
-        font-size: $value;
-    }
+  .text-fs-#{$name} { font-size: $value; }
 }
-
-  
