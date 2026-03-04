@@ -1,76 +1,183 @@
 <div class="container d-flex flex-column justify-content-center px-0">
-  <img src="assets/img/img-background-homepage.webp" class="img-background" alt="image de fond papillon" loading="eager">
-  <div class="intro-section">
-    <h1 class="reflexologist-info text-center image-fade-in pb-3 pb-md-0">
-      <div class="line">MAGALI JAUBERT</div>
-      <div class="line">RÉFLEXOLOGUE PLANTAIRE ET PALMAIRE</div>
-      <div class="line">- CASTILLONNES -</div>
-    </h1>
-    <h2 class="slogan pt-5 image-fade-in-2 d-md-block d-none">
-      NOS PIEDS NOUS ANCRENT À L’ÉNERGIE DE LA TERRE
-    </h2>
-    <button class="btn btn-reserve" (click)="navigateToReservation()">RÉSERVER UN SOIN</button>
-  </div>
+
+  <section class="hero">
+    <img
+      src="assets/img/img-background-homepage.webp"
+      class="img-background"
+      alt="image de fond papillon"
+      loading="eager"
+    >
+
+    <div class="intro-section">
+      <!-- HERO FR -->
+      <ng-container *ngIf="lang === 'fr'">
+        <h1 class="reflexologist-info text-center image-fade-in pb-3 pb-md-0">
+          <div class="line">MAGALI JAUBERT</div>
+          <div class="line">RÉFLEXOLOGUE PLANTAIRE ET PALMAIRE</div>
+          <div class="line">- CASTILLONNES -</div>
+        </h1>
+
+        <h2 class="slogan pt-5 image-fade-in-2 d-md-block d-none">
+          NOS PIEDS NOUS ANCRENT À L’ÉNERGIE DE LA TERRE
+        </h2>
+      </ng-container>
+
+      <!-- HERO EN -->
+      <ng-container *ngIf="lang === 'en'">
+        <h1 class="reflexologist-info text-center image-fade-in pb-3 pb-md-0">
+          <div class="line">MAGALI JAUBERT</div>
+          <div class="line">FOOT AND HAND REFLEXOLOGIST</div>
+        </h1>
+
+        <h2 class="slogan pt-5 image-fade-in-2 d-md-block d-none">
+          OUR FEET CONNECT US TO THE ENERGY OF THE EARTH
+        </h2>
+      </ng-container>
+    </div>
+
+    <!-- BOUTON -->
+    <button class="btn btn-reserve" (click)="navigateToReservation()">
+      <ng-container *ngIf="lang === 'fr'">RÉSERVER UN SOIN</ng-container>
+      <ng-container *ngIf="lang === 'en'">BOOK A TREATMENT</ng-container>
+    </button>
+  </section>
+
+  <!-- ====== SECTION TEXTE (Home only) ====== -->
   <ng-container *ngIf="homepageData">
     <div *ngFor="let homepageData of homepageData">
-      <div class="info-section d-flex flex-column flex-md-row justify-content-between align-items-center pb-md-11 pb-sm-12 pb-10 px-lg-12">
-        <div class="content-wrapper w-100 px-lg-10">
-          <h2 class="info-title col-12">{{ homepageData.acf_fields.title1 }}</h2>
-          <h2 class="info-title col-12">{{ homepageData.acf_fields.title2 }}</h2>
-          <p class="info-content text-left pt-md-4 pt-1 col-12" [innerHTML]="getSafeHtml(homepageData.acf_fields.content)"></p>
+
+      <div class="info-section content-gutter d-flex flex-column flex-md-row justify-content-between align-items-center pb-md-11 pb-sm-12 pb-10">
+        <div class="content-wrapper px-lg-10">
+
+          <!-- FR : WP -->
+          <ng-container *ngIf="lang === 'fr'">
+            <h2 class="info-title col-12">{{ homepageData.acf_fields.title1 }}</h2>
+            <h2 class="info-title col-12">{{ homepageData.acf_fields.title2 }}</h2>
+            <p
+              class="info-content text-left pt-md-4 pt-1 col-12"
+              [innerHTML]="getSafeHtml(homepageData.acf_fields.content)">
+            </p>
+          </ng-container>
+
+          <!-- EN -->
+          <ng-container *ngIf="lang === 'en'">
+            <h2 class="info-title col-12">Our roots and health guardians</h2>
+
+            <p class="info-content text-left pt-md-4 pt-1 col-12">
+              Throughout our lives, we will wear out a lot of shoes but we all come to the world with only one pair of feet,
+              they will travel thousands of miles with us so we really need to take good care of them.
+              <br><br>
+              Our feet anchor us to the ground and connect us to the energy of the earth.
+              <br><br>
+              They are so far from our heads that we sometimes tend to neglect them, but we should not as they can tell a lot about our health.
+            </p>
+          </ng-container>
+
         </div>
-        <img [src]="homepageData.acf_fields.image" class="info-image col-md-auto mt-xl-12 mt-lg-14 mt-md-0 px-lg-7" alt="Image pieds" loading="lazy">
+
+        <img
+          [src]="homepageData.acf_fields.image"
+          class="info-image mt-xl-12 mt-lg-14 mt-md-0"
+          alt="Image pieds"
+          loading="lazy"
+        >
       </div>
+
     </div>
   </ng-container>
-  <div class="triptych-container d-flex justify-content-between align-items-center">
-    <div class="row triptych-content mt-md-2 ">
-      <div class="row background-triptych">
-        <div class="col-md-4 py-md-9 pl-md-15 d-flex justify-content-center">
-          <div class="card">
-            <img src="assets/img/mag.webp" class="card-img-top" alt="Image Magali reflexologue" loading="lazy">
-            <div class="card-body pb-md-8" routerLink="/qui-suis-je" routerLinkActive="active">
-              <div class="card-text-container d-flex justify-content-center align-items-center mb-7">
-                <h5 class="card-title py-md-5 mb-md-2">Qui suis-je?</h5>
+
+  <!-- ====== Triptyque ====== -->
+  <section class="triptych-container full-bleed">
+    <div class="triptych-inner content-gutter">
+      <div class="triptych-content">
+        <div class="background-triptych">
+
+          <div class="col-md-4 py-md-9 pl-md-15 d-flex justify-content-center">
+            <div class="card">
+              <img src="assets/img/mag.webp" class="card-img-top" alt="Image Magali reflexologue" loading="lazy">
+              <div class="card-body pb-md-8" routerLink="/qui-suis-je" routerLinkActive="active">
+                <div class="card-text-container d-flex justify-content-center align-items-center mb-7">
+                  <h5 class="card-title py-md-5 mb-md-2">
+                    <ng-container *ngIf="lang === 'fr'">Qui suis-je ?</ng-container>
+                    <ng-container *ngIf="lang === 'en'">Who am I?</ng-container>
+                  </h5>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4 py-md-9 d-flex justify-content-center">
-          <div class="card">
-            <img src="assets/img/office.webp" class="card-img-top" alt="intérieur cabinet" loading="lazy">
-            <div class="card-body pt-md-5 pb-8" routerLink="/reflexologie" routerLinkActive="active">
-              <div class="card-text-container d-flex justify-content-center align-items-center px-4 mb-7">
-                <h5 class="card-title py-md-3 text-center">Qu'est-ce que la réflexologie ?</h5>
+
+          <div class="col-md-4 py-md-9 d-flex justify-content-center">
+            <div class="card">
+              <img src="assets/img/office.webp" class="card-img-top" alt="intérieur cabinet" loading="lazy">
+              <div class="card-body pt-md-5 pb-8" routerLink="/reflexologie" routerLinkActive="active">
+                <div class="card-text-container d-flex justify-content-center align-items-center px-4 mb-7">
+                  <h5 class="card-title py-md-3 text-center">
+                    <ng-container *ngIf="lang === 'fr'">Qu'est-ce que la réflexologie ?</ng-container>
+                    <ng-container *ngIf="lang === 'en'">What is reflexology?</ng-container>
+                  </h5>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4 py-md-9 pb-sm-6 pr-md-15 d-flex justify-content-center">
-          <div class="card">
-            <img src="assets/img/hands.webp" class="card-img-top" alt="image de mains qui masse pieds bébé" loading="lazy">
-            <div class="card-body pt-md-8 pb-8" routerLink="/prestations" routerLinkActive="active">
-              <div class="card-text-container d-flex justify-content-center align-items-center mb-7">
-                <h5 class="card-title py-md-5 mb-md-2">Prestations</h5>
+
+          <div class="col-md-4 py-md-9 pb-sm-6 pr-md-15 d-flex justify-content-center">
+            <div class="card">
+              <img src="assets/img/hands.webp" class="card-img-top" alt="image de mains qui masse pieds bébé" loading="lazy">
+              <div class="card-body pt-md-8 pb-8" routerLink="/prestations" routerLinkActive="active">
+                <div class="card-text-container d-flex justify-content-center align-items-center mb-7">
+                  <h5 class="card-title py-md-5 mb-md-2">
+                    <ng-container *ngIf="lang === 'fr'">Prestations</ng-container>
+                    <ng-container *ngIf="lang === 'en'">Services & prices</ng-container>
+                  </h5>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- ====== Bloc infos ====== -->
   <ng-container *ngIf="homepageData">
     <div *ngFor="let homepageData of homepageData" class="col-12">
-      <div class="informations-section d-flex flex-column flex-md-row justify-content-between justify-content-center text-start px-xl-18 px-md-10 px-12 pt-md-13 pb-md-8">
-        <div class="flex-fill-left py-md-0 mx-md-0 px-xl-10 px-md-8 px-sm-5 py-8 mx-9">
-          <h4 class="info-title pb-md-5">{{ homepageData.acf_fields.schedulesTitle }}</h4>
-          <p class="info-content" [innerHTML]="getSafeHtml(homepageData.acf_fields.schedulesContent)"></p>
-        </div>
-        <div class="flex-fill-right py-md-0 mx-md-0 px-xl-10 px-md-6 px-sm-5 py-6 mx-9">
-          <h4 class="info-title py-md-0 pb-md-5">{{ homepageData.acf_fields.officeTitle }}</h4>
-          <p class="info-content" [innerHTML]="getSafeHtml(homepageData.acf_fields.officeContent)"></p>
-        </div>
+
+      <div class="informations-section content-gutter d-flex flex-column flex-md-row justify-content-between justify-content-center text-start pt-md-13 pb-md-8">
+
+        <!-- FR -->
+        <ng-container *ngIf="lang === 'fr'">
+          <div class="flex-fill-left py-md-0 mx-md-0 px-xl-10 px-md-8 px-sm-5 py-8 mx-9">
+            <h4 class="info-title pb-md-5">{{ homepageData.acf_fields.schedulesTitle }}</h4>
+            <p class="info-content" [innerHTML]="getSafeHtml(homepageData.acf_fields.schedulesContent)"></p>
+          </div>
+
+          <div class="flex-fill-right py-md-0 mx-md-0 px-xl-10 px-md-6 px-sm-5 py-6 mx-9">
+            <h4 class="info-title py-md-0 pb-md-5">{{ homepageData.acf_fields.officeTitle }}</h4>
+            <p class="info-content" [innerHTML]="getSafeHtml(homepageData.acf_fields.officeContent)"></p>
+          </div>
+        </ng-container>
+
+        <!-- EN -->
+        <ng-container *ngIf="lang === 'en'">
+          <div class="flex-fill-left py-md-0 mx-md-0 px-xl-10 px-md-8 px-sm-5 py-8 mx-9">
+            <h4 class="info-title pb-md-5">Office hours</h4>
+            <p class="info-content">
+              Mondays, Tuesdays, Thursdays, Fridays, some Saturdays<br>
+              By appointment
+            </p>
+          </div>
+
+          <div class="flex-fill-right py-md-0 mx-md-0 px-xl-10 px-md-6 px-sm-5 py-6 mx-9">
+            <h4 class="info-title py-md-0 pb-md-5">My practice</h4>
+            <p class="info-content">
+              I work at home, in Castillonnès, Lot et Garonne. I will give you the exact address once you have made the appointment.
+            </p>
+          </div>
+        </ng-container>
+
       </div>
     </div>
   </ng-container>
+
 </div>

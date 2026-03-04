@@ -1,5 +1,17 @@
+<div class="lang-switch lang-switch--dark-text" role="group" aria-label="Language switch">
+  <button type="button" class="lang-btn" [class.is-active]="lang === 'fr'" (click)="setLang('fr')">FR</button>
+  <span class="lang-sep" aria-hidden="true">/</span>
+  <button type="button" class="lang-btn" [class.is-active]="lang === 'en'" (click)="setLang('en')">EN</button>
+</div>
+
 <div class="not-found mt-10 px-15">
   <h1>404</h1>
-  <p>Page non trouvée</p>
-  <a href="/">Retour à l'accueil</a>
+
+  <p *ngIf="lang === 'fr'">Page non trouvée</p>
+  <p *ngIf="lang === 'en'">Page not found</p>
+
+  <a [routerLink]="['/accueil']">
+    <ng-container *ngIf="lang === 'fr'">Retour à l'accueil</ng-container>
+    <ng-container *ngIf="lang === 'en'">Back to home</ng-container>
+  </a>
 </div>

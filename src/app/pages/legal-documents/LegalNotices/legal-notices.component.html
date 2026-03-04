@@ -1,6 +1,94 @@
-<div class="legal-container mt-15 mb-5" *ngIf="legal$ | async as legalDataArray">
-  <section *ngFor="let legalData of legalDataArray">
-      <h1 class="mb-5">{{ legalData.acf_fields.title }}</h1>
-      <div class="px-0 py-7" *ngIf="legalData?.acf_fields" [innerHTML]="getSafeHtml(legalData.acf_fields.content)"></div>    
-  </section>
+<!-- Back button (placed in content area) -->
+<ng-container *ngIf="lang === 'fr' || lang === 'en'">
+  <div class="legal-container mt-15 mb-0">
+    <button
+  type="button"
+  class="back-btn back-btn--icon"
+  (click)="goHome()"
+  aria-label="Retour à l'accueil"
+  title="Retour à l'accueil"
+>
+  <svg
+    class="back-icon"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path
+      d="M9 6L4.5 10.5 9 15"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M4.5 10.5H14.5c3.9 0 7 3.1 7 7v0.5"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</button>
+  </div>
+</ng-container>
+
+<!-- Switch FR/EN -->
+<div class="lang-switch lang-switch--dark-text" role="group" aria-label="Language switch">
+  <button type="button" class="lang-btn" [class.is-active]="lang === 'fr'" (click)="setLang('fr')">FR</button>
+  <span class="lang-sep" aria-hidden="true">/</span>
+  <button type="button" class="lang-btn" [class.is-active]="lang === 'en'" (click)="setLang('en')">EN</button>
 </div>
+
+<!-- =========================
+     FR (ACF / WordPress)
+     ========================= -->
+<ng-container *ngIf="lang === 'fr'">
+  <div class="legal-container mt-0 mb-5" *ngIf="legal$ | async as legalDataArray">
+    <section *ngFor="let legalData of legalDataArray">
+      <h1 class="mb-5">{{ legalData.acf_fields.title }}</h1>
+      <div
+        class="px-0 py-7"
+        *ngIf="legalData?.acf_fields"
+        [innerHTML]="getSafeHtml(legalData.acf_fields.content)">
+      </div>
+    </section>
+  </div>
+</ng-container>
+
+<!-- =========================
+     EN (Hardcoded translation)
+     ========================= -->
+<ng-container *ngIf="lang === 'en'">
+  <div class="legal-container mt-0 mb-5">
+    <section>
+      <h1 class="mb-5">Legal notice</h1>
+
+      <div class="px-0 py-7">
+        <p>
+          Pursuant to Article 6 of French Law No. 2004-575 of 21 June 2004 on confidence in the digital economy,
+          users of the website <strong>www.limago-reflexo.fr</strong> are informed of the identity of the various parties involved in its creation and monitoring:
+        </p>
+
+        <p><strong>Publisher:</strong> X, whose registered office is located at: 8 rue d’Argenteuil, 75001 Paris, France, represented by Magali Jaubert in her capacity as Director.</p>
+        <p><strong>Share capital:</strong> </p>
+        <p><strong>VAT number:</strong> </p>
+        <p><strong>SIREN:</strong> </p>
+
+        <p><strong>Publication manager:</strong> limago.reflexo&#64;gmail.com</p>
+
+        <p>
+          <strong>Webmaster:</strong> LJ Web Creations – 26, cours Balguerie Stuttenberg, 33300 Bordeaux, France – Phone: 07 60 22 78 55
+        </p>
+
+        <p>
+          <strong>Hosting provider:</strong> HOSTINGER INTERNATIONAL LTD, 61 Lordou Vironos Street, 6023 Larnaca, Cyprus –
+          support&#64;hostinger.com
+        </p>
+      </div>
+    </section>
+  </div>
+</ng-container>

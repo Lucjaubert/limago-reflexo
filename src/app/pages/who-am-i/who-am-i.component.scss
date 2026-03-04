@@ -1,50 +1,69 @@
+@import "../../../styles/_variables.scss";
+
 .whoami-container {
-    padding-left: 10rem;
-    padding-right: 10rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
 
-    @media (min-width: 1909px) {
-        padding-left: 10rem;
-        padding-right: 10rem;
-    }
-  
-    @media (max-width: 1908px) {
-        padding-left: 10rem;
-        padding-right: 10rem;
-    }
+  @media (max-width: 1024px) {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
 
-    @media (max-width: 1440px) {
-        padding-left: 10rem;
-        padding-right: 10rem;
-    }
+  @media (max-width: 768px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    display: flex;
+    flex-direction: column;
 
-    @media (max-width: 1024px) {
-        padding-left: 5rem;
-        padding-right: 5rem;
+    .who-content { order: 1; }
+    .img-content {
+      order: 2;
+      padding-bottom: 30px;
+      margin-top: 2.5rem;
     }
+  }
 
-    @media (max-width: 768px) {
-        padding-left: 3rem;
-        padding-right: 3rem;
-        display: flex;
-        flex-direction: column;
+  @media (max-width: 426px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
 
-        .who-content {
-            order: 1; 
-        }
+/* Image : arrondis + ombre légère (même rendu que les autres pages) */
+.whoami-image {
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+  object-fit: cover;
+  object-position: center;
+  transform: translateZ(0);
+}
 
-        .img-content {
-            order: 2; 
-            padding-bottom: 30px;
-        }
-    }
+/* Bloc diplômes : encadré clean (proche du “custom-border” Reflexology) */
+.degrees-box {
+  border: map-get($border-size, "1") solid map-get($theme-colors, "green");
+  padding: 2.5rem;
+  background: transparent;
 
-    @media (max-width: 426px) {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-  
-    @media (max-width: 375px) {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  /* si WP injecte des <p> / <ul> */
+  p {
+    margin-bottom: 0.9rem;
+  }
+
+  ul {
+    margin: 0.8rem 0 0 1.2rem;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 0.6rem;
+  }
+}
+
+.degrees-list {
+  margin: 0;
+  padding-left: 1.2rem;
 }

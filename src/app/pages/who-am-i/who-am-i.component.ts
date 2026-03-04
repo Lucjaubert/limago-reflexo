@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { of } from 'rxjs';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { of, Subscription } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { WhoAmIData } from '../../models/whoami-data.model';
 import { WordpressService } from '../../services/wordpress.service';
@@ -10,6 +10,8 @@ import { Title, Meta } from '@angular/platform-browser';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import { LanguageService, Lang } from '../../services/language.service';
+
 @Component({
   selector: 'app-who-am-i',
   templateUrl: './who-am-i.component.html',
@@ -17,8 +19,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   standalone: true,
   imports: [CommonModule, RouterModule]
 })
-export class WhoAmIComponent implements OnInit {
+export class WhoAmIComponent implements OnInit, OnDestroy {
   whoAmIData: WhoAmIData[] | null = null;
+
+  lang: Lang = 'fr';
+  private langSub?: Subscription;
 
   constructor(
     private wpService: WordpressService,
@@ -26,19 +31,35 @@ export class WhoAmIComponent implements OnInit {
     private titleService: Title,
     private metaService: Meta,
     private router: Router,
-    private cdr: ChangeDetectorRef
-  ) { }
+    private cdr: ChangeDetectorRef,
+    private languageService: LanguageService
+  ) {}
 
   ngOnInit(): void {
-    this.titleService.setTitle('Qui suis-je - Limago Reflexo');
-
-    this.metaService.updateTag({
-      name: 'description',
-      content: 'Découvrez Magali Jaubert, votre spécialiste en réflexologie chez Limago Reflexo, dédiée à votre bien-être à travers la réflexologie plantaire et palmaire.'
-    });
-    this.metaService.updateTag({ name: 'canonical', href: `https://limago-reflexo.fr${this.router.url}` });
-
     gsap.registerPlugin(ScrollTrigger);
+
+    // Langue globale
+    this.lang = this.languageService.current;
+
+    this.langSub = this.languageService.lang$.subscribe(l => {
+      this.lang = l;
+
+      if (l === 'fr') {
+        this.titleService.setTitle('Qui suis-je - Limago Reflexo');
+        this.metaService.updateTag({
+          name: 'description',
+          content: 'Découvrez Magali Jaubert, votre spécialiste en réflexologie chez Limago Reflexo, dédiée à votre bien-être à travers la réflexologie plantaire et palmaire.'
+        });
+      } else {
+        this.titleService.setTitle('Who am I? - Limago Reflexo');
+        this.metaService.updateTag({
+          name: 'description',
+          content: 'Meet Magali Jaubert, foot and hand reflexologist. Discover her background, approach, and diplomas.'
+        });
+      }
+
+      this.metaService.updateTag({ name: 'canonical', href: `https://limago-reflexo.fr${this.router.url}` });
+    });
 
     this.wpService.getWhoAmI().pipe(
       catchError(error => {
@@ -50,6 +71,10 @@ export class WhoAmIComponent implements OnInit {
       this.cdr.detectChanges();
       this.initAnimations();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.langSub?.unsubscribe();
   }
 
   initAnimations(): void {

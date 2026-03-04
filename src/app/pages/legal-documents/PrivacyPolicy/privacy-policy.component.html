@@ -1,7 +1,223 @@
-<div class="privacy-container mt-15 mb-5" *ngIf="privacyData$ | async as privacyDataArray">
-  <section *ngFor="let privacyData of privacyDataArray">
-      <h1 class="mb-5">{{ privacyData.acf_fields.title }}</h1>
-      <div class="px-0 py-7" *ngIf="privacyData?.acf_fields" [innerHTML]="getSafeHtml(privacyData.acf_fields.content)"></div>    
-  </section>
+<!-- Back button (placed in content area) -->
+<ng-container *ngIf="lang === 'fr' || lang === 'en'">
+  <div class="legal-container mt-15 mb-0">
+    <button
+  type="button"
+  class="back-btn back-btn--icon"
+  (click)="goHome()"
+  aria-label="Retour à l'accueil"
+  title="Retour à l'accueil"
+>
+  <svg
+    class="back-icon"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path
+      d="M9 6L4.5 10.5 9 15"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M4.5 10.5H14.5c3.9 0 7 3.1 7 7v0.5"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</button>
+  </div>
+</ng-container>
+
+<!-- Switch FR/EN -->
+<div class="lang-switch lang-switch--dark-text" role="group" aria-label="Language switch">
+  <button type="button" class="lang-btn" [class.is-active]="lang === 'fr'" (click)="setLang('fr')">FR</button>
+  <span class="lang-sep" aria-hidden="true">/</span>
+  <button type="button" class="lang-btn" [class.is-active]="lang === 'en'" (click)="setLang('en')">EN</button>
 </div>
 
+<!-- =========================
+     FR (ACF / WordPress)
+     ========================= -->
+<ng-container *ngIf="lang === 'fr'">
+  <div class="privacy-container mt-0 mb-5" *ngIf="privacyData$ | async as privacyDataArray">
+    <section *ngFor="let privacyData of privacyDataArray">
+      <h1 class="mb-5">{{ privacyData.acf_fields.title }}</h1>
+
+      <div
+        class="px-0 py-7"
+        *ngIf="privacyData?.acf_fields"
+        [innerHTML]="getSafeHtml(privacyData.acf_fields.content)">
+      </div>
+    </section>
+  </div>
+</ng-container>
+
+<!-- =========================
+     EN (Hardcoded translation)
+     ========================= -->
+<div class="privacy-container mt-0 mb-5" *ngIf="lang === 'en'">
+  <section>
+    <h1 class="mb-5">Privacy Policy</h1>
+
+    <div class="px-0 py-7">
+
+      <h4>Article 1 – Right of access, rectification and de-indexing of your data</h4>
+      <p>
+        In accordance with the regulations applicable to personal data, users have the following rights:
+      </p>
+      <ul>
+        <li>
+          <strong>Right of access:</strong> you may exercise your right of access to know what personal data concerns you,
+          by writing to the email address indicated below. In this case, before implementing this right, the Platform may request
+          proof of the user’s identity in order to verify its accuracy;
+        </li>
+        <li>
+          <strong>Right to rectification:</strong> if the personal data held by the Platform is inaccurate, you may request that it be updated;
+        </li>
+        <li>
+          <strong>Right to erasure:</strong> you may request the deletion of your personal data, in accordance with applicable data protection rules;
+        </li>
+        <li>
+          <strong>Right to restriction of processing:</strong> you may ask the Platform to restrict the processing of personal data in accordance with the conditions set out by the GDPR;
+        </li>
+        <li>
+          <strong>Right to object:</strong> you may object to your data being processed in accordance with the conditions set out by the GDPR;
+        </li>
+        <li>
+          <strong>Right to portability:</strong> you may request that the Platform provide you with the personal data you have supplied,
+          so that you can transmit it to another Platform.
+        </li>
+      </ul>
+
+      <p>
+        You can exercise these rights by contacting us at: <strong>X</strong><br>
+        Or by email at: <strong>limago.reflexo&#64;gmail.com</strong>
+      </p>
+
+      <p>
+        Any request must be accompanied by a copy of a valid, signed identity document and must specify the address at which the publisher can contact the requester.
+        The response will be sent within one month of receipt of the request. This one-month period may be extended by two months if the complexity of the request
+        and/or the number of requests so requires.
+      </p>
+
+      <p>
+        In addition, since French Law No. 2016-1321 of 7 October 2016, individuals who wish may organize the fate of their data after their death.
+        For more information on this subject, you may consult the CNIL website: <strong>https://www.cnil.fr/</strong>
+      </p>
+
+      <p>
+        Users may also lodge a complaint with the CNIL via the CNIL website: <strong>https://www.cnil.fr</strong>
+      </p>
+
+      <p>
+        We recommend contacting us first before filing a complaint with the CNIL, as we are fully available to help resolve your issue.
+      </p>
+
+      <h4>Article 2 – Use of data</h4>
+      <p>
+        Personal data collected from users is intended to provide the Platform’s services, improve them and maintain a secure environment.
+        The legal basis for the processing is the performance of the contract between the user and the Platform. More specifically, uses include:
+      </p>
+      <ul>
+        <li>access to and use of the Platform by the user;</li>
+        <li>management and optimization of the Platform’s operation;</li>
+        <li>implementation of user assistance/support;</li>
+        <li>verification, identification and authentication of data transmitted by the user;</li>
+        <li>organization of the conditions of use of payment services.</li>
+      </ul>
+
+      <h4>Article 3 – Data retention policy</h4>
+      <p>
+        The Platform retains your data for the time necessary to provide its services or support.
+      </p>
+      <p>
+        To the extent reasonably necessary or required to comply with legal or regulatory obligations, resolve disputes,
+        prevent fraud and abuse, or apply our terms and conditions, we may also retain certain information if necessary,
+        even after you have closed your account or if we no longer need it to provide our services.
+      </p>
+
+      <h4>Article 4 – Sharing of personal data with third parties</h4>
+      <p>
+        Personal data may be shared with third-party companies exclusively within the European Union, in the following cases:
+      </p>
+      <ul>
+        <li>
+          when the user uses payment services; to implement these services, the Platform works with third-party banking and financial companies
+          with which it has entered into contracts;
+        </li>
+        <li>
+          when the user publishes, in the Platform’s free comment areas, information that is accessible to the public;
+        </li>
+        <li>
+          when the user authorizes a third-party website to access their data;
+        </li>
+        <li>
+          when the Platform uses service providers to provide user assistance, advertising and payment services.
+          These providers have limited access to the user’s data as part of the performance of these services and are contractually obliged
+          to use it in compliance with the applicable data protection regulations;
+        </li>
+        <li>
+          if required by law, the Platform may transmit data in order to respond to claims made against the Platform and to comply with administrative and judicial procedures.
+        </li>
+      </ul>
+
+      <h4>Article 5 – Cookies</h4>
+      <p><strong>What is a cookie?</strong></p>
+      <p>
+        A “cookie” or tracker is an electronic file stored on a terminal (computer, tablet, smartphone, etc.) and read for example when visiting a website,
+        reading an email, installing or using software or a mobile application—regardless of the type of terminal used (source: CNIL).
+      </p>
+
+      <p>
+        The website may automatically collect standard information. All information collected indirectly will be used only to monitor the volume,
+        type and configuration of traffic using this site, develop its design and layout, and more generally improve the service we offer.
+      </p>
+
+      <p>
+        Where applicable, cookies issued by the website publisher and/or third-party companies may be stored on your device, with your consent.
+        In this case, during your first visit to the website, an explanatory banner about the use of cookies will appear. Before continuing browsing,
+        the user/prospect must accept or refuse the use of such cookies. Consent is valid for a period of thirteen (13) months. Users can disable cookies at any time.
+      </p>
+
+      <p><strong>The following cookies are present on this site:</strong></p>
+
+      <p><strong>Google cookies:</strong></p>
+      <ul>
+        <li>Google Analytics: measures website audience;</li>
+        <li>Google Tag Manager: facilitates implementation of tags and management of Google tags;</li>
+        <li>Google AdSense: Google advertising network using websites or YouTube videos to support ads;</li>
+        <li>Google Dynamic Remarketing: enables dynamic advertising based on previous searches;</li>
+        <li>Google AdWords Conversion: tool for tracking AdWords advertising campaigns;</li>
+        <li>DoubleClick: Google advertising cookies used to display banners.</li>
+      </ul>
+
+      <p><strong>Facebook cookies:</strong></p>
+      <ul>
+        <li>Facebook Connect: allows you to sign in using your Facebook account;</li>
+        <li>Facebook social plugins: allow you to like, share, and comment on content with a Facebook account;</li>
+        <li>Facebook Custom Audience: allows interaction with the audience on Facebook.</li>
+      </ul>
+
+      <h4>Article 6 – Applicable law</h4>
+      <p>
+        These terms of use of the website are governed by French law and are subject to the jurisdiction of the courts where the publisher’s registered office is located,
+        unless a specific jurisdiction is attributed as a result of a particular law or regulation.
+      </p>
+
+      <h4>Article 7 – Contact us</h4>
+      <p>
+        For any questions or information about the products presented on the website, or regarding the website itself, you can email:
+        <strong>limago.reflexo&#64;gmail.com</strong>
+      </p>
+
+    </div>
+  </section>
+</div>

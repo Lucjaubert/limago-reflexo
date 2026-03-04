@@ -1,65 +1,81 @@
 @import "../../../styles/_variables.scss";
 
 .services-container {
-    padding: 0 10rem;
+  padding: 0 10rem;
 
-    @media (max-width: 1024px) {
-        padding: 0 5rem;
+  @media (max-width: 1024px) {
+    padding: 0 5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 3rem;
+    display: flex;
+    flex-direction: column;
+
+    .content-section { order: 1; }
+    .img-content {
+      order: 2;
+      padding-bottom: 30px;
+      margin-top: 2.5rem;
+    }
+  }
+
+  @media (max-width: 426px) {
+    padding: 0 1rem;
+  }
+
+  /* Image : arrondis + ombre (comme Home/Reflexology) */
+  .services-image {
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+    object-fit: cover;
+    object-position: center;
+    transform: translateZ(0);
+  }
+
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Bouton rond identique */
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    @media (min-width: 1025px) {
+      width: 50%;
     }
 
-    @media (max-width: 768px) {
-        padding: 0 3rem;
-        display: flex;
-        flex-direction: column;
+    .btn-reserve {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-        .content-section {
-            order: 1;
-        }
+      border: map-get($border-size, "1") solid map-get($theme-colors, "green");
+      background-color: white;
+      color: map-get($theme-colors, "green");
+      cursor: pointer;
 
-        .img-content {
-            order: 2; 
-            padding-bottom: 30px;
-        }
+      border-radius: 50%;
+      text-align: center;
+
+      font-weight: 500 !important;
+      font-size: 0.7rem;
+
+      width: 130px;
+      height: 130px;
+
+      transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.10);
+
+      &:hover {
+        background-color: map-get($theme-colors, "green");
+        color: white;
+        transform: translateY(-1px);
+      }
     }
-
-    @media (max-width: 426px) {
-        padding: 0 1rem;
-    }
-
-    .btn-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-
-        @media (min-width: 1025px) {
-            width: 50%;
-        }
-
-        .btn-reserve {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: map-get($border-size, "1") solid map-get($theme-colors, "green");
-            background-color: white;
-            color: map-get($theme-colors, "green");
-            cursor: pointer;
-            border-radius: 50%;
-            text-align: center;
-            font-weight: 500 !important;
-            font-size: 0.7rem;
-            width: 130px;
-            height: 130px;
-
-            &:hover {
-                background-color: map-get($theme-colors, "green");
-                color: white;
-            }
-        }
-    }
-
-    .img-fluid {
-        max-width: 100%;
-        height: auto;
-    }
+  }
 }

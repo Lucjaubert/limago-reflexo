@@ -1,67 +1,143 @@
 @import "../../../styles/_variables.scss";
 
+/* =========================================================
+   Reflexology page - style aligned with Homepage "rail" logic
+   - images: slight radius + soft shadow
+   - sections: consistent gutters (use .content-gutter in HTML)
+   - button: same rounded CTA spirit
+   ========================================================= */
+
 .reflexology-container {
-    padding: 0 10rem;
+  /* IMPORTANT :
+     -> sur la home, tu utilises content-gutter (rails)
+     -> ici on garde ton padding fallback, mais tu dois privilégier content-gutter dans le HTML
+  */
+  padding: 0 10rem;
 
-    @media (max-width: 1024px) {
-        padding: 0 5rem;
+  @media (max-width: 1024px) { padding: 0 5rem; }
+  @media (max-width: 768px)  { padding: 0 3rem; }
+  @media (max-width: 426px)  { padding: 0 1rem; }
+
+  /* --- petit "souffle" top/bottom plus propre --- */
+  .row {
+    position: relative;
+  }
+
+  /* =========================
+     IMAGE
+     ========================= */
+  .image-container {
+    /* cohérence home : image un peu plus "premium" */
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+
+      border-radius: 14px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+      transform: translateZ(0);
+
+      /* évite le “bord blanc” sur certains navigateurs si image inline */
+      background: transparent;
     }
+  }
 
-    @media (max-width: 768px) {
-        padding: 0 3rem;
-        display: flex;
-        flex-direction: column;
+  /* =========================
+     CONTENT RIGHT
+     ========================= */
+  .content-container {
+    /* rien d’agressif sur le texte (comme tu veux) */
+  }
 
-        .content-container {
-            order: 1; 
-        }
+  /* =========================
+     BUTTON (CTA)
+     ========================= */
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 
-        .image-container {
-            order: 2; 
-            margin-top: 3rem;
-        }
+    .btn-reserve {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
 
-        .operation-content {
-            order: 3; 
-        }
+      border: 1px solid map-get($theme-colors, "green");
+      background-color: white;
+      color: map-get($theme-colors, "green");
+      cursor: pointer;
+
+      border-radius: 50%;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+
+      width: 130px;
+      height: 130px;
+      font-size: 0.72rem;
+
+      /* cohérence home: ombre douce */
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.10);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+
+      &:hover {
+        background-color: map-get($theme-colors, "green");
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+      }
     }
+  }
 
-    @media (max-width: 426px) {
-        padding: 0 1rem;
+  /* =========================
+     LOWER CONTENT / BORDER BOX
+     ========================= */
+  .operation-content {
+    /* respiration */
+    margin-top: 0.5rem;
+
+    .custom-border {
+      /* tu avais une bordure brute : on la garde mais plus “home-like” */
+      border: map-get($border-size, "1") solid rgba(0, 0, 0, 0.18);
+      border-radius: 14px;
+      padding: 3rem;
+
+      /* léger voile + shadow pour un rendu plus premium */
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+      backdrop-filter: blur(6px);
+
+      @media (max-width: 768px) {
+        padding: 1.5rem;
+      }
     }
+  }
 
-    .operation-content {
-        .custom-border {
-            border: map-get($border-size, "1") solid map-get($theme-colors, "green");
-            padding: 3rem;
-        }
+  /* =========================
+     MOBILE ORDER (tu l’avais)
+     ========================= */
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+
+    .content-container { order: 1; }
+    .image-container {
+      order: 2;
+      margin-top: 3rem;
     }
+    .operation-content { order: 3; }
+  }
+}
 
-    .btn-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-
-        .btn-reserve {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: map-get($border-size, "1") solid map-get($theme-colors, "green");
-            background-color: white;
-            color: map-get($theme-colors, "green");
-            cursor: pointer;
-            border-radius: 50%;
-            text-align: center;
-            font-weight: 500;
-            font-size: 0.7rem;
-            width: 130px;
-            height: 130px;
-
-            &:hover {
-                background-color: map-get($theme-colors, "green");
-                color: white;
-            }
-        }
-    }
+/* =========================================================
+   OPTIONAL: if you use global class "content-gutter" (recommended)
+   You can remove the big paddings above later.
+   This just ensures no double padding if both are present.
+   ========================================================= */
+.reflexology-container.content-gutter {
+  /* si tu ajoutes content-gutter au container (HTML),
+     tu peux neutraliser le padding local pour éviter double gutter */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
