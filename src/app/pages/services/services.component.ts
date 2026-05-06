@@ -23,6 +23,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
   servicesData: ServicesData[] | null = null;
 
   lang: Lang = 'fr';
+  bookingCallUrl = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ232BFnbyZ11ca07wXA0gIgG6QKFpy6BGMpoZog1pvq-Savr2P30q2gBQttOpAwDS1pnFEGIZPY';
   private langSub?: Subscription;
 
   constructor(

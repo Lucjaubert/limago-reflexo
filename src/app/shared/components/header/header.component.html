@@ -6,15 +6,39 @@
       <div class="menu-line"></div>
     </div>
   </div>
+
   <div class="navbar-container d-flex">
     <div class="logo-container">
-      <img src="assets/img/logo-limago-reflexo.webp" alt="Logo Limago Reflexo" width="300" height="100" class="logo-homepage" loading="eager">
+      <img
+        src="assets/img/logo-limago-reflexo.webp"
+        alt="Logo Limago Reflexo"
+        width="300"
+        height="100"
+        class="logo-homepage"
+        loading="eager"
+      >
     </div>
+
     <nav class="navbar">
-      <a routerLink="/accueil" routerLinkActive="active">Accueil</a>
-      <a routerLink="/qui-suis-je" routerLinkActive="active">Qui suis-je?</a>
-      <a routerLink="/reflexologie" routerLinkActive="active">La réflexologie</a>
-      <a routerLink="/prestations" routerLinkActive="active">Prestations</a>
+      <a routerLink="/accueil" routerLinkActive="active">
+        <ng-container *ngIf="lang === 'fr'">Accueil</ng-container>
+        <ng-container *ngIf="lang === 'en'">Home</ng-container>
+      </a>
+
+      <a routerLink="/qui-suis-je" routerLinkActive="active">
+        <ng-container *ngIf="lang === 'fr'">Qui suis-je ?</ng-container>
+        <ng-container *ngIf="lang === 'en'">Who am I?</ng-container>
+      </a>
+
+      <a routerLink="/reflexologie" routerLinkActive="active">
+        <ng-container *ngIf="lang === 'fr'">La réflexologie</ng-container>
+        <ng-container *ngIf="lang === 'en'">Reflexology</ng-container>
+      </a>
+
+      <a routerLink="/prestations" routerLinkActive="active">
+        <ng-container *ngIf="lang === 'fr'">Prestations</ng-container>
+        <ng-container *ngIf="lang === 'en'">Services</ng-container>
+      </a>
     </nav>
   </div>
 </header>

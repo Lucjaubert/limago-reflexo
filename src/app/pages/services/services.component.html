@@ -15,14 +15,27 @@
       <!-- CONTENT (FR/EN) -->
       <div class="col-md-7 px-md-10 d-flex flex-column align-items-start justify-content-center content-section content-container">
 
-        <!-- ===== FR (ACF / WP) ===== -->
+        <!-- ===== FR (titre & contact via ACF/WP, tarifs hardcodés) ===== -->
         <ng-container *ngIf="lang === 'fr'">
           <h1 class="display-5 mb-5 mb-md-10 mr-13">{{ servicesDataItem.acf_fields.title }}</h1>
 
-          <p class="lead mb-7" [innerHTML]="getSafeHtml(servicesDataItem.acf_fields.content1)"></p>
+          <div class="lead mb-7">
+            <p>Séance de réflexologie plantaire - 1h - 60€</p>
+            <p>Séance de réflexologie plantaire et palmaire - 1h20 - 80€</p>
+            <p>Forfait 4 séances de réflexologie plantaire - 210€</p>
+            <p>Séance de réflexologie enfant - 30 min - 30€</p>
+            <p>Séance de réflexologie bébé - 20 min - 20€</p>
+            <p>Consultation personnalisée Fleurs de Bach incluse dans chaque séance</p>
+          </div>
 
-          <div class="btn-container d-flex justify-content-center">
+          <p class="mb-7">Si vous souhaitez plus d'informations, vous pouvez réserver un rdv téléphonique de 10 minutes.</p>
+
+          <div class="btn-container">
             <button class="btn btn-reserve" (click)="navigateToReservation()">Réserver un soin</button>
+            <a class="btn btn-reserve"
+               [href]="bookingCallUrl"
+               target="_blank"
+               rel="noopener noreferrer">Réserver un entretien de 10 minutes</a>
           </div>
 
           <p class="lead my-10" [innerHTML]="getSafeHtml(servicesDataItem.acf_fields.content2)"></p>
@@ -34,15 +47,21 @@
 
           <div class="lead mb-7">
             <p>Foot reflexology session - 1h - 60eur</p>
-            <p>Foot and hand reflexology session - 1h30 - 80eur</p>
+            <p>Foot and hand reflexology session - 1h20 - 80eur</p>
             <p>4 sessions foot reflexology package - 210eur</p>
             <p>Children reflexology session - 30 min - 30eur</p>
             <p>Babies reflexology session - 20 min - 20eur</p>
             <p>Bach Flowers personalized consultation included in each session</p>
           </div>
 
-          <div class="btn-container d-flex justify-content-center">
+          <p class="mb-7">If you want more information, you can book a 10 minutes call.</p>
+
+          <div class="btn-container">
             <button class="btn btn-reserve" (click)="navigateToReservation()">Book a treatment</button>
+            <a class="btn btn-reserve"
+               [href]="bookingCallUrl"
+               target="_blank"
+               rel="noopener noreferrer">Book a 10 minutes call</a>
           </div>
 
           <div class="lead my-10">

@@ -62,7 +62,7 @@
             <div *ngIf="activeSection === 'reflexology_plantar'" class="service-description">
               <h4>
                 <ng-container *ngIf="lang === 'fr'">{{ data.acf_fields.reflexology_plantar_title }}</ng-container>
-                <ng-container *ngIf="lang === 'en'">Foot reflexology session - 1h - 60€</ng-container>
+                <ng-container *ngIf="lang === 'en'">Foot reflexology session</ng-container>
               </h4>
 
               <div class="line-reserve my-7"></div>
@@ -72,14 +72,18 @@
               </ng-container>
 
               <ng-container *ngIf="lang === 'en'">
-                <p>Bach Flowers personalized consultation included in each session.</p>
+                <p>
+                  Adult - 1h - 60€<br>
+                  Child - 30 min - 30€<br>
+                  Baby - 20 min - 20€
+                </p>
               </ng-container>
 
               <button
                 class="btn btn-reserve mt-8"
                 (click)="setSessionAndOpenModal(
-                  lang === 'fr' ? data.acf_fields.reflexology_plantar_title : 'Foot reflexology session - 1h - 60€',
-                  lang === 'fr' ? data.acf_fields.reflexology_plantar_content : 'Foot reflexology session - 1h - 60€',
+                  lang === 'fr' ? data.acf_fields.reflexology_plantar_title : 'Foot reflexology session',
+                  lang === 'fr' ? data.acf_fields.reflexology_plantar_content : 'Adult - 1h - 60€ / Child - 30 min - 30€ / Baby - 20 min - 20€',
                   reservationModal
                 )">
                 <ng-container *ngIf="lang === 'fr'">Réserver</ng-container>
@@ -120,7 +124,7 @@
             <div *ngIf="activeSection === 'reflexology_plantar_palmar'" class="service-description">
               <h4>
                 <ng-container *ngIf="lang === 'fr'">{{ data.acf_fields.reflexology_plantar_palmar }}</ng-container>
-                <ng-container *ngIf="lang === 'en'">Foot and hand reflexology session - 1h30 - 80€</ng-container>
+                <ng-container *ngIf="lang === 'en'">Foot and hand reflexology session - 1h20 - 80€</ng-container>
               </h4>
 
               <div class="line-reserve my-8"></div>
@@ -136,8 +140,8 @@
               <button
                 class="btn btn-reserve mt-8"
                 (click)="setSessionAndOpenModal(
-                  lang === 'fr' ? data.acf_fields.reflexology_plantar_palmar : 'Foot and hand reflexology session - 1h30 - 80€',
-                  lang === 'fr' ? data.acf_fields.reflexology_plantar_palmar_content : 'Foot and hand reflexology session - 1h30 - 80€',
+                  lang === 'fr' ? data.acf_fields.reflexology_plantar_palmar : 'Foot and hand reflexology session - 1h20 - 80€',
+                  lang === 'fr' ? data.acf_fields.reflexology_plantar_palmar_content : 'Foot and hand reflexology session - 1h20 - 80€',
                   reservationModal
                 )">
                 <ng-container *ngIf="lang === 'fr'">Réserver</ng-container>

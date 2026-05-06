@@ -1,6 +1,17 @@
 @import "./_variables.scss";
 @import "node_modules/bootstrap/scss/bootstrap";
 
+html,
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 /* =========================
    RAILS / BORDURES (LOGIQUE DE L'AUTRE PROJET)
    ========================= */
